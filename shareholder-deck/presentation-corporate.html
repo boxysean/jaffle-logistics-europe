@@ -832,6 +832,35 @@
   /* a size down, so the longest title (with its number) and subtitle still fit on one line beside the icon */
   .lt .hd:has(.ico) h2 { font-size: 24px; }
   .lt .hd:has(.ico) .owns { font-size: 22px; }
+
+  /* the business lives in 24 places / one layer: one wide panel, a diagram over one verdict */
+  .lt-mess .wire.wide { left: 20px; top: 148px; width: 1240px; height: 502px; }
+  .lt-mess .wire.wide svg { left: 24px; top: 44px; }
+  .lt-mess .wire.wide.amb { border-color: var(--amber); }
+
+  /* wrong numbers: the year-in-numbers layout, then one click per column puts a big X over it
+     and says why. columns follow .res .strip/.grid.years (left 20, 1240 wide, three across) */
+  .lt-wrong .xo { position: absolute; top: 124px; height: 534px; width: 409px; }
+  .lt-wrong .xo.c1 { left: 16px; }
+  .lt-wrong .xo.c2 { left: 435px; }
+  .lt-wrong .xo.c3 { left: 855px; }
+  .lt-wrong .xo .x { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .lt-wrong .xo .x path { stroke: var(--hot); fill: none; vector-effect: non-scaling-stroke; stroke-width: 18px; opacity: .85; }
+  .lt-wrong .why-x { position: absolute; left: 24px; right: 24px; top: 50%; transform: translateY(-50%); background: var(--navy-2); border: 4px solid var(--hot); box-shadow: 6px 6px 0 #000; padding: 18px 18px 16px; text-align: center; }
+  .lt-wrong .why-x .k { font-family: var(--pixel); font-size: 18px; line-height: 1.3; color: var(--hot); }
+  .lt-wrong .why-x .t { margin-top: 12px; font-size: 22px; line-height: 1.3; color: var(--text); }
+  .lt-wrong .why-x .t code { font-family: var(--mono); color: var(--amber); }
+  .lt-wrong .why-x .r { margin-top: 14px; font-family: var(--pixel); font-size: 18px; line-height: 1.3; color: var(--amber); }
+  .lt-wrong .tile .v { color: var(--amber); }
+  .lt-wrong .tile .v.hot { color: var(--hot); }
+
+  /* curating the context: three cards narrowing to the few rows that matter */
+  .lt-curate .row { height: 420px; }
+  .lt-curate .card .lbl { margin-top: 0; }
+  .lt-curate .card .num { margin-top: 40px; }
+  .lt-curate .card .line { margin-top: 32px; }
+  .lt-curate .card .line em { font-style: normal; color: var(--amber); font-weight: 600; }
+  .lt-curate .card .line .q { color: var(--hot); }
   /* ===== Fivetran + dbt Labs corporate theme =====================================================
      Appended after the deck's own CSS by build_corporate.py. The deck's colours are CSS variables,
      so the palette swap below does most of the work; the rest of this file swaps the 16-bit chrome
@@ -997,11 +1026,11 @@
 <div class="slides">
 
 <!-- 0. Talk title -->
-<section class="talk" data-status="dbt NL · 13 Oct 2026">
+<section class="talk" data-status="dbt Vienna · 20 Oct 2026">
   <div class="frame">
     <div class="panel title-box">
       <h1>Congratulations!<br>You are a Context Engineer</h1>
-      <div class="sub">dbt Netherlands Meetup · 13 October 2026</div>
+      <div class="sub">dbt Vienna Meetup · 20 October 2026</div>
       <div class="who">Sean McIntyre</div>
       <div class="role">Principal Solutions Architect, dbt Labs and Fivetran</div>
     </div>
@@ -1009,7 +1038,7 @@
 <aside class="notes">Welcome. Do not read the title. Introduce yourself, then the road map.</aside>
 </section>
 <!-- About me -->
-<section class="about" data-status="dbt NL · 13 Oct 2026">
+<section class="about" data-status="dbt Vienna · 20 Oct 2026">
   <div class="frame">
     <div class="panel hd">
       <h2>ABOUT ME</h2>
@@ -1095,7 +1124,7 @@
 <aside class="notes">Thirty seconds, no more. Credibility, then a human detail (the bike), then move on.</aside>
 </section>
 <!-- Agenda -->
-<section class="agenda" data-status="dbt NL · 13 Oct 2026">
+<section class="agenda" data-status="dbt Vienna · 20 Oct 2026">
   <div class="frame">
     <div class="panel hd">
       <h2>AGENDA</h2>
@@ -1122,7 +1151,7 @@
   <aside class="notes">Turn to the room before any content. Pause and let hands go up; count them out loud. Then: "That is not a model problem. It is a context problem, and by the end of this talk it is a problem this room already knows how to solve."</aside>
 </section>
 <!-- Part 1: The game has changed -->
-<section class="blank opener" data-status="dbt NL · 13 Oct 2026">
+<section class="blank opener" data-status="dbt Vienna · 20 Oct 2026">
   <div class="frame">
     <div class="panel hd">
       <h2>The game has changed</h2>
@@ -1177,61 +1206,50 @@
   </div>
 <aside class="notes">About 30 seconds. Preparing data for AI-aided analysis and agents is now the game; the model reasons well enough, so what it reads decides whether the answer is right. That is the opportunity the rest of the talk earns.</aside>
 </section>
-<!-- Why context engineering: the tangle against the single layer -->
-<section class="lt lt-wires">
+<!-- Why context engineering, the problem: what a company knows is spread over a dozen apps, and every AI app reads them straight from source -->
+<section class="lt lt-wires lt-mess">
   <div class="frame">
     <div class="panel hd">
-      <h2>TEN TOOLS. TEN WIRINGS. OR ONE LAYER.</h2>
-      <div class="owns">The case for modelling the business once, before anything reads it</div>
+      <h2>THE BUSINESS IS MESSY</h2>
+      <div class="owns">What a company knows is spread over a dozen apps, and every AI tool reads them raw</div>
     </div>
-    <div class="panel wire l">
+    <div class="panel wire wide">
       <span class="tab">TODAY</span>
-      <svg class="chart" width="560" height="330" viewBox="0 0 560 330" role="img" aria-label="Five AI tools, each wired by its own line to each of three raw data sources: fifteen crossing lines">
-        <g stroke="#e3346f" stroke-width="3" fill="none">
-          <path d="M96 40 L440 70"/><path d="M96 40 L440 165"/><path d="M96 40 L440 260"/>
-          <path d="M96 105 L440 70"/><path d="M96 105 L440 165"/><path d="M96 105 L440 260"/>
-          <path d="M96 170 L440 70"/><path d="M96 170 L440 165"/><path d="M96 170 L440 260"/>
-          <path d="M96 235 L440 70"/><path d="M96 235 L440 165"/><path d="M96 235 L440 260"/>
-          <path d="M96 300 L440 70"/><path d="M96 300 L440 165"/><path d="M96 300 L440 260"/>
-        </g>
-        <g fill="#001526" stroke="#ffffff" stroke-width="4">
-          <rect x="56" y="24" width="40" height="32"/><rect x="56" y="89" width="40" height="32"/><rect x="56" y="154" width="40" height="32"/><rect x="56" y="219" width="40" height="32"/><rect x="56" y="284" width="40" height="32"/>
-        </g>
-        <g fill="#a7c4fe" stroke="#ffffff" stroke-width="4">
-          <rect x="440" y="50" width="64" height="40"/><rect x="440" y="145" width="64" height="40"/><rect x="440" y="240" width="64" height="40"/>
-        </g>
-        <text x="472" y="76" text-anchor="middle" style="fill:#001526;font-size:14px">RAW</text>
-        <text x="472" y="171" text-anchor="middle" style="fill:#001526;font-size:14px">RAW</text>
-        <text x="472" y="266" text-anchor="middle" style="fill:#001526;font-size:14px">RAW</text>
+      <svg class="chart" width="1192" height="356" viewBox="0 0 1192 356" role="img" aria-label="Twelve business apps on the left (CRMs, ERPs, wiki pages, docs, spreadsheets, presentations, legal contracts, email, chat, support tickets, HR system, call recordings); on the right five AI apps, each wired straight to seven of them: thirty-five crossing lines, some broken">
+        <g stroke="#e3346f" stroke-width="2.5" fill="none" opacity=".8"><path d="M952 44 L213 121"/><path d="M952 44 L308 313"/><path d="M952 44 L348 150"/><path d="M952 44 L290 221"/><path d="M952 44 L157 27"/><path d="M952 44 L578 123"/><path d="M952 44 L623 210"/><path d="M952 110 L213 121"/><path d="M952 110 L623 210"/><path d="M952 110 L348 150"/><path d="M952 110 L157 27"/><path d="M952 110 L383 64"/><path d="M952 110 L189 289" stroke-dasharray="10 8"/><path d="M952 110 L308 313"/><path d="M952 176 L157 27"/><path d="M952 176 L290 221"/><path d="M952 176 L82 192"/><path d="M952 176 L189 289" stroke-dasharray="10 8"/><path d="M952 176 L623 210"/><path d="M952 176 L520 291"/><path d="M952 176 L348 150"/><path d="M952 242 L383 64"/><path d="M952 242 L500 42" stroke-dasharray="10 8"/><path d="M952 242 L213 121"/><path d="M952 242 L520 291"/><path d="M952 242 L157 27"/><path d="M952 242 L290 221"/><path d="M952 242 L189 289" stroke-dasharray="10 8"/><path d="M952 308 L308 313"/><path d="M952 308 L82 192"/><path d="M952 308 L383 64"/><path d="M952 308 L520 291"/><path d="M952 308 L623 210"/><path d="M952 308 L189 289"/><path d="M952 308 L157 27"/></g>
+        <g><rect x="33" y="8" width="124" height="38" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="95" y="33" text-anchor="middle" style="fill:#001526;font-size:17px">Wiki pages</text><rect x="229" y="45" width="154" height="38" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="306" y="70" text-anchor="middle" style="fill:#001526;font-size:17px">Presentations</text><rect x="436" y="23" width="64" height="38" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="468" y="48" text-anchor="middle" style="fill:#001526;font-size:17px">CRMs</text><rect x="39" y="102" width="174" height="38" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="126" y="127" text-anchor="middle" style="fill:#001526;font-size:17px">Legal contracts</text><rect x="234" y="131" width="114" height="38" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="291" y="156" text-anchor="middle" style="fill:#001526;font-size:17px">HR system</text><rect x="434" y="104" width="144" height="38" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="506" y="129" text-anchor="middle" style="fill:#001526;font-size:17px">Spreadsheets</text><rect x="18" y="173" width="64" height="38" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="50" y="198" text-anchor="middle" style="fill:#001526;font-size:17px">ERPs</text><rect x="226" y="202" width="64" height="38" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="258" y="227" text-anchor="middle" style="fill:#001526;font-size:17px">Docs</text><rect x="449" y="191" width="174" height="38" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="536" y="216" text-anchor="middle" style="fill:#001526;font-size:17px">Support tickets</text><rect x="15" y="270" width="174" height="38" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="102" y="295" text-anchor="middle" style="fill:#001526;font-size:17px">Call recordings</text><rect x="244" y="294" width="64" height="38" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="276" y="319" text-anchor="middle" style="fill:#001526;font-size:17px">Chat</text><rect x="446" y="272" width="74" height="38" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="483" y="297" text-anchor="middle" style="fill:#001526;font-size:17px">Email</text></g>
+        <g><rect x="952" y="24" width="216" height="40" fill="#001526" stroke="#ffffff" stroke-width="4"/><text x="1060" y="50" text-anchor="middle" style="fill:#ffffff;font-size:17px;font-weight:600">Chat assistant</text><rect x="952" y="90" width="216" height="40" fill="#001526" stroke="#ffffff" stroke-width="4"/><text x="1060" y="116" text-anchor="middle" style="fill:#ffffff;font-size:17px;font-weight:600">BI copilot</text><rect x="952" y="156" width="216" height="40" fill="#001526" stroke="#ffffff" stroke-width="4"/><text x="1060" y="182" text-anchor="middle" style="fill:#ffffff;font-size:17px;font-weight:600">Support agent</text><rect x="952" y="222" width="216" height="40" fill="#001526" stroke="#ffffff" stroke-width="4"/><text x="1060" y="248" text-anchor="middle" style="fill:#ffffff;font-size:17px;font-weight:600">Sales agent</text><rect x="952" y="288" width="216" height="40" fill="#001526" stroke="#ffffff" stroke-width="4"/><text x="1060" y="314" text-anchor="middle" style="fill:#ffffff;font-size:17px;font-weight:600">Forecast workflow</text></g>
       </svg>
-      <div class="verdict hot">PAID FOR THREE TIMES</div>
+      <div class="verdict hot">EVERY TOOL DECIDES WHAT IT MEANS</div>
     </div>
-    <div class="panel wire r">
+  </div>
+  <aside class="notes">This is the size of the problem, before the fix. On the left, where a company actually keeps what it knows: the CRM, the ERP, wiki pages, docs, spreadsheets, presentations, legal contracts, email, chat, support tickets, the HR system, call recordings. On the right, the AI apps and workflows everyone is building: a chat assistant, a BI copilot, a support agent, a sales agent, a forecast workflow. Each one wires itself straight to the sources it needs and decides for itself what a field means. Some of the wires are already broken: a source moved and nobody told the app. And some meaning is in no system at all. The definition of on time sits in a contract's credit terms; which of a client's contracts is the standing one lives in someone's head. That is how you get the 98.95% from earlier.</aside>
+</section>
+<!-- Why context engineering, the fix: the sources are wired once into one layer, and every AI app reads that layer -->
+<section class="lt lt-wires lt-mess">
+  <div class="frame">
+    <div class="panel hd">
+      <h2>ONE LAYER. WIRED ONCE.</h2>
+      <div class="owns">Model the business once, and every tool reads the same meaning</div>
+    </div>
+    <div class="panel wire wide amb">
       <span class="tab">WITH ONE CONTEXT LAYER</span>
-      <svg class="chart" width="560" height="330" viewBox="0 0 560 330" role="img" aria-label="Five AI tools read from one context layer, which is wired once to the three raw data sources">
-        <g stroke="#4e83f7" stroke-width="3" fill="none">
-          <path d="M96 40 L250 165"/><path d="M96 105 L250 165"/><path d="M96 170 L250 165"/><path d="M96 235 L250 165"/><path d="M96 300 L250 165"/>
-        </g>
-        <g stroke="#ff6704" stroke-width="3" fill="none">
-          <path d="M330 165 L440 70"/><path d="M330 165 L440 165"/><path d="M330 165 L440 260"/>
-        </g>
-        <g fill="#001526" stroke="#ffffff" stroke-width="4">
-          <rect x="56" y="24" width="40" height="32"/><rect x="56" y="89" width="40" height="32"/><rect x="56" y="154" width="40" height="32"/><rect x="56" y="219" width="40" height="32"/><rect x="56" y="284" width="40" height="32"/>
-        </g>
-        <rect x="250" y="115" width="80" height="100" fill="#ff6704" stroke="#ffffff" stroke-width="4"/>
-        <text x="290" y="160" text-anchor="middle" style="fill:#ffffff;font-size:14px;font-weight:600">CONTEXT</text>
-        <text x="290" y="180" text-anchor="middle" style="fill:#ffffff;font-size:14px;font-weight:600">LAYER</text>
-        <g fill="#a7c4fe" stroke="#ffffff" stroke-width="4">
-          <rect x="440" y="50" width="64" height="40"/><rect x="440" y="145" width="64" height="40"/><rect x="440" y="240" width="64" height="40"/>
-        </g>
-        <text x="472" y="76" text-anchor="middle" style="fill:#001526;font-size:14px">RAW</text>
-        <text x="472" y="171" text-anchor="middle" style="fill:#001526;font-size:14px">RAW</text>
-        <text x="472" y="266" text-anchor="middle" style="fill:#001526;font-size:14px">RAW</text>
+      <svg class="chart" width="1192" height="356" viewBox="0 0 1192 356" role="img" aria-label="The business apps from the slide before, now in one tidy column on the left, wired once into one context layer, made of a semantic layer for the structured data and a context layer for the unstructured data; on the right the five AI apps all read from that layer">
+        <g stroke="#ff6704" stroke-width="3" fill="none"><path d="M244 33 L300 33"/><path d="M244 75 L300 75"/><path d="M244 117 L300 117"/><path d="M244 159 L300 159"/><path d="M244 201 L300 201"/><path d="M244 243 L300 243"/><path d="M244 285 L300 285"/><path d="M244 327 L300 327"/><path d="M300 33 L300 327"/><path d="M300 178 L440 178"/></g>
+        <g stroke="#4e83f7" stroke-width="3" fill="none"><path d="M700 178 L952 44"/><path d="M700 178 L952 110"/><path d="M700 178 L952 176"/><path d="M700 178 L952 242"/><path d="M700 178 L952 308"/></g>
+        <g><rect x="24" y="16" width="220" height="34" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="134" y="39" text-anchor="middle" style="fill:#001526;font-size:17px">CRMs</text><rect x="24" y="58" width="220" height="34" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="134" y="81" text-anchor="middle" style="fill:#001526;font-size:17px">ERPs</text><rect x="24" y="100" width="220" height="34" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="134" y="123" text-anchor="middle" style="fill:#001526;font-size:17px">Spreadsheets</text><rect x="24" y="142" width="220" height="34" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="134" y="165" text-anchor="middle" style="fill:#001526;font-size:17px">Wiki pages</text><rect x="24" y="184" width="220" height="34" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="134" y="207" text-anchor="middle" style="fill:#001526;font-size:17px">Docs</text><rect x="24" y="226" width="220" height="34" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="134" y="249" text-anchor="middle" style="fill:#001526;font-size:17px">Legal contracts</text><rect x="24" y="268" width="220" height="34" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="134" y="291" text-anchor="middle" style="fill:#001526;font-size:17px">Email</text><rect x="24" y="310" width="220" height="34" fill="#f4f7fd" stroke="#5a6b7d" stroke-width="3"/><text x="134" y="333" text-anchor="middle" style="fill:#001526;font-size:17px">...</text></g>
+        <rect x="440" y="72" width="260" height="212" fill="#ff6704" stroke="#ffffff" stroke-width="4"/>
+        <line x1="444" y1="178" x2="696" y2="178" stroke="#ffffff" stroke-width="3"/>
+        <text x="570" y="118" text-anchor="middle" style="fill:#ffffff;font-size:17px;font-weight:600">SEMANTIC LAYER</text>
+        <text x="570" y="146" text-anchor="middle" style="fill:#ffffff;font-size:16px">structured data</text>
+        <text x="570" y="222" text-anchor="middle" style="fill:#ffffff;font-size:17px;font-weight:600">CONTEXT LAYER</text>
+        <text x="570" y="250" text-anchor="middle" style="fill:#ffffff;font-size:16px">unstructured data</text>
+        <g><rect x="952" y="24" width="216" height="40" fill="#001526" stroke="#ffffff" stroke-width="4"/><text x="1060" y="50" text-anchor="middle" style="fill:#ffffff;font-size:17px;font-weight:600">Chat assistant</text><rect x="952" y="90" width="216" height="40" fill="#001526" stroke="#ffffff" stroke-width="4"/><text x="1060" y="116" text-anchor="middle" style="fill:#ffffff;font-size:17px;font-weight:600">BI copilot</text><rect x="952" y="156" width="216" height="40" fill="#001526" stroke="#ffffff" stroke-width="4"/><text x="1060" y="182" text-anchor="middle" style="fill:#ffffff;font-size:17px;font-weight:600">Support agent</text><rect x="952" y="222" width="216" height="40" fill="#001526" stroke="#ffffff" stroke-width="4"/><text x="1060" y="248" text-anchor="middle" style="fill:#ffffff;font-size:17px;font-weight:600">Sales agent</text><rect x="952" y="288" width="216" height="40" fill="#001526" stroke="#ffffff" stroke-width="4"/><text x="1060" y="314" text-anchor="middle" style="fill:#ffffff;font-size:17px;font-weight:600">Forecast workflow</text></g>
       </svg>
       <div class="verdict amb">PAID FOR ONCE</div>
     </div>
   </div>
-  <aside class="notes">Left: every AI tool wired itself straight to raw data. You pay once to wire it, again every time a source moves, and a third time when someone acts on an answer that was wrong. Right: model the business once and let every tool read the result. Same ten tools, one wiring. (Ten tools are drawn as five for legibility.) Nobody reviews an agent's every step, so the meaning has to be right before the agent reads it.</aside>
+  <aside class="notes">The same apps and the same five AI apps as the slide before, now organized, with one layer between them. The column ends in an ellipsis: it is every source the business has, not just these. The sources are wired in once: structured data from the CRM, the ERP and the spreadsheets, and unstructured data from the docs, contracts, email, chat, tickets and call recordings. The semantic layer owns the structured data: 10 governed metrics, so on_time_rate means one thing everywhere. The context layer owns the unstructured data: chunked, embedded and cited back to its source. Every AI app reads the layer, not the source. You pay once to wire it, and when a source moves you fix it in one place, not in every app. Nobody reviews an agent's every step, so the meaning has to be right before the agent reads it.</aside>
 </section>
 <!-- Why the data team: one sentence -->
 <section class="lt lt-stmt">
@@ -1244,7 +1262,7 @@
   </div>
   <aside class="notes">Model quality became answer quality. If the definition of "on time" is wrong in the model, every agent that reads it is wrong, and confidently so. Analytics engineering modelled data so a person could read it; context engineering models the same data so an agent can. Tests, documented definitions and contracts were good practice for BI; for AI they are essential.</aside>
 </section>
-<!-- 1. Title -->
+<!-- The showcase title: as deck/slides/010-title.html, without the SOURCE line -->
 <section class="ttl" data-src="reports/company-profile.md" data-status="synthetic dataset">
   <div class="frame">
     <div class="panel title-box">
@@ -1253,7 +1271,6 @@
       <div class="cities">Amsterdam · Paris · Berlin · Vienna · Zürich</div>
       <div class="start">PRESS START</div>
       <div class="prep">prepared from the company's own operating data · synthetic dataset</div>
-      <div class="src"><b>SOURCE</b><code>reports/company-profile.md</code></div>
     </div>
   </div>
 <aside class="notes">Jaffle Logistics is a synthetic dataset. Everything from here is built from the company's own operating data.</aside>
@@ -1303,13 +1320,112 @@
 </section>
 
 <!-- Section title: the showcase opens on the headline figures -->
-<section class="sect" data-status="dbt NL · 13 Oct 2026">
+<section class="sect" data-status="dbt Vienna · 20 Oct 2026">
   <div class="frame">
     <div class="panel bd">
       <div class="kick">SHOWCASE: JAFFLE LOGISTICS · PART 1</div>
       <h2>TOP LINE NUMBERS</h2>
     </div>
   </div>
+</section>
+<!-- The year in numbers as an AI reads it straight from the raw tables, no semantic layer: the same layout as the next slide, every number wrong. Each click puts an X over one column and says why -->
+<section class="res lt-wrong" data-src="raw tables, no semantic layer">
+  <div class="frame">
+    <div class="panel hd">
+      <h2>WE ASKED AN AI TO READ THE RAW TABLES</h2>
+      <div class="owns">FY2023 to FY2025, straight from the source files, no semantic layer</div>
+    </div>
+    <div class="strip">
+      <div class="panel tile"><div class="v">€101,280,452</div><div class="note">revenue, up 8.39%</div></div>
+      <div class="panel tile"><div class="v">98.95%</div><div class="note">on time, beat the 97% target</div></div>
+      <div class="panel tile"><div class="v hot">€1,963,802</div><div class="note">service credits paid</div></div>
+    </div>
+    <div class="grid years">
+      <div class="panel ch">
+        <span class="tab">REVENUE · €M</span>
+        <svg class="chart" width="397" height="404" viewBox="0 0 397 404" role="img" aria-label="The AI's revenue by year in euro millions: 2023 85.15, 2024 93.44, 2025 101.28">
+          <text x="12" y="18">€m</text>
+          <text class="t-amb" x="385" y="18" text-anchor="end">+€7,837,590 on 2024</text>
+          <rect class="b" x="39.7" y="99.9" width="69.3" height="274.1"/>
+          <rect class="b" x="164.5" y="73.2" width="69.3" height="300.8"/>
+          <rect class="b" x="287.9" y="48" width="69.3" height="326"/>
+          <text class="val" x="74.4" y="91.9" text-anchor="middle">85.15</text>
+          <text class="val" x="199.2" y="65.2" text-anchor="middle">93.44</text>
+          <text class="val" x="322.6" y="40" text-anchor="middle">101.28</text>
+          <line class="ax" x1="12" y1="375" x2="385" y2="375"/>
+          <text x="74.4" y="396" text-anchor="middle">2023</text>
+          <text x="199.2" y="396" text-anchor="middle">2024</text>
+          <text x="322.6" y="396" text-anchor="middle">2025</text>
+        </svg>
+      </div>
+      <div class="panel ch">
+        <span class="tab">ON TIME · %</span>
+        <svg class="chart" width="397" height="404" viewBox="0 0 397 404" role="img" aria-label="The AI's on-time rate by year: 2023 99.51%, 2024 99.49%, 2025 98.95%, all above the 97% contract. Shipments: 2023 1,848, 2024 1,949, 2025 2,009">
+          <text class="t-amb" x="385" y="18" text-anchor="end">above target every year</text>
+          <rect class="pt" x="12" y="28" width="12" height="12"/>
+          <text class="sm" x="28" y="39">on time %</text>
+          <rect class="b vol" x="118" y="28" width="12" height="12"/>
+          <text class="sm" x="134" y="39">shipments (right)</text>
+          <rect class="b vol" x="78.2" y="215.4" width="65.3" height="119.6"/>
+          <rect class="b vol" x="174.6" y="208.7" width="65.3" height="126.3"/>
+          <rect class="b vol" x="271" y="204.9" width="65.3" height="130.1"/>
+          <text class="sm val" x="110.8" y="327" text-anchor="middle">1,848</text>
+          <text class="sm val" x="207.2" y="327" text-anchor="middle">1,949</text>
+          <text class="sm val" x="303.7" y="327" text-anchor="middle">2,009</text>
+          <text x="40" y="340" text-anchor="end">90%</text>
+          <text x="40" y="210.5" text-anchor="end">95%</text>
+          <text x="40" y="81" text-anchor="end">100%</text>
+          <text class="sm" x="372" y="340">0</text>
+          <text class="sm" x="372" y="210.5">2k</text>
+          <text class="sm" x="372" y="81">4k</text>
+          <line class="ax" x1="47" y1="76" x2="47" y2="335"/>
+          <line class="ax" x1="366" y1="76" x2="366" y2="335"/>
+          <line class="ax" x1="47" y1="335" x2="366" y2="335"/>
+          <line class="tg" x1="47" y1="153.7" x2="366" y2="153.7"/>
+          <text class="sm tg-t" x="362" y="169.7" text-anchor="end">97% strategic contract</text>
+          <rect class="pt" x="104.8" y="82.7" width="12" height="12"/>
+          <rect class="pt" x="201.2" y="83.2" width="12" height="12"/>
+          <rect class="pt" x="297.7" y="97.2" width="12" height="12"/>
+          <text class="val" x="110.8" y="75" text-anchor="middle">99.51</text>
+          <text class="val" x="207.2" y="75.5" text-anchor="middle">99.49</text>
+          <text class="val" x="303.7" y="89.5" text-anchor="middle">98.95</text>
+          <text x="110.8" y="355" text-anchor="middle">2023</text>
+          <text x="207.2" y="355" text-anchor="middle">2024</text>
+          <text x="303.7" y="355" text-anchor="middle">2025</text>
+          <text class="sm val" x="12" y="379">volume rose only ~3% a year, and</text>
+          <text class="sm val" x="12" y="397">reliability held. Nothing to see</text>
+        </svg>
+      </div>
+      <div class="panel ch">
+        <span class="tab">CREDITS · €K</span>
+        <svg class="chart" width="397" height="404" viewBox="0 0 397 404" role="img" aria-label="The AI's service credits by year in euro thousands: 2023 0, 2024 0, 2025 1,963.80">
+          <text x="12" y="18">€k</text>
+          <text class="t-hot" x="385" y="18" text-anchor="end">1.94% of gross revenue</text>
+          <rect class="b hot" x="287.9" y="48" width="69.3" height="326"/>
+          <text class="val" x="74.4" y="366" text-anchor="middle">0</text>
+          <text class="val" x="199.2" y="366" text-anchor="middle">0</text>
+          <text class="val" x="322.6" y="40" text-anchor="middle">1,963.80</text>
+          <line class="ax" x1="12" y1="375" x2="385" y2="375"/>
+          <text x="74.4" y="396" text-anchor="middle">2023</text>
+          <text x="199.2" y="396" text-anchor="middle">2024</text>
+          <text x="322.6" y="396" text-anchor="middle">2025</text>
+        </svg>
+      </div>
+    </div>
+    <div class="xo c1 fragment">
+      <svg class="x" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M4 4 L96 96 M96 4 L4 96"/></svg>
+      <div class="why-x"><div class="k">A BAD JOIN</div><div class="t">Revenue joined to shipments, so each month counted once per shipment: 35x</div><div class="r">REALLY €2,879,732</div></div>
+    </div>
+    <div class="xo c2 fragment">
+      <svg class="x" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M4 4 L96 96 M96 4 L4 96"/></svg>
+      <div class="why-x"><div class="k">THE WRONG DEFINITION</div><div class="t">Anything not <code>failed</code> counted as on time, so delayed shipments passed</div><div class="r">REALLY 93.28%. MISSED.</div></div>
+    </div>
+    <div class="xo c3 fragment">
+      <svg class="x" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M4 4 L96 96 M96 4 L4 96"/></svg>
+      <div class="why-x"><div class="k">THE SAME BAD JOIN</div><div class="t">Credits fanned out across shipments too: 37x</div><div class="r">REALLY €52,955</div></div>
+    </div>
+  </div>
+  <aside class="notes">This is the next slide, as an AI with raw table access and no semantic layer would draw it. Let it sit for a beat: it looks like a real board slide. Revenue over a hundred million, up 8%, on time above the contract every year. Then click three times. One: revenue. The AI joined the revenue ledger to shipments on client and month, so each monthly revenue row repeats once per shipment, about 35 times the truth. The real FY2025 figure is EUR 2,879,732. Two: on time, the dangerous one. It counted every shipment that was not failed as on time, so delayed and returned shipments pass, and 98.95% beats the 97% contract. The truth is 93.28%, a miss. Three: credits, the same bad join, 37 times the real EUR 52,955. Every number here is a real query against the raw source files. The first gets a laugh; the second gets a board to relax when it should be worried. The semantic layer defines revenue and on_time_rate once, so no tool gets to guess. Next slide: the real numbers.</aside>
 </section>
 <!-- 5. The year in numbers -->
 <section class="res" data-src="revenue_ledger">
@@ -1616,7 +1732,7 @@
 </section>
 
 <!-- Section title: from what the numbers were to why -->
-<section class="sect" data-status="dbt NL · 13 Oct 2026">
+<section class="sect" data-status="dbt Vienna · 20 Oct 2026">
   <div class="frame">
     <div class="panel bd">
       <div class="kick">SHOWCASE: JAFFLE LOGISTICS · PART 2</div>
@@ -1819,7 +1935,7 @@
 <aside class="notes">Delay is the swing: 61 cases in 2025, 44 graded negative, CSAT from 3.70 down to 2.06. One carrier, Werke (CLI-0042), is 68% of 2025's negatives. And half the cases are plain questions: ticket count is not unhappiness. The labels are graded on the ticket text, not output of any model here.</aside>
 </section>
 <!-- Section title: the showcase turns to how the report itself was built -->
-<section class="sect" data-status="dbt NL · 13 Oct 2026">
+<section class="sect" data-status="dbt Vienna · 20 Oct 2026">
   <div class="frame">
     <div class="panel bd">
       <div class="kick">SHOWCASE: JAFFLE LOGISTICS · PART 3</div>
@@ -1927,7 +2043,7 @@
   <aside class="notes">Six steps. A question arrives; the warehouse's tools answer over MCP, never a guessed number. There are two sources of truth, kept visibly apart: the semantic layer owns the number (10 governed metrics, the definition belongs to the business) and the knowledge base owns the cause (vector search over 7 document sources: transcripts, CRM notes, incidents, dispatch). The answer is the number and the cause: 56.60% on time, and the 14-16 January storm. Then the evidence: lineage back to the source system, and 340 tests per build. Then the action: a person decides, or an agent acts, for example routing a complaint, raising the service-level risk before the customer feels it, or stopping a dispatch when a driver's certification has lapsed. Be clear that this loop is a design, not a running system. Adapted from the context-layer pattern, not copied.</aside>
 </section>
 <!-- Part 3 divider: From Analytics Engineering to Context Engineering -->
-<section class="agenda" data-status="dbt NL · 13 Oct 2026">
+<section class="agenda" data-status="dbt Vienna · 20 Oct 2026">
   <div class="frame">
     <div class="panel hd">
       <h2>PART 3</h2>
@@ -2032,7 +2148,7 @@
   <aside class="notes">Land on the offer, then stop talking. Repeat the three takeaways in one breath each, then the offer: Fivetran and dbt are here to help you get there faster, more efficiently, with built-in trust. Close by returning to the opening question: the hands that went up at the start are the people who now know how to fix it. Invite questions; the appendix has the working behind every number if someone wants to go deeper.</aside>
 </section>
 <!-- Thank you: questions, and a QR code to this repository -->
-<section class="sect" data-status="dbt NL · 13 Oct 2026">
+<section class="sect" data-status="dbt Vienna · 20 Oct 2026">
   <div class="frame">
     <div class="panel" style="left:20px;top:20px;width:1240px;height:540px;display:flex;align-items:center;justify-content:space-around;padding:0 60px">
       <div style="text-align:center">
