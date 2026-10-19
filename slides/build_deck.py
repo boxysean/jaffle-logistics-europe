@@ -141,6 +141,9 @@ def main():
         import theme
         html = theme.apply(html)
     args.out = args.out or OUT
+    # the docs workflow writes into docs/shareholder-deck/, which holds nothing in git once the
+    # screenshots are gone, so a fresh checkout has no such folder
+    os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as fh:
         fh.write(html)
     print(f"wrote {os.path.relpath(args.out)} ({html.count('<section')} slides)")
