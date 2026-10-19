@@ -79,7 +79,12 @@ models:
         # at execute time, so building one of these without
         # --vars '{ai_functions_enabled: true}' raises instead of calling embed().
         # Prod/CI never set the env var, so they keep skipping the layer.
-        +enabled: "{{ var('ai_functions_enabled', false) or env_var('DBT_AI_LAYER_VISIBLE', 'false') | lower == 'true' }}"
+        #
+        # v1 (dbt-core) only: dbt v2 (Fusion) renders every enabled model with
+        # execute=True during compile, not just the selected ones, so the
+        # package's require_ai_functions_enabled raises project-wide there.
+        # On v2 the override is ignored and the layer stays disabled as before.
+        +enabled: "{{ var('ai_functions_enabled', false) or (dbt_version.startswith('1.') and env_var('DBT_AI_LAYER_VISIBLE', 'false') | lower == 'true') }}"
         # Up-to-knowledge-base phase: cyan. knowledge_base itself overrides to
         # purple, search overrides to unset, both in models/context/ai/_context_ai.yml.
         +docs:
