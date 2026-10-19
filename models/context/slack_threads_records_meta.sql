@@ -17,7 +17,7 @@
 --   5. else null, never guessed.
 -- Dominant client = most exceptions attributed, then largest stop share, the same
 -- convention as tests/assert_amsterdam_2025_damage_attributed_to_werke.sql.
--- regex_first returns '' on no match under duckdb, hence the nullif()s.
+-- nullif() normalises an empty-string no-match to NULL, so every engine agrees.
 {{ config(materialized='table') }}
 
 with dominant_client as (

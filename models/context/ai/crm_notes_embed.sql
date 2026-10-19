@@ -1,12 +1,6 @@
 -- Governed incremental embedding of CRM-note chunks (REAL cloud
 -- AI-function cost). DO NOT run until spend is approved. Same governed
 -- pattern as legal_docs_embed.sql.
---
--- duckdb has no embed() implementation (default__embed raises); the
--- stand-in keeps parsing green, proves nothing about real output. Cast to a
--- fixed-size ARRAY (double[3]), not a LIST (double[]): duckdb's
--- array_cosine_similarity (used by search.sql) only accepts the former.
-{% set is_duckdb = target.type == 'duckdb' %}
 {% set fingerprint = dbt_context_engineering.embedding_fn_fingerprint(model=var('embedding_model')) %}
 {% set delta = dbt_context_engineering.incremental_delta_predicate(
     'chunk_id', fingerprint, 'embedding_fn_fingerprint', content_hash_column='content_hash') %}
@@ -31,11 +25,7 @@ with embedded as (
         artifact_ts,
         chunk_text,
         content_hash,
-        {% if is_duckdb -%}
-        cast([0.0, 0.0, 0.0] as double[3])
-        {%- else -%}
-        {{ dbt_context_engineering.embed('chunk_text') }}
-        {%- endif %} as embedding
+        {{ dbt_context_engineering.embed('chunk_text') }} as embedding
     from {{ ref('crm_notes_hashed') }}
     {% if delta %}where {{ delta }}{% endif %}
 )

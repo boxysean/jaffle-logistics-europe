@@ -1,8 +1,8 @@
 -- STATISTICAL query (the "haystack"): weather delays by month across 2025.
 -- Aggregates weather-typed incidents and weather-tagged dispatch exceptions
 -- alongside total delayed shipments, so the Jan-Feb and Nov-Dec winter/peak
--- spikes emerge from the broad layer. Run: dbt compile then execute, or paste
--- into a DuckDB session against jaffle_logistics.duckdb.
+-- spikes emerge from the broad layer. Run: dbt compile, then execute the
+-- compiled SQL in your warehouse (or `dbt show --select weather_delays_by_month`).
 
 with weather_incidents as (
     select {{ dbt.date_trunc('month', 'occurred_at') }} as month, count(*) as weather_incidents

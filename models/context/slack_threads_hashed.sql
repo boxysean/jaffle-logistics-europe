@@ -4,7 +4,7 @@
 -- the whole Slack thread body: a thread is already the atomic embedding
 -- unit, so slack_threads_records_meta deliberately never calls chunk()).
 -- Zero AI-function cost (still ordinary cloud compute cost on
--- Snowflake/BigQuery/Databricks, free only on local DuckDB).
+-- Snowflake/BigQuery/Databricks).
 {{ config(materialized='view', docs={'node_color': '#7FAFAF'}) }}
 
 select

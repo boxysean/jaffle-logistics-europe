@@ -252,10 +252,8 @@ explicitly rather than left running.
 
 Everything upstream of embed/enrich costs ordinary compute, the same
 warehouse credits any dbt model burns. From there on, every model makes
-a real, billed AI-function call. Three cost tiers apply project-wide:
+a real, billed AI-function call. Two cost tiers apply project-wide:
 
-- **Zero cost**: local DuckDB runs. DuckDB has no `embed()` or
-  `classify()` implementation, so nothing bills.
 - **Cloud compute cost**: the deterministic chunking layer on Snowflake,
   BigQuery, or Databricks. Ordinary warehouse credits, no AI billing.
 - **Cloud AI-function cost**: `models/context/ai/*` on a cloud

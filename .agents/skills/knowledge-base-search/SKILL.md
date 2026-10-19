@@ -160,8 +160,3 @@ Output section.
 
 When the user wants to see the effect of filtering, run the unfiltered query
 first and the filtered query second, then show both result sets side by side.
-
-## Not supported
-
-- duckdb. It has no embedding function, so `knowledge_base` holds stand-in
-  vectors there.

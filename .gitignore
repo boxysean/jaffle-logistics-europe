@@ -5,10 +5,6 @@ dbt_internal_packages/
 logs/
 .user.yml
 
-# DuckDB / local dev database files
-*.duckdb
-*.duckdb.wal
-
 # OS / editor cruft
 .DS_Store
 .vscode/

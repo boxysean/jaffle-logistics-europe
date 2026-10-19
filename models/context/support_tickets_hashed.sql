@@ -4,7 +4,7 @@
 -- the whole ticket body: a support ticket body is already the atomic
 -- embedding unit, so ticket_records_meta deliberately never calls chunk()).
 -- Zero AI-function cost (still ordinary cloud compute cost on
--- Snowflake/BigQuery/Databricks, free only on local DuckDB).
+-- Snowflake/BigQuery/Databricks).
 {{ config(materialized='view', docs={'node_color': '#7FAFAF'}) }}
 
 select
