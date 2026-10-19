@@ -70,7 +70,16 @@ models:
         # selected model with this false would fail with that macro's raised
         # compiler error rather than being skipped, so the skip and the raise
         # agree on the same flag.
-        +enabled: "{{ var('ai_functions_enabled', false) }}"
+        #
+        # Visibility-only override: DBT_AI_LAYER_VISIBLE=true (set on the dbt
+        # platform Development environment only) also enables these models so
+        # Studio can parse them and draw lineage/catalog for knowledge_base and
+        # search. It does NOT unlock AI spend: dbt_context_engineering's
+        # require_ai_functions_enabled still checks the ai_functions_enabled var
+        # at execute time, so building one of these without
+        # --vars '{ai_functions_enabled: true}' raises instead of calling embed().
+        # Prod/CI never set the env var, so they keep skipping the layer.
+        +enabled: "{{ var('ai_functions_enabled', false) or env_var('DBT_AI_LAYER_VISIBLE', 'false') | lower == 'true' }}"
         # Up-to-knowledge-base phase: cyan. knowledge_base itself overrides to
         # purple, search overrides to unset, both in models/context/ai/_context_ai.yml.
         +docs:
