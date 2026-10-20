@@ -34,8 +34,8 @@ ceiling while staying in dbt:
   like this safe to run: cost guards, an audit log, and an incremental
   design that means reruns cost nothing once the content stops changing.
 - **[Multi-platform](multi-platform.md)** documents what it took to get
-  the same pipeline running correctly on Snowflake, BigQuery, Databricks,
-  and DuckDB.
+  the same pipeline running correctly on Snowflake, BigQuery, and
+  Databricks.
 - **[Roadmap](roadmap.md)** is honest about what's deliberately not built
   yet.
 

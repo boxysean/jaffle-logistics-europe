@@ -8,9 +8,8 @@
 -- The header has no "]: " sequence, so a simple LIKE filter drops it (and blank
 -- lines) and keeps only real turns.
 --
--- Portable across all four engines this package targets (duckdb for local dev;
--- Snowflake, BigQuery, Databricks for real cloud AI-function cost). Array-flattening
--- syntax diverges the most: duckdb's unnest()/range(), Snowflake's
+-- Portable across the three engines this project targets (Snowflake, BigQuery,
+-- Databricks). Array-flattening syntax diverges the most: Snowflake's
 -- lateral flatten(), BigQuery's unnest()...with offset, and Databricks'
 -- lateral view posexplode(). We avoid regex backslash classes entirely (they
 -- diverge in string-literal escaping across engines) and use split_part /
@@ -19,14 +18,7 @@
 -- Grain: one row per (transcript_id, turn_index). turn_id is unique.
 
 with raw_lines as (
-{% if target.type == 'duckdb' %}
-    select
-        transcript_id,
-        client_id,
-        unnest(string_split(body, chr(10)))                    as line,
-        unnest(range(1, len(string_split(body, chr(10))) + 1)) as line_no
-    from {{ ref('stg_call_transcripts') }}
-{% elif target.type == 'bigquery' %}
+{% if target.type == 'bigquery' %}
     select
         t.transcript_id,
         t.client_id,

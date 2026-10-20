@@ -19,12 +19,12 @@ The full story, with real query output, lives in [`docs/`](docs/index.md).
 ### Prerequisites
 
 - dbt Core 1.12 or higher (required for `vars.yml` support)
-- An adapter for whichever warehouse you want to target: `dbt-duckdb`, `dbt-snowflake`, `dbt-bigquery`, or `dbt-databricks`
+- An adapter for whichever warehouse you want to target: `dbt-databricks`, `dbt-snowflake`, or `dbt-bigquery`
 
 
-### Get running locally with DuckDB
+### Get running on Databricks
 
-DuckDB is the fastest path to seeing the project run, and the only target where the AI layer can never bill, since DuckDB has no `embed()` or `classify()` implementation.
+Databricks is the reference target for this project (Snowflake and BigQuery work the same way; swap the profile). You need a SQL warehouse or serverless compute, and Databricks AI functions (DBR 18.2+ / serverless) if you later turn the AI layer on.
 
 1. Install dependencies.
 
@@ -36,12 +36,16 @@ DuckDB is the fastest path to seeing the project run, and the only target where 
 
    ```yaml
    jaffle-logistics:
-     target: duckdb
+     target: databricks
      outputs:
-       duckdb:
-         type: duckdb
-         path: jaffle_logistics.duckdb
-         threads: 4
+       databricks:
+         type: databricks
+         host: <your-workspace>.cloud.databricks.com
+         http_path: /sql/1.0/warehouses/<warehouse-id>
+         catalog: <catalog>
+         schema: <your_dev_schema>
+         auth_type: oauth   # or use token: <personal-access-token>
+         threads: 8
    ```
 
 3. Build the project.
@@ -50,7 +54,7 @@ DuckDB is the fastest path to seeing the project run, and the only target where 
    dbt build
    ```
 
-   This seeds the source CSVs and builds the staging, intermediate, and marts models. The AI layer under `models/context/ai/` is skipped. `dbt_project.yml` sets `ai_functions_enabled: false` by default, so a plain `dbt build` never triggers a billed `embed()` or `classify()` call.
+   This seeds the source CSVs and builds the staging, intermediate, and marts models (ordinary warehouse compute). The AI layer under `models/context/ai/` is skipped. `dbt_project.yml` sets `ai_functions_enabled: false` by default, so a plain `dbt build` never triggers a billed `embed()` or `classify()` call.
 
 ### Running the AI layer
 
@@ -59,8 +63,6 @@ Setting `ai_functions_enabled: true` builds the models under `models/context/ai/
 ```bash
 dbt build --vars '{"ai_functions_enabled": true}'
 ```
-
-The same flag also builds these models on DuckDB, but each one detects the DuckDB target and substitutes a hardcoded placeholder, either a zero vector or a fixed label, instead of calling `embed()`/`classify()`. The build succeeds and produces real rows, just with fake, structurally-compatible values instead of real AI output. So "DuckDB is the only target where the AI layer can never bill" describes this substitution, rather than a build failure or a skipped model.
 
 See [governance](docs/governance.md) for what the cost guards and audit log around this call do.
 
@@ -103,9 +105,8 @@ up-to-meta, up-to-knowledge-base, knowledge base):
 | `tests/` | Singular tests, including an AI-run-log completeness check |
 | `docs/` | The full write-up, built as an mkdocs-material site |
 
-Four adapters are supported: DuckDB (local, free), Snowflake, BigQuery, and
-Databricks. Only DuckDB has no `embed()`/`classify()` implementation, so it's
-the only target where the AI layer can never bill.
+Three adapters are supported: Databricks, Snowflake, and BigQuery. The AI
+layer bills on all three, which is why it's off by default (`ai_functions_enabled`).
 
 ## Docs site
 
@@ -120,12 +121,6 @@ root):
 - [Governance](docs/governance.md) — cost guards, audit log, incremental reruns
 - [Multi-platform](docs/multi-platform.md) — cross-engine SQL portability fixes
 - [Roadmap](docs/roadmap.md) — what's deliberately not built yet
-
-## Known issues
-
-External issues that block or limit part of this project. Tracked upstream; not fixable here.
-
-- **[dbt-core#16128](https://github.com/dbt-labs/dbt-core/issues/16128)**: on the Fusion engine (`dbt-fusion`), the DuckDB adapter fails to load a seed owned by an installed package. Symptom is an `IO Error: No files found` against a doubled path (`.../dbt_packages/<pkg>/dbt_packages/<pkg>/seeds/<file>.csv`). Confirmed Fusion-engine-only: `dbt-core` 1.12 loads the same seed fine on every adapter, and Fusion loads it fine on Snowflake, BigQuery, and Databricks; only the DuckDB adapter under Fusion fails. In this project it only affects `dbt_context_engineering`'s `embedding_canary_baseline` seed, which only builds when `ai_functions_enabled: true`. A plain `dbt build`/`dbtf build` is unaffected, since that seed stays disabled by default. Resolves automatically once dbt-fusion ships a fix; no project-side action needed.
 
 ## Support & maintenance
 
