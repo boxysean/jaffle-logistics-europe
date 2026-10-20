@@ -25,16 +25,8 @@
 --   dbt run-operation create_vector_index (Snowflake Cortex Search, BigQuery vector
 --   index; Databricks indexes are created via its own Vector Search API, not SQL,
 --   separately billed either way; tear down explicitly).
---
--- duckdb has no embed() implementation (default__embed raises). This model is
--- never meant to be selected on duckdb (knowledge_base itself only holds
--- stand-in vectors there), but the query embeddings still need a stand-in:
--- dbt Jinja-renders every model file during parsing regardless of --select
--- or +enabled, so an unconditional embed() call here would break parsing
--- project-wide on duckdb.
-{% set is_duckdb = target.type == 'duckdb' %}
-{% set performance_query = "cast([0.0, 0.0, 0.0] as double[3])" if is_duckdb else dbt_context_engineering.embed("'late deliveries and what is driving them'") %}
-{% set paris_storm_query = "cast([0.0, 0.0, 0.0] as double[3])" if is_duckdb else dbt_context_engineering.embed("'truck accident during the Paris winter storm'") %}
+{% set performance_query = dbt_context_engineering.embed("'late deliveries and what is driving them'") %}
+{% set paris_storm_query = dbt_context_engineering.embed("'truck accident during the Paris winter storm'") %}
 {{ config(materialized='table') }}
 
 with jaffle_werke as (

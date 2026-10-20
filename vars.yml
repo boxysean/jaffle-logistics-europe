@@ -4,8 +4,8 @@ vars:
   # dbt_context_engineering's embedding_canary monitor. false = both disabled,
   # so a plain `dbt build` never calls a billed AI function. Running the rest
   # of the project on Snowflake/BigQuery/Databricks still costs ordinary cloud
-  # compute either way, just never AI-function billing; only local DuckDB runs
-  # are truly free. Override per invocation, not by editing this file:
+  # compute either way, just never AI-function billing. Override per
+  # invocation, not by editing this file:
   # --vars '{ai_functions_enabled: true}'.
   #
   # This is dbt_context_engineering's own var (ADR-0030's dispatch-layer gate:

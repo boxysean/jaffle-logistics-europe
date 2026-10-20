@@ -1,7 +1,7 @@
 # Multi-platform: writing SQL that actually runs everywhere
 
-This project builds and passes on four engines: Snowflake, BigQuery,
-Databricks, and DuckDB for local dev. Getting there wasn't free; it
+This project builds and passes on three engines: Snowflake, BigQuery,
+and Databricks. Getting there wasn't free; it
 surfaced several latent cross-engine bugs, each one a small worked
 example of what "portable dbt SQL" actually has to account for.
 
@@ -18,7 +18,7 @@ correct argument order per adapter.
 A few cast patterns that work on one engine silently fail or behave
 differently on another: `double`, `try_cast`, and `varchar` aren't
 uniformly available or uniformly named across Snowflake, BigQuery,
-Databricks, and DuckDB. These got replaced with portable equivalents
+and Databricks. These got replaced with portable equivalents
 during the multi-platform build-out.
 
 ## Snowflake-only array-flatten syntax

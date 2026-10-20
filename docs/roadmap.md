@@ -95,8 +95,7 @@ without changing the retrieval story this project tells.
   `assert_ai_run_log_all_completed`.
 - Multi-platform validation: Path A's `classify()` calls are verified
   on Snowflake only; BigQuery and Databricks are wired the same way but
-  untested. The DuckDB stand-in pattern is already proven (Path A uses
-  it) and just needs applying here.
+  untested.
 
 None of that is built. It's the next worked example this project could
 tell, alongside the retrieval one.

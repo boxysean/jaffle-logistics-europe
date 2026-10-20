@@ -4,8 +4,7 @@ models:
   # ------------------------------------------------------------------ Phase 2
   # Deterministic chunking layer: zero AI-function cost (no embed()/generate()/
   # classify() calls anywhere in this layer). Three distinct cost tiers apply
-  # across this project, and "zero AI-function cost" only ever means the third:
-  #   - local DuckDB runs: effectively zero cost, nothing billed at all.
+  # across this project, and "zero AI-function cost" means the first:
   #   - Snowflake/BigQuery/Databricks runs of this layer: ordinary cloud compute
   #     cost (warehouse credits for the SQL itself), same as any other model.
   #   - models/context/ai/*: cloud AI-function cost, the real, billed embed()
