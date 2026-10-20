@@ -983,10 +983,8 @@ explicitly rather than left running.</p>
 <h2 id="sixteen-ai-jobs-three-cost-tiers">Sixteen AI jobs, three cost tiers<a class="headerlink" href="#sixteen-ai-jobs-three-cost-tiers" title="Permanent link">&para;</a></h2>
 <p>Everything upstream of embed/enrich costs ordinary compute, the same
 warehouse credits any dbt model burns. From there on, every model makes
-a real, billed AI-function call. Three cost tiers apply project-wide:</p>
+a real, billed AI-function call. Two cost tiers apply project-wide:</p>
 <ul>
-<li><strong>Zero cost</strong>: local DuckDB runs. DuckDB has no <code>embed()</code> or
-  <code>classify()</code> implementation, so nothing bills.</li>
 <li><strong>Cloud compute cost</strong>: the deterministic chunking layer on Snowflake,
   BigQuery, or Databricks. Ordinary warehouse credits, no AI billing.</li>
 <li><strong>Cloud AI-function cost</strong>: <code>models/context/ai/*</code> on a cloud
