@@ -4,8 +4,7 @@
 -- post-chunking/metadata). transcript_chunks_meta carries client_id and
 -- call_date only, so source_type and citation_url (constant per source) are
 -- added here rather than a dedicated wrapper model. Zero AI-function cost
--- (still ordinary cloud compute cost on Snowflake/BigQuery/Databricks, free
--- only on local DuckDB).
+-- (still ordinary cloud compute cost on Snowflake/BigQuery/Databricks).
 {{ config(materialized='view', docs={'node_color': '#7FAFAF'}) }}
 
 select

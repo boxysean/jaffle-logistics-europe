@@ -2,7 +2,7 @@
 -- same-SELECT alias, BigQuery won't resolve that, and the guard/log can't
 -- meter it otherwise). Hash the EXACT string handed to embed() (chunk_text,
 -- post-chunking/metadata). Zero AI-function cost (still ordinary cloud
--- compute cost on Snowflake/BigQuery/Databricks, free only on local DuckDB).
+-- compute cost on Snowflake/BigQuery/Databricks).
 {{ config(materialized='view', docs={'node_color': '#7FAFAF'}) }}
 
 select
