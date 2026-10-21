@@ -1,0 +1,48 @@
+<!-- How it gets made, 4/11: chunk. IR-9001's 13 sentences, grouped into its 3 passages; the two models on the right, one block each -->
+<section class="lt crumbed crumbed2 lt-code">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">4/11</span>STEP 2: CHUNK</h2>
+      <div class="owns">Cut into sentences, then packed into passages near 100 tokens</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="the text prepared: lines of text cut into passages"><rect x="0" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="4" width="1" height="1" fill="#ffb000"/><rect x="1" y="4" width="1" height="1" fill="#ffb000"/><rect x="2" y="4" width="1" height="1" fill="#ffb000"/><rect x="3" y="4" width="1" height="1" fill="#ffb000"/><rect x="4" y="4" width="1" height="1" fill="#ffb000"/><rect x="5" y="4" width="1" height="1" fill="#ffb000"/><rect x="6" y="4" width="1" height="1" fill="#ffb000"/><rect x="7" y="4" width="1" height="1" fill="#ffb000"/><rect x="8" y="4" width="1" height="1" fill="#ffb000"/><rect x="9" y="4" width="1" height="1" fill="#ffb000"/><rect x="10" y="4" width="1" height="1" fill="#ffb000"/><rect x="11" y="4" width="1" height="1" fill="#ffb000"/><rect x="0" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="9" width="1" height="1" fill="#ffb000"/><rect x="1" y="9" width="1" height="1" fill="#ffb000"/><rect x="2" y="9" width="1" height="1" fill="#ffb000"/><rect x="3" y="9" width="1" height="1" fill="#ffb000"/><rect x="4" y="9" width="1" height="1" fill="#ffb000"/><rect x="5" y="9" width="1" height="1" fill="#ffb000"/><rect x="6" y="9" width="1" height="1" fill="#ffb000"/><rect x="7" y="9" width="1" height="1" fill="#ffb000"/><rect x="8" y="9" width="1" height="1" fill="#ffb000"/><rect x="9" y="9" width="1" height="1" fill="#ffb000"/><rect x="10" y="9" width="1" height="1" fill="#ffb000"/><rect x="11" y="9" width="1" height="1" fill="#ffb000"/><rect x="0" y="11" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="11" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="11" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="11" width="1" height="1" fill="#5fd3c8"/></svg>
+    </div>
+    <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
+    <div class="subcrumbs" role="img" aria-label="inside dbt models: CHUNK"><b>INSIDE dbt MODELS</b><span class="past">PARSE</span><i>&#9654;</i><span class="on">CHUNK</span><i>&#9654;</i><span>EMBED</span><i>&#9654;</i><span>CLASSIFY</span><i>&#9654;</i><span>UNION</span></div>
+    <div class="panel pane r"><span class="tab">IR-9001: 13 SENTENCES, BY PASSAGE</span>
+      <div class="sents">
+        <div class="sh p1">PASSAGE 1 <span>IR-9001::1 &#183; sentences 1-6 &#183; ~107 tokens</span></div>
+        <div class="sn p1"><b>1</b>INCIDENT REPORT INC-2025-00417 &mdash; ACCIDENT &hellip;</div>
+        <div class="sn p1"><b>2</b>Vehicle VEH-0015, driver DRV-01017, route &hellip;</div>
+        <div class="sn p1"><b>3</b>SUMMARY During the Jan 14-16 winter storm, &hellip;</div>
+        <div class="sn p1"><b>4</b>No injuries.</div>
+        <div class="sn p1"><b>5</b>Trailer load secured and recovered; &hellip;</div>
+        <div class="sn p1"><b>6</b>TIMELINE - 2025-01-15 08:40 loss of traction &hellip;</div>
+        <div class="sh p2">PASSAGE 2 <span>IR-9001::2 &#183; sentences 7-12 &#183; ~109 tokens</span></div>
+        <div class="sn p2"><b>7</b>- 08:52 driver reported in; area coned, &hellip;</div>
+        <div class="sn p2"><b>8</b>- 10:20 recovery unit on scene; &hellip;</div>
+        <div class="sn p2"><b>9</b>ROOT CAUSE Unsalted ramp and reduced &hellip;</div>
+        <div class="sn p2"><b>10</b>Contributing factor: aggressive storm-&hellip;</div>
+        <div class="sn p2"><b>11</b>REMEDIATION Unit pulled for inspection &hellip;</div>
+        <div class="sn p2"><b>12</b>Dispatch hold instituted for PAR when &hellip;</div>
+        <div class="sh p3">PASSAGE 3 <span>IR-9001::3 &#183; sentence 13 &#183; ~6 tokens</span></div>
+        <div class="sn p3"><b>13</b>Reviewed with dispatch.</div>
+      </div>
+    </div>
+    <div class="panel pane l ambp"><span class="tab">TWO dbt MODELS</span>
+      <div class="mdl"><div class="mh">MODEL 1 OF 2</div><div class="mn">split_incident_reports <span>report &#9654; 13 sentences</span></div>
+<pre class="cd xs"><span class="j">{{</span> <span class="k">dbt_context_engineering.split_sentences</span>(
+    relation    = <span class="k">ref</span>(<span class="s">'int_incident_reports_documents'</span>),
+    id_column   = <span class="s">'report_id'</span>,
+    text_column = <span class="s">'body'</span>) <span class="j">}}</span></pre></div>
+      <div class="mdl"><div class="mh">MODEL 2 OF 2</div><div class="mn">chunk_incident_reports <span>13 sentences &#9654; 3 passages</span></div>
+<pre class="cd xs"><span class="j">{{</span> <span class="k">dbt_context_engineering.chunk</span>(
+    relation         = <span class="k">ref</span>(<span class="s">'split_incident_reports'</span>),
+    id_column        = <span class="s">'sentence_id'</span>,
+    order_column     = <span class="s">'sentence_index'</span>,
+    text_column      = <span class="s">'sentence_text'</span>,
+    partition_column = <span class="s">'document_id'</span>) <span class="j">}}</span></pre></div>
+    </div>
+    <div class="par" style="left:608px">&#9654;</div>
+  </div>
+  <aside class="notes">Step two, chunk. A whole report is too long and too mixed to embed as one thing, so it is cut down by two small dbt models, the two blocks on the right. The first, split_incident_reports, cuts it at sentence boundaries: 13 sentences. The second, chunk_incident_reports, packs consecutive sentences into passages near a 100-token target, and never across two reports, which is what partition_column does. On the left is that one report: its 13 sentences, grouped by the passage each landed in: 1 to 6 are the first passage, the storm and the jackknife; 7 to 12 the second, the timeline, root cause and remediation; and the last sentence is left on its own. Each passage remembers which sentences went into it, so it can be traced back. Plain SQL, no AI, the same passages every run.</aside>
+</section>

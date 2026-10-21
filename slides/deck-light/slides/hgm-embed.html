@@ -1,0 +1,50 @@
+<!-- How it gets made, 5/11: embed. The three passages as records: text, content hash and vector (first 3 of 1,024 values); the incremental embed model on the right -->
+<section class="lt crumbed crumbed2 lt-code">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">5/11</span>STEP 3: EMBED</h2>
+      <div class="owns">Each passage becomes 1,024 numbers that place it by meaning</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="embed: a vector drawn as bars"><rect x="2" y="1" width="1" height="1" fill="#ffb000"/><rect x="2" y="2" width="1" height="1" fill="#ffb000"/><rect x="8" y="2" width="1" height="1" fill="#ffb000"/><rect x="2" y="3" width="1" height="1" fill="#ffb000"/><rect x="5" y="3" width="1" height="1" fill="#ffb000"/><rect x="8" y="3" width="1" height="1" fill="#ffb000"/><rect x="0" y="4" width="1" height="1" fill="#ffb000"/><rect x="2" y="4" width="1" height="1" fill="#ffb000"/><rect x="5" y="4" width="1" height="1" fill="#ffb000"/><rect x="8" y="4" width="1" height="1" fill="#ffb000"/><rect x="10" y="4" width="1" height="1" fill="#ffb000"/><rect x="0" y="5" width="1" height="1" fill="#ffb000"/><rect x="2" y="5" width="1" height="1" fill="#ffb000"/><rect x="4" y="5" width="1" height="1" fill="#ffb000"/><rect x="5" y="5" width="1" height="1" fill="#ffb000"/><rect x="7" y="5" width="1" height="1" fill="#ffb000"/><rect x="8" y="5" width="1" height="1" fill="#ffb000"/><rect x="10" y="5" width="1" height="1" fill="#ffb000"/><rect x="0" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="10" width="1" height="1" fill="#5fd3c8"/></svg>
+    </div>
+    <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
+    <div class="subcrumbs" role="img" aria-label="inside dbt models: EMBED"><b>INSIDE dbt MODELS</b><span class="past">PARSE</span><i>&#9654;</i><span class="past">CHUNK</span><i>&#9654;</i><span class="on">EMBED</span><i>&#9654;</i><span>CLASSIFY</span><i>&#9654;</i><span>UNION</span></div>
+    <div class="panel pane r"><span class="tab">EACH PASSAGE: HASH + VECTOR</span>
+      <div class="rec p1">
+        <div class="kv"><i>chunk_id</i><b>IR-9001::1</b></div>
+        <div class="kv"><i>chunk_text</i><span>&hellip; a semi jackknifed on an icy on-ramp &hellip;</span></div>
+        <div class="kv hsh"><i>content_hash</i><span>37b30960&hellip;</span></div>
+        <div class="kv vec"><i>embedding</i><span>[-0.085, -0.297, 0.942, &hellip;] <em>&times; 1,024</em></span></div>
+      </div>
+      <div class="rec p2">
+        <div class="kv"><i>chunk_id</i><b>IR-9001::2</b></div>
+        <div class="kv"><i>chunk_text</i><span>&hellip; Unsalted ramp and reduced traction &hellip;</span></div>
+        <div class="kv hsh"><i>content_hash</i><span>62179877&hellip;</span></div>
+        <div class="kv vec"><i>embedding</i><span>[0.425, -0.507, -0.035, &hellip;] <em>&times; 1,024</em></span></div>
+      </div>
+      <div class="rec p3">
+        <div class="kv"><i>chunk_id</i><b>IR-9001::3</b></div>
+        <div class="kv"><i>chunk_text</i><span>Reviewed with dispatch.</span></div>
+        <div class="kv hsh"><i>content_hash</i><span>8bda5cb0&hellip;</span></div>
+        <div class="kv vec"><i>embedding</i><span>[0.034, -0.579, -0.061, &hellip;] <em>&times; 1,024</em></span></div>
+      </div>
+    </div>
+    <div class="panel pane l ambp"><span class="tab">THE dbt MODEL, CONDENSED</span>
+<pre class="cd xs"><span class="d">-- incident_reports_embed.sql</span>
+<span class="j">{{</span> <span class="k">config</span>(materialized = <span class="s">'incremental'</span>,
+          unique_key   = <span class="s">'chunk_id'</span>) <span class="j">}}</span>
+
+<span class="k">select</span>
+    chunk_id,
+    chunk_text,
+    content_hash,
+    <span class="j">{{</span> <span class="k">dbt_context_engineering.embed</span>(<span class="s">'chunk_text'</span>) <span class="j">}}</span>
+        <span class="k">as</span> embedding
+<span class="k">from</span> <span class="j">{{</span> <span class="k">ref</span>(<span class="s">'incident_reports_hashed'</span>) <span class="j">}}</span>
+<span class="d">-- only passages whose hash is new or changed</span>
+<span class="k">where</span> <span class="j">{{</span> <span class="k">dbt_context_engineering.incremental_delta_predicate</span>(
+    <span class="s">'chunk_id'</span>, content_hash_column = <span class="s">'content_hash'</span>) <span class="j">}}</span></pre>
+    </div>
+    <div class="par" style="left:608px">&#9654;</div>
+  </div>
+  <aside class="notes">Step three, embed. Each passage goes to an embedding model, here Databricks' gte-large-en, and comes back as 1,024 numbers. On the left, each passage is now a record with two new things: its content hash, a fingerprint of the text, and its embedding, the vector, first three numbers shown. Nobody reads these numbers; what matters is that passages about the same thing get numbers that sit close together. That is how search works: the question is embedded with the same model and the nearest passages win; for the Paris storm question IR-9001's first passage is nearest, at 0.779. On the right, the model: it is incremental, and the where clause only sends passages whose hash is new or changed, the same hash you see in each record, so unchanged text is never paid for twice. Only a change of embedding model re-embeds everything.</aside>
+</section>

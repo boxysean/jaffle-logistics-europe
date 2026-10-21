@@ -148,3 +148,285 @@
 
   /* the second cause: the broken dock bay, in the picture panel beside the figures */
   .dockp svg { position: absolute; left: 20px; top: 56px; width: 552px; height: auto; }
+  /* how it gets made: panes of code beside their real output. a pane is a .panel with a .tab;
+     .cd is a code block (mono, 20px, about 44 characters a line in a 608-wide pane) */
+  .lt-code .pane { top: 148px; height: 440px; padding: 32px 24px 20px; }
+  .lt-code .pane.l { left: 20px; width: 608px; }
+  .lt-code .pane.r { left: 652px; width: 608px; }
+  .lt-code .pane.ambp { border-color: var(--amber); }
+  .lt-code .pane.ambp > .tab { background: var(--amber); }
+  .lt-code .cd { margin: 0; font-family: var(--mono); font-size: 20px; line-height: 1.35; color: var(--text); white-space: pre; }
+  .lt-code .cd .k { color: var(--teal-hi); }
+  .lt-code .cd .s { color: var(--amber); }
+  .lt-code .cd .d { color: var(--dim); }
+  .lt-code .rule { margin: 18px 0 14px; border-top: 3px dashed var(--teal); }
+  .lt-code .res { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 20px; line-height: 1.3; }
+  .lt-code .res td { padding: 3px 0; vertical-align: top; }
+  .lt-code .res td.n { font-weight: 600; text-align: right; padding-right: 18px; white-space: nowrap; width: 1%; }
+  .lt-code .res tr.on td { color: var(--amber); }
+  .lt-code .res tr.hotr td { color: var(--hot); }
+  .lt-code .res .dim { color: var(--dim); }
+  .lt-code .lbl { font-family: var(--pixel); font-size: 14px; line-height: 1; color: var(--teal-hi); margin-bottom: 12px; }
+  .lt-code .foot { position: absolute; left: 20px; width: 1240px; text-align: center; font-size: 24px; line-height: 1.3; color: var(--dim); }
+  .lt-code .foot em { font-style: normal; color: var(--amber); font-weight: 600; }
+
+  /* one knowledge_base row, as column / value pairs */
+  .lt-code .kv { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 19px; line-height: 1.3; }
+  .lt-code .kv td { padding: 5px 0; vertical-align: top; }
+  .lt-code .kv td.c { width: 170px; color: var(--teal-hi); font-weight: 600; }
+  .lt-code .kv td.v { color: var(--text); }
+  .lt-code .kv td.v .amb { font-weight: 600; }
+
+
+  /* two lineages, one above the other: a label at the left, then boxes joined by arrows */
+  .lt-lin .lane { position: absolute; left: 20px; width: 1240px; display: flex; align-items: stretch; }
+  .lt-lin .lane .who { flex: none; width: 132px; display: flex; flex-direction: column; justify-content: center; font-family: var(--pixel); font-size: 16px; line-height: 1.4; color: var(--amber); }
+  .lt-lin .lane .who.hot { color: var(--hot); }
+  .lt-lin .lane .st { flex: 1 1 0; min-width: 0; background: var(--navy); border: 4px solid var(--teal-hi); box-shadow: 6px 6px 0 #000; padding: 14px 8px; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+  .lt-lin .lane .st .nm { font-family: var(--mono); font-size: 17px; font-weight: 600; line-height: 1.25; color: var(--amber); overflow-wrap: anywhere; }
+  .lt-lin .lane .st .nm.sys { font-family: var(--pixel); font-size: 14px; line-height: 1.4; color: var(--text); font-weight: normal; }
+  .lt-lin .lane .st .tx { margin-top: 8px; font-size: 16px; line-height: 1.25; color: var(--dim); }
+  .lt-lin .lane .st.ai { border-color: var(--hot); }
+  .lt-lin .lane .st.ai .nm { color: var(--hot); }
+  .lt-lin .lane .st.end { border-color: var(--amber); }
+  .lt-lin .lane .ar { flex: none; width: 26px; align-self: center; text-align: center; font-family: var(--pixel); font-size: 16px; color: var(--teal-hi); }
+  .lt-lin .key { position: absolute; left: 20px; width: 1240px; text-align: center; font-size: 22px; color: var(--dim); }
+  .lt-lin .key .hot { font-weight: 600; }
+  .lt-lin .foot { position: absolute; left: 20px; width: 1240px; text-align: center; font-size: 28px; line-height: 1.3; color: var(--text); }
+  .lt-lin .foot em { font-style: normal; color: var(--amber); font-weight: 600; }
+
+  /* draft slides carry a hot DRAFT tag at the header's left, and a visible placeholder for a missing fact */
+  .lt .draft { font-family: var(--pixel); font-size: 14px; color: var(--deep); background: var(--hot); padding: 4px 8px; margin-right: 14px; vertical-align: 4px; }
+  .lt .tbd { color: var(--hot); font-weight: 600; border-bottom: 3px dashed var(--hot); }
+
+  /* breadcrumb under the header on the "how it gets made" slides: the five stages of the path
+     from agent to sources (as on 1/8), the current one lit amber, the ones already walked teal */
+  .lt .crumbs { position: absolute; left: 20px; top: 132px; width: 1240px; height: 32px; display: flex; align-items: center; justify-content: space-between; font-family: var(--pixel); font-size: 14px; line-height: 1; }
+  .lt .crumbs span { flex: 1 1 0; text-align: center; padding: 7px 0; border: 3px solid var(--teal); color: var(--dim); background: var(--deep); }
+  .lt .crumbs span.past { border-color: var(--teal-hi); color: var(--teal-hi); }
+  .lt .crumbs span.on { border-color: var(--amber); background: var(--amber); color: var(--deep); }
+  .lt .crumbs i { flex: none; width: 28px; text-align: center; font-style: normal; color: var(--teal); }
+  /* the content under it moves down by the breadcrumb's height; the closing line is gone, so it still fits */
+  .crumbed.lt-code .pane { top: 196px; }
+  .crumbed.lt-steps .rows { top: 180px; }
+
+
+  /* inside dbt models: a second, smaller breadcrumb under the first (parse, chunk, embed, classify, union) */
+  .lt .subcrumbs { position: absolute; left: 20px; top: 174px; width: 1240px; height: 26px; display: flex; align-items: center; font-family: var(--pixel); font-size: 12px; line-height: 1; }
+  .lt .subcrumbs b { flex: none; width: 230px; font-weight: normal; color: var(--amber); }
+  .lt .subcrumbs span { flex: 1 1 0; text-align: center; padding: 5px 0; border: 2px solid var(--teal); color: var(--dim); }
+  .lt .subcrumbs span.past { border-color: var(--teal-hi); color: var(--teal-hi); }
+  .lt .subcrumbs span.on { border-color: var(--amber); color: var(--amber); background: var(--navy-2); }
+  .lt .subcrumbs i { flex: none; width: 22px; text-align: center; font-style: normal; color: var(--teal); }
+  .crumbed2.lt-code .pane { top: 226px; height: 418px; }
+  .lt-code .pane.wide { left: 20px; width: 1240px; }
+
+  /* 3: the four steps, with the shape of the data under each box; embed and classify share a column */
+  .lt-pipe .st { display: flex; flex-direction: column; }
+  .lt-pipe .st .shape, .lt-pipe .pair .shape { margin-top: auto; padding-top: 12px; border-top: 3px dashed var(--teal); font-family: var(--pixel); font-size: 13px; line-height: 1.4; color: var(--teal-hi); }
+  .lt-pipe .pair { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+  .lt-pipe .pair .st { flex: 1 1 0; padding: 12px 10px; }
+  .lt-pipe .pair .st .nm { margin-top: 8px; }
+  .lt-pipe .pair .st .tx { margin-top: 8px; }
+  .lt-pipe .pair .shape { text-align: center; padding-top: 8px; }
+
+  /* 4: parse */
+  .lt-code .cd.sm { font-size: 17px; line-height: 1.35; }
+  .lt-code .cd.out { color: var(--text); white-space: pre-wrap; }
+
+  /* 5: chunk. sentences and passages share a colour per passage */
+  .lt-code .sents { display: flex; flex-direction: column; gap: 4px; font-family: var(--mono); font-size: 16px; line-height: 1.3; }
+  .lt-code .sn { padding-left: 10px; border-left: 6px solid; white-space: nowrap; overflow: hidden; }
+  .lt-code .sn b { display: inline-block; width: 30px; color: var(--dim); font-weight: 600; }
+  .lt-code .p1 { border-color: var(--teal-hi); }
+  .lt-code .p2 { border-color: var(--amber); }
+  .lt-code .p3 { border-color: var(--violet); }
+  .lt-code .psg { border-left: 6px solid; padding: 6px 0 6px 14px; margin-bottom: 16px; }
+  .lt-code .psg .ph, .lt-code .cls .ph { font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--amber); }
+  .lt-code .psg .ph span { font-weight: normal; color: var(--dim); font-size: 16px; margin-left: 8px; }
+  .lt-code .psg .pt, .lt-code .cls .pt { margin-top: 6px; font-size: 18px; line-height: 1.35; color: var(--text); }
+
+  /* 6: embed. one row per passage: its text, its vector as bars, its hash */
+  .lt-code .vrow { display: grid; grid-template-columns: 300px 28px 500px 1fr; align-items: center; column-gap: 14px; padding: 6px 0 6px 12px; border-left: 6px solid; margin-bottom: 10px; }
+  .lt-code .vp { font-size: 17px; line-height: 1.3; color: var(--text); }
+  .lt-code .vp b { display: block; font-family: var(--mono); color: var(--amber); font-size: 17px; }
+  .lt-code .var { font-family: var(--pixel); font-size: 16px; color: var(--teal-hi); }
+  .lt-code .vs svg { display: block; }
+  .lt-code .vn { margin-top: 4px; font-family: var(--mono); font-size: 14px; color: var(--dim); }
+  .lt-code .vh { font-family: var(--mono); font-size: 17px; color: var(--text); }
+  .lt-code .vh span { display: block; font-family: var(--pixel); font-size: 11px; color: var(--teal-hi); margin-bottom: 6px; }
+  .lt-code .vfacts { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; font-size: 18px; line-height: 1.35; color: var(--text); }
+  .lt-code .vfacts b { display: block; font-family: var(--pixel); font-size: 12px; font-weight: normal; color: var(--amber); margin-bottom: 8px; }
+
+  /* 7: classify. a passage and its label chip; the six labels as bars */
+  .lt-code .cls { border-left: 6px solid; padding: 6px 0 6px 14px; margin-bottom: 18px; }
+  .lt-code .chip { display: inline-block; margin-top: 8px; padding: 5px 10px; border: 3px solid var(--teal); font-family: var(--mono); font-size: 17px; font-weight: 600; color: var(--dim); }
+  .lt-code .chip.on { border-color: var(--amber); color: var(--amber); }
+  .lt-code .lbls { display: flex; flex-direction: column; gap: 10px; }
+  .lt-code .lb { display: grid; grid-template-columns: 300px 1fr 64px; align-items: center; column-gap: 12px; font-family: var(--mono); font-size: 16px; color: var(--dim); }
+  .lt-code .lb .lbar { height: 14px; background: var(--deep); }
+  .lt-code .lb .lbar i { display: block; height: 100%; background: var(--teal); }
+  .lt-code .lb .lc { text-align: right; }
+  .lt-code .lb.on { color: var(--amber); font-weight: 600; }
+  .lt-code .lb.on .lbar i { background: var(--amber); }
+
+  /* 8: the many flows */
+  .lt-code .dagp svg { display: block; margin: 4px auto 0; }
+  .lt-code .dagp .key { margin-top: 8px; text-align: center; font-size: 18px; color: var(--dim); }
+  .lt-code .dagp .key .x { color: var(--hot); font-weight: 600; }
+  .lt-code .dagp .key .amb { font-weight: 600; }
+  .lt-code .dagp .key .dash { color: var(--dim); letter-spacing: -1px; }
+
+  /* 9: the skills */
+  .lt-code .sk { margin-bottom: 20px; }
+  .lt-code .sk .skn { font-family: var(--mono); font-size: 21px; font-weight: 600; color: var(--amber); }
+  .lt-code .sk .sd { margin-top: 4px; font-size: 18px; line-height: 1.35; color: var(--text); }
+  .lt-code .sk .sd code { color: var(--teal-hi); }
+  .lt-code .pl { font-size: 19px; line-height: 1.35; color: var(--text); }
+  .lt-code .pl.dim { color: var(--dim); font-family: var(--mono); font-size: 17px; }
+  .lt-code .vrow { margin-bottom: 4px; padding-top: 2px; padding-bottom: 2px; }
+  .lt-code .vp, .lt-code .vp b { font-size: 16px; }
+  /* the passage colours come last so the border shorthands above don't reset them */
+  .lt-code .psg.p1, .lt-code .vrow.p1, .lt-code .cls.p1 { border-left-color: var(--teal-hi); }
+  .lt-code .psg.p2, .lt-code .vrow.p2, .lt-code .cls.p2 { border-left-color: var(--amber); }
+  .lt-code .psg.p3, .lt-code .vrow.p3, .lt-code .cls.p3 { border-left-color: var(--violet); }
+
+  /* the DAG's callout: the skills that build all of this */
+  .lt-code .dagp .help { position: absolute; right: 16px; top: 36px; width: 236px; padding: 14px 16px; background: var(--navy-2); border: 4px solid var(--hot); box-shadow: 6px 6px 0 #000; font-family: var(--mono); font-size: 17px; line-height: 1.45; color: var(--text); }
+  .lt-code .dagp .help b { display: block; margin-bottom: 8px; font-family: var(--pixel); font-size: 14px; font-weight: normal; line-height: 1.4; color: var(--hot); }
+
+  /* the right-hand pane on parse/chunk/embed/classify: the dbt model, condensed. 15px fits a
+     58-character line in the 560 inside a pane */
+  .lt-code .cd.xs { font-size: 15px; line-height: 1.45; }
+  .lt-code .cd .j { color: var(--dim); }
+  /* chunk: each passage heads its own sentences */
+  .lt-code .sents .sh { margin-top: 8px; font-family: var(--mono); font-size: 16px; font-weight: 600; color: var(--amber); border-left: 6px solid; padding-left: 10px; }
+  .lt-code .sents .sh:first-child { margin-top: 0; }
+  .lt-code .sents .sh span { font-weight: normal; color: var(--dim); margin-left: 6px; }
+  .lt-code .sents .sh.p1 { border-left-color: var(--teal-hi); }
+  .lt-code .sents .sh.p2 { border-left-color: var(--amber); }
+  .lt-code .sents .sh.p3 { border-left-color: var(--violet); }
+  .lt-code .sents .sn { font-size: 15px; }
+  /* embed, half width: the passage and its hash over its vector */
+  .lt-code .vrow2 { border-left: 6px solid; padding: 2px 0 2px 12px; margin-bottom: 14px; }
+  .lt-code .vrow2.p1 { border-left-color: var(--teal-hi); }
+  .lt-code .vrow2.p2 { border-left-color: var(--amber); }
+  .lt-code .vrow2.p3 { border-left-color: var(--violet); }
+  .lt-code .vh2 { font-size: 16px; line-height: 1.3; color: var(--text); margin-bottom: 6px; }
+  .lt-code .vh2 b { font-family: var(--mono); color: var(--amber); margin-right: 8px; }
+  .lt-code .vh2 span { display: block; font-family: var(--mono); font-size: 14px; color: var(--dim); }
+  .lt-code .vrow2 svg { display: block; }
+  /* fit the half-width data panes */
+  .crumbed2.lt-code .sents { gap: 1px; line-height: 1.22; }
+  .crumbed2.lt-code .sents .sh { margin-top: 6px; }
+  .crumbed2.lt-code .vrow2 { margin-bottom: 8px; }
+  .crumbed2.lt-code .cls { margin-bottom: 10px; padding-top: 2px; padding-bottom: 2px; }
+  .crumbed2.lt-code .cls .chip { margin-top: 4px; padding: 3px 10px; }
+
+  /* Fivetran Context Layer: a PREVIEW tag in the header, like DRAFT but amber */
+  .lt .pre { font-family: var(--pixel); font-size: 14px; color: var(--deep); background: var(--amber); padding: 4px 8px; margin-right: 14px; vertical-align: 4px; }
+  /* two ways: a label column and the five stages, two rows */
+  .lt-fcl .grid { position: absolute; left: 20px; top: 140px; width: 1240px; display: grid; grid-template-columns: 170px repeat(4, minmax(0, 1fr)); grid-template-rows: auto 1fr 1fr; gap: 12px; height: 500px; }
+  .lt-fcl .ch { font-family: var(--pixel); font-size: 14px; line-height: 1; color: var(--teal-hi); text-align: center; padding: 8px 0; border: 3px solid var(--teal); }
+  .lt-fcl .rl { display: flex; flex-direction: column; justify-content: center; font-size: 17px; line-height: 1.3; color: var(--dim); }
+  .lt-fcl .rl b { font-family: var(--pixel); font-size: 16px; font-weight: normal; color: var(--teal-hi); margin-bottom: 10px; }
+  .lt-fcl .rl.amb b { color: var(--amber); }
+  .lt-fcl .cc { background: var(--navy); border: 4px solid var(--teal-hi); box-shadow: 6px 6px 0 #000; padding: 14px 12px; font-size: 18px; line-height: 1.3; color: var(--text); display: flex; align-items: center; }
+  .lt-fcl .cc b { color: var(--amber); font-weight: 600; }
+  .lt-fcl .cc code { color: var(--teal-hi); font-size: 16px; }
+  .lt-fcl .cc span { min-width: 0; overflow-wrap: anywhere; }
+  .lt-fcl .grid > .cc:nth-child(n+12) { border-color: var(--amber); }
+  /* setup: six boxes */
+  .lt-fcls .st .nm { font-size: 17px; }
+  .lt-fcls .st .tx { font-size: 19px; }
+
+  /* chunk: the right pane holds two models, one labelled block each */
+  .lt-code .mdl { border-left: 6px solid var(--amber); padding: 2px 0 2px 14px; }
+  .lt-code .mdl + .mdl { margin-top: 26px; }
+  .lt-code .mdl .mh { font-family: var(--pixel); font-size: 12px; color: var(--amber); }
+  .lt-code .mdl .mn { margin: 6px 0 8px; font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--text); }
+  .lt-code .mdl .mn span { margin-left: 8px; font-size: 15px; font-weight: normal; color: var(--dim); }
+  /* embed: each passage as a record, field name then value; hash and vector called out */
+  .lt-code .rec { border-left: 6px solid; padding: 4px 0 4px 12px; margin-bottom: 18px; }
+  .lt-code .rec.p1 { border-left-color: var(--teal-hi); }
+  .lt-code .rec.p2 { border-left-color: var(--amber); }
+  .lt-code .rec.p3 { border-left-color: var(--violet); }
+  .lt-code .kv { display: grid; grid-template-columns: 150px 1fr; column-gap: 10px; font-family: var(--mono); font-size: 16px; line-height: 1.5; color: var(--text); white-space: nowrap; overflow: hidden; }
+  .lt-code .kv i { font-style: normal; color: var(--dim); }
+  .lt-code .kv b { color: var(--amber); }
+  .lt-code .kv.hsh span, .lt-code .kv.vec span { font-weight: 600; color: var(--teal-hi); }
+  .lt-code .kv.hsh i, .lt-code .kv.vec i { color: var(--teal-hi); }
+  .lt-code .kv.vec em { font-style: normal; font-weight: normal; color: var(--dim); margin-left: 6px; }
+
+  /* classify: the prompt and the output schema, marked in the code and explained beneath it */
+  .lt-code .cd .mk { color: var(--amber); }
+  .lt-code .expl { margin-top: 14px; padding-top: 10px; border-top: 3px dashed var(--amber); font-size: 15px; line-height: 1.35; color: var(--text); }
+  .lt-code .expl p { margin: 0 0 8px; }
+  .lt-code .expl b { font-family: var(--mono); color: var(--amber); margin-right: 6px; }
+  .lt-code .expl i { color: var(--dim); }
+
+  /* the many flows: what the search model does, top right; and the skills sticker on the pane corner */
+  .lt-code .dagp .srch { position: absolute; right: 16px; top: 40px; width: 236px; padding: 12px 14px; background: var(--navy-2); border: 4px solid var(--teal-hi); box-shadow: 6px 6px 0 #000; font-family: var(--mono); font-size: 15px; line-height: 1.4; color: var(--text); }
+  .lt-code .dagp .srch b { display: block; margin-bottom: 6px; font-family: var(--pixel); font-size: 13px; font-weight: normal; color: var(--teal-hi); }
+  .lt-code .hd .pop { position: absolute; right: 104px; top: 14px; transform: rotate(-5deg); padding: 8px 14px; background: var(--hot); color: var(--deep); border: 4px solid var(--deep); box-shadow: 6px 6px 0 #000; font-family: var(--pixel); font-size: 18px; line-height: 1.25; text-align: center; white-space: nowrap; }
+
+  /* builders: the skills the agent loads, as name chips under the ask */
+  .lt-code .skrow { margin-top: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-family: var(--mono); font-size: 15px; }
+  .lt-code .skrow b { font-family: var(--pixel); font-size: 12px; font-weight: normal; color: var(--hot); margin-right: 2px; }
+  .lt-code .skrow span { padding: 3px 8px; border: 3px solid var(--hot); color: var(--text); }
+  .lt-code.bld .pane { height: 484px; }
+  /* builders: the five reasons, one a line, the lead words in amber */
+  .lt-code .res.why { font-family: var(--sans, inherit); font-size: 22px; line-height: 1.35; }
+  .lt-code .res.why td { padding-top: 12px; padding-bottom: 12px; }
+  .lt-code .res.why td.n { padding-right: 16px; }
+  .lt-code .res.why td.n { color: var(--teal-hi); }
+  .lt-code .res.why b { color: var(--amber); font-weight: 600; }
+  /* how do I do it: the review side, a size up */
+  .lt-code .pl.big { font-size: 24px; line-height: 1.35; }
+  /* why build it this way: one wide pane, the five reasons a size up */
+  .lt-code.bld .pane.wide { top: 148px; height: 496px; padding: 40px 56px; }
+  .lt-code.bld .res.why { font-size: 30px; }
+  .lt-code.bld .res.why td { padding-top: 18px; padding-bottom: 18px; }
+  /* how do I do it: the ask, a size up, now it has the pane to itself */
+  .lt-code.ask .pane.l .cd { font-size: 25px; line-height: 1.4; }
+  .lt-code.ask .skrow { margin-top: 24px; font-size: 17px; }
+
+  /* how the agent answers: the question, then two rows (semantic layer, context layer) across
+     asks / calls / gets, and one answer box spanning both rows */
+  .lt-agent .q { position: absolute; left: 20px; top: 176px; width: 1240px; text-align: center; font-size: 28px; font-weight: 600; color: var(--amber); }
+  .lt-agent .ag { position: absolute; left: 20px; top: 224px; width: 1240px; height: 424px; display: grid; grid-template-columns: 150px repeat(3, minmax(0, 1fr)) 270px; grid-template-rows: auto 1fr 1fr; gap: 12px; }
+  .lt-agent .ch { font-family: var(--pixel); font-size: 12px; line-height: 1; color: var(--teal-hi); text-align: center; padding: 8px 0; border: 3px solid var(--teal); }
+  .lt-agent .ch.amb { color: var(--amber); border-color: var(--amber); }
+  .lt-agent .rl { display: flex; flex-direction: column; justify-content: center; font-size: 17px; color: var(--dim); }
+  .lt-agent .rl b { font-family: var(--pixel); font-size: 13px; font-weight: normal; line-height: 1.4; color: var(--teal-hi); margin-bottom: 8px; }
+  .lt-agent .cc { background: var(--navy); border: 4px solid var(--teal-hi); box-shadow: 6px 6px 0 #000; padding: 10px 12px; font-size: 17px; line-height: 1.32; color: var(--text); display: flex; align-items: center; min-width: 0; overflow-wrap: anywhere; }
+  .lt-agent .cc b { color: var(--amber); font-weight: 600; }
+  .lt-agent .cc code { color: var(--teal-hi); font-size: 16px; }
+  .lt-agent .cc.ans { grid-column: 5; grid-row: 2 / span 2; border-color: var(--amber); font-size: 18px; }
+  .lt-agent .cc.ans .cite { margin-top: 16px; padding-top: 10px; border-top: 3px dashed var(--amber); font-family: var(--mono); font-size: 14px; color: var(--dim); }
+  /* how do I do it: the skills sticker, in the empty corner of the review pane */
+  .lt-code.ask .frame > .pop.stk { position: absolute; right: 150px; top: 470px; transform: rotate(-5deg); padding: 14px 22px; background: var(--hot); color: var(--deep); border: 4px solid var(--deep); box-shadow: 6px 6px 0 #000; font-family: var(--pixel); font-size: 26px; line-height: 1.3; text-align: center; white-space: nowrap; }
+  /* how the agent answers: every box on screen from the start, dimmed; each click lights the next,
+     in a snake (semantic layer left to right, then context layer, then the answer) */
+  .reveal .lt-agent .cc.fragment { opacity: .3; visibility: visible; transition: none; }
+  .reveal .lt-agent .cc.fragment.visible { opacity: 1; }
+  .reveal .lt-agent .cc.fragment.current-fragment { box-shadow: 0 0 0 4px var(--amber), 6px 6px 0 4px #000; }
+
+  /* parse, chunk, embed, classify: an arrow in each gap, so the step reads left to right */
+  .lt-code .par { position: absolute; top: 418px; width: 28px; text-align: center; font-family: var(--pixel); font-size: 24px; line-height: 1; color: var(--amber); }
+  .crumbed2.lt-code .pane.l { width: 584px; }
+  .crumbed2.lt-code .pane.r { left: 676px; width: 584px; }
+  .crumbed2.lt-code .par { left: 620px; }
+  /* parse: three columns, the file, the model, the row */
+  .lt-parse3 .pane.a { left: 20px; width: 330px; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+  .lt-parse3 .pane.b { left: 378px; width: 470px; }
+  .lt-parse3 .pane.c { left: 876px; width: 384px; }
+  .lt-parse3 .par[style*="350px"] { left: 350px !important; }
+  .lt-parse3 .par[style*="848px"] { left: 848px !important; }
+  .lt-parse3 .row1 { margin-bottom: 12px; font-size: 16px; line-height: 1.3; color: var(--text); overflow-wrap: anywhere; }
+  .lt-parse3 .row1 i { display: block; font-style: normal; font-family: var(--mono); font-size: 14px; color: var(--teal-hi); margin-bottom: 2px; }
+  .lt-parse3 .row1 b { color: var(--amber); }
+  .lt-parse3 .row1 em { font-style: normal; color: var(--dim); margin-left: 6px; }
+  .crumbed2.lt-code .kv { grid-template-columns: 128px 1fr; }
+  .crumbed2.lt-code .expl { margin-top: 8px; padding-top: 8px; font-size: 14px; line-height: 1.28; }
+  .crumbed2.lt-code .expl p { margin-bottom: 4px; }
