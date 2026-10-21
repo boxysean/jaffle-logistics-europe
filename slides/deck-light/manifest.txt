@@ -31,20 +31,19 @@ trace.html
 layering-context.html
 question-answer.html
 
-# part 3: how it gets made. one question, from the source systems up to the agent
+# part 3: how this showcase was made. one question: the data flows right into the two truths, the agent reaches left through the tools
 hgm-part.html
 hgm-question.html
-hgm-source.html
 hgm-pipeline.html
 hgm-parse.html
 hgm-chunk.html
 hgm-embed.html
 hgm-classify.html
 hgm-dag.html
-hgm-builders.html
 hgm-tables.html
-hgm-calls.html
 hgm-evals.html
+hgm-calls.html
+hgm-builders.html
 
 # part 4: from analytics engineer to context engineer
 165-part-3-from-ae-to-ce.html

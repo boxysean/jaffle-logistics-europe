@@ -290,3 +290,7 @@
   .lt-code .psg.p1, .lt-code .vrow.p1, .lt-code .cls.p1 { border-left-color: var(--teal-hi); }
   .lt-code .psg.p2, .lt-code .vrow.p2, .lt-code .cls.p2 { border-left-color: var(--amber); }
   .lt-code .psg.p3, .lt-code .vrow.p3, .lt-code .cls.p3 { border-left-color: var(--violet); }
+
+  /* the DAG's callout: the skills that build all of this */
+  .lt-code .dagp .help { position: absolute; right: 16px; top: 36px; width: 236px; padding: 14px 16px; background: var(--navy-2); border: 4px solid var(--hot); box-shadow: 6px 6px 0 #000; font-family: var(--mono); font-size: 17px; line-height: 1.45; color: var(--text); }
+  .lt-code .dagp .help b { display: block; margin-bottom: 8px; font-family: var(--pixel); font-size: 14px; font-weight: normal; line-height: 1.4; color: var(--hot); }
