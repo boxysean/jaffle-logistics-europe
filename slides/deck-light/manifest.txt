@@ -42,7 +42,6 @@ hgm-dag.html
 hgm-ask.html
 hgm-tables.html
 hgm-calls.html
-hgm-evals.html
 hgm-builders.html
 
 # part 4: from analytics engineer to context engineer
