@@ -227,3 +227,12 @@
   /* the content under it moves down by the breadcrumb's height; the closing line is gone, so it still fits */
   .crumbed.lt-code .pane { top: 196px; }
   .crumbed.lt-steps .rows { top: 180px; }
+
+  /* the model steps, left to right: each box is a model, its one line of SQL, and what came out.
+     the outputs sit on one line across the boxes so they read as a row */
+  .lt-tp .st { display: flex; flex-direction: column; padding: 18px 10px 16px; }
+  .lt-tp .st .nm.code { margin-top: 12px; font-size: 18px; line-height: 1.25; overflow-wrap: anywhere; }
+  .lt-tp .st .q { margin-top: 14px; min-height: 70px; padding: 8px; background: var(--deep); font-family: var(--mono); font-size: 16px; line-height: 1.3; color: var(--dim); text-align: left; overflow-wrap: anywhere; }
+  .lt-tp .st .o { margin-top: 16px; padding-top: 14px; border-top: 3px dashed var(--teal); font-size: 19px; line-height: 1.3; color: var(--text); }
+  .lt-tp .st .o b { color: var(--amber); font-weight: 600; }
+  .lt-tp .ar { width: 28px; font-size: 18px; }
