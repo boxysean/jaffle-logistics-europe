@@ -177,24 +177,6 @@
   .lt-code .kv td.v { color: var(--text); }
   .lt-code .kv td.v .amb { font-weight: 600; }
 
-  /* steps: one row per model, its one line of SQL and its real output; fragments light them in turn */
-  .lt-steps .rows { position: absolute; left: 20px; top: 140px; width: 1240px; display: flex; flex-direction: column; gap: 12px; }
-  .lt-steps .row { display: grid; grid-template-columns: 36px 300px 1fr 1fr; align-items: center; column-gap: 20px; background: var(--navy); border: 4px solid var(--teal-hi); box-shadow: 6px 6px 0 #000; padding: 8px 20px; min-height: 72px; box-sizing: border-box; }
-  .lt-steps .row .no { font-family: var(--pixel); font-size: 20px; color: var(--teal-hi); }
-  .lt-steps .row .m { font-family: var(--mono); font-size: 20px; font-weight: 600; color: var(--amber); overflow-wrap: anywhere; }
-  .lt-steps .row .q { font-family: var(--mono); font-size: 17px; line-height: 1.3; color: var(--dim); }
-  .lt-steps .row .o { font-size: 20px; line-height: 1.3; color: var(--text); }
-  .lt-steps .row .o b { color: var(--amber); font-weight: 600; }
-  .lt-steps .row.ai { border-color: var(--hot); }
-  .lt-steps .row.ai .m { color: var(--hot); }
-  .lt-steps .row.ambb { border-color: var(--amber); }
-  .lt-steps .head { display: grid; grid-template-columns: 36px 300px 1fr 1fr; column-gap: 20px; padding: 0 24px; font-family: var(--pixel); font-size: 14px; line-height: 1; color: var(--teal-hi); }
-  .lt-steps .foot { position: absolute; left: 20px; width: 1240px; text-align: center; font-size: 26px; line-height: 1.3; color: var(--text); }
-  .lt-steps .foot em { font-style: normal; color: var(--amber); font-weight: 600; }
-  .lt-steps .foot .x { color: var(--hot); font-weight: 600; }
-  .reveal .lt-steps .row.fragment { opacity: .3; visibility: visible; transition: none; }
-  .reveal .lt-steps .row.fragment.visible { opacity: 1; }
-  .reveal .lt-steps .row.fragment.current-fragment { box-shadow: 0 0 0 4px var(--amber), 6px 6px 0 4px #000; }
 
   /* two lineages, one above the other: a label at the left, then boxes joined by arrows */
   .lt-lin .lane { position: absolute; left: 20px; width: 1240px; display: flex; align-items: stretch; }
@@ -228,11 +210,83 @@
   .crumbed.lt-code .pane { top: 196px; }
   .crumbed.lt-steps .rows { top: 180px; }
 
-  /* the model steps, left to right: each box is a model, its one line of SQL, and what came out.
-     the outputs sit on one line across the boxes so they read as a row */
-  .lt-tp .st { display: flex; flex-direction: column; padding: 18px 10px 16px; }
-  .lt-tp .st .nm.code { margin-top: 12px; font-size: 18px; line-height: 1.25; overflow-wrap: anywhere; }
-  .lt-tp .st .q { margin-top: 14px; min-height: 70px; padding: 8px; background: var(--deep); font-family: var(--mono); font-size: 16px; line-height: 1.3; color: var(--dim); text-align: left; overflow-wrap: anywhere; }
-  .lt-tp .st .o { margin-top: 16px; padding-top: 14px; border-top: 3px dashed var(--teal); font-size: 19px; line-height: 1.3; color: var(--text); }
-  .lt-tp .st .o b { color: var(--amber); font-weight: 600; }
-  .lt-tp .ar { width: 28px; font-size: 18px; }
+
+  /* inside dbt models: a second, smaller breadcrumb under the first (parse, chunk, embed, classify, union) */
+  .lt .subcrumbs { position: absolute; left: 20px; top: 174px; width: 1240px; height: 26px; display: flex; align-items: center; font-family: var(--pixel); font-size: 12px; line-height: 1; }
+  .lt .subcrumbs b { flex: none; width: 230px; font-weight: normal; color: var(--amber); }
+  .lt .subcrumbs span { flex: 1 1 0; text-align: center; padding: 5px 0; border: 2px solid var(--teal); color: var(--dim); }
+  .lt .subcrumbs span.past { border-color: var(--teal-hi); color: var(--teal-hi); }
+  .lt .subcrumbs span.on { border-color: var(--amber); color: var(--amber); background: var(--navy-2); }
+  .lt .subcrumbs i { flex: none; width: 22px; text-align: center; font-style: normal; color: var(--teal); }
+  .crumbed2.lt-code .pane { top: 226px; height: 418px; }
+  .lt-code .pane.wide { left: 20px; width: 1240px; }
+
+  /* 3: the four steps, with the shape of the data under each box; embed and classify share a column */
+  .lt-pipe .st { display: flex; flex-direction: column; }
+  .lt-pipe .st .shape, .lt-pipe .pair .shape { margin-top: auto; padding-top: 12px; border-top: 3px dashed var(--teal); font-family: var(--pixel); font-size: 13px; line-height: 1.4; color: var(--teal-hi); }
+  .lt-pipe .pair { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+  .lt-pipe .pair .st { flex: 1 1 0; padding: 12px 10px; }
+  .lt-pipe .pair .st .nm { margin-top: 8px; }
+  .lt-pipe .pair .st .tx { margin-top: 8px; }
+  .lt-pipe .pair .shape { text-align: center; padding-top: 8px; }
+
+  /* 4: parse */
+  .lt-code .cd.sm { font-size: 17px; line-height: 1.35; }
+  .lt-code .cd.out { color: var(--text); white-space: pre-wrap; }
+
+  /* 5: chunk. sentences and passages share a colour per passage */
+  .lt-code .sents { display: flex; flex-direction: column; gap: 4px; font-family: var(--mono); font-size: 16px; line-height: 1.3; }
+  .lt-code .sn { padding-left: 10px; border-left: 6px solid; white-space: nowrap; overflow: hidden; }
+  .lt-code .sn b { display: inline-block; width: 30px; color: var(--dim); font-weight: 600; }
+  .lt-code .p1 { border-color: var(--teal-hi); }
+  .lt-code .p2 { border-color: var(--amber); }
+  .lt-code .p3 { border-color: var(--violet); }
+  .lt-code .psg { border-left: 6px solid; padding: 6px 0 6px 14px; margin-bottom: 16px; }
+  .lt-code .psg .ph, .lt-code .cls .ph { font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--amber); }
+  .lt-code .psg .ph span { font-weight: normal; color: var(--dim); font-size: 16px; margin-left: 8px; }
+  .lt-code .psg .pt, .lt-code .cls .pt { margin-top: 6px; font-size: 18px; line-height: 1.35; color: var(--text); }
+
+  /* 6: embed. one row per passage: its text, its vector as bars, its hash */
+  .lt-code .vrow { display: grid; grid-template-columns: 300px 28px 500px 1fr; align-items: center; column-gap: 14px; padding: 6px 0 6px 12px; border-left: 6px solid; margin-bottom: 10px; }
+  .lt-code .vp { font-size: 17px; line-height: 1.3; color: var(--text); }
+  .lt-code .vp b { display: block; font-family: var(--mono); color: var(--amber); font-size: 17px; }
+  .lt-code .var { font-family: var(--pixel); font-size: 16px; color: var(--teal-hi); }
+  .lt-code .vs svg { display: block; }
+  .lt-code .vn { margin-top: 4px; font-family: var(--mono); font-size: 14px; color: var(--dim); }
+  .lt-code .vh { font-family: var(--mono); font-size: 17px; color: var(--text); }
+  .lt-code .vh span { display: block; font-family: var(--pixel); font-size: 11px; color: var(--teal-hi); margin-bottom: 6px; }
+  .lt-code .vfacts { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; font-size: 18px; line-height: 1.35; color: var(--text); }
+  .lt-code .vfacts b { display: block; font-family: var(--pixel); font-size: 12px; font-weight: normal; color: var(--amber); margin-bottom: 8px; }
+
+  /* 7: classify. a passage and its label chip; the six labels as bars */
+  .lt-code .cls { border-left: 6px solid; padding: 6px 0 6px 14px; margin-bottom: 18px; }
+  .lt-code .chip { display: inline-block; margin-top: 8px; padding: 5px 10px; border: 3px solid var(--teal); font-family: var(--mono); font-size: 17px; font-weight: 600; color: var(--dim); }
+  .lt-code .chip.on { border-color: var(--amber); color: var(--amber); }
+  .lt-code .lbls { display: flex; flex-direction: column; gap: 10px; }
+  .lt-code .lb { display: grid; grid-template-columns: 300px 1fr 64px; align-items: center; column-gap: 12px; font-family: var(--mono); font-size: 16px; color: var(--dim); }
+  .lt-code .lb .lbar { height: 14px; background: var(--deep); }
+  .lt-code .lb .lbar i { display: block; height: 100%; background: var(--teal); }
+  .lt-code .lb .lc { text-align: right; }
+  .lt-code .lb.on { color: var(--amber); font-weight: 600; }
+  .lt-code .lb.on .lbar i { background: var(--amber); }
+
+  /* 8: the many flows */
+  .lt-code .dagp svg { display: block; margin: 4px auto 0; }
+  .lt-code .dagp .key { margin-top: 8px; text-align: center; font-size: 18px; color: var(--dim); }
+  .lt-code .dagp .key .x { color: var(--hot); font-weight: 600; }
+  .lt-code .dagp .key .amb { font-weight: 600; }
+  .lt-code .dagp .key .dash { color: var(--dim); letter-spacing: -1px; }
+
+  /* 9: the skills */
+  .lt-code .sk { margin-bottom: 20px; }
+  .lt-code .sk .skn { font-family: var(--mono); font-size: 21px; font-weight: 600; color: var(--amber); }
+  .lt-code .sk .sd { margin-top: 4px; font-size: 18px; line-height: 1.35; color: var(--text); }
+  .lt-code .sk .sd code { color: var(--teal-hi); }
+  .lt-code .pl { font-size: 19px; line-height: 1.35; color: var(--text); }
+  .lt-code .pl.dim { color: var(--dim); font-family: var(--mono); font-size: 17px; }
+  .lt-code .vrow { margin-bottom: 4px; padding-top: 2px; padding-bottom: 2px; }
+  .lt-code .vp, .lt-code .vp b { font-size: 16px; }
+  /* the passage colours come last so the border shorthands above don't reset them */
+  .lt-code .psg.p1, .lt-code .vrow.p1, .lt-code .cls.p1 { border-left-color: var(--teal-hi); }
+  .lt-code .psg.p2, .lt-code .vrow.p2, .lt-code .cls.p2 { border-left-color: var(--amber); }
+  .lt-code .psg.p3, .lt-code .vrow.p3, .lt-code .cls.p3 { border-left-color: var(--violet); }

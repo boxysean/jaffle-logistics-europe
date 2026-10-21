@@ -35,8 +35,12 @@ question-answer.html
 hgm-part.html
 hgm-question.html
 hgm-source.html
-hgm-prepare.html
-hgm-ai.html
+hgm-pipeline.html
+hgm-parse.html
+hgm-chunk.html
+hgm-embed.html
+hgm-classify.html
+hgm-dag.html
 hgm-builders.html
 hgm-tables.html
 hgm-calls.html
