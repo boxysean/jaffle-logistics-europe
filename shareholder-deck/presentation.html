@@ -873,112 +873,307 @@
 
   /* the second cause: the broken dock bay, in the picture panel beside the figures */
   .dockp svg { position: absolute; left: 20px; top: 56px; width: 552px; height: auto; }
+  /* how it gets made: panes of code beside their real output. a pane is a .panel with a .tab;
+     .cd is a code block (mono, 20px, about 44 characters a line in a 608-wide pane) */
+  .lt-code .pane { top: 148px; height: 440px; padding: 32px 24px 20px; }
+  .lt-code .pane.l { left: 20px; width: 608px; }
+  .lt-code .pane.r { left: 652px; width: 608px; }
+  .lt-code .pane.ambp { border-color: var(--amber); }
+  .lt-code .pane.ambp > .tab { background: var(--amber); }
+  .lt-code .cd { margin: 0; font-family: var(--mono); font-size: 20px; line-height: 1.35; color: var(--text); white-space: pre; }
+  .lt-code .cd .k { color: var(--teal-hi); }
+  .lt-code .cd .s { color: var(--amber); }
+  .lt-code .cd .d { color: var(--dim); }
+  .lt-code .rule { margin: 18px 0 14px; border-top: 3px dashed var(--teal); }
+  .lt-code .res { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 20px; line-height: 1.3; }
+  .lt-code .res td { padding: 3px 0; vertical-align: top; }
+  .lt-code .res td.n { font-weight: 600; text-align: right; padding-right: 18px; white-space: nowrap; width: 1%; }
+  .lt-code .res tr.on td { color: var(--amber); }
+  .lt-code .res tr.hotr td { color: var(--hot); }
+  .lt-code .res .dim { color: var(--dim); }
+  .lt-code .lbl { font-family: var(--pixel); font-size: 14px; line-height: 1; color: var(--teal-hi); margin-bottom: 12px; }
+  .lt-code .foot { position: absolute; left: 20px; width: 1240px; text-align: center; font-size: 24px; line-height: 1.3; color: var(--dim); }
+  .lt-code .foot em { font-style: normal; color: var(--amber); font-weight: 600; }
+
+  /* one knowledge_base row, as column / value pairs */
+  .lt-code .kv { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 19px; line-height: 1.3; }
+  .lt-code .kv td { padding: 5px 0; vertical-align: top; }
+  .lt-code .kv td.c { width: 170px; color: var(--teal-hi); font-weight: 600; }
+  .lt-code .kv td.v { color: var(--text); }
+  .lt-code .kv td.v .amb { font-weight: 600; }
+
+
+  /* two lineages, one above the other: a label at the left, then boxes joined by arrows */
+  .lt-lin .lane { position: absolute; left: 20px; width: 1240px; display: flex; align-items: stretch; }
+  .lt-lin .lane .who { flex: none; width: 132px; display: flex; flex-direction: column; justify-content: center; font-family: var(--pixel); font-size: 16px; line-height: 1.4; color: var(--amber); }
+  .lt-lin .lane .who.hot { color: var(--hot); }
+  .lt-lin .lane .st { flex: 1 1 0; min-width: 0; background: var(--navy); border: 4px solid var(--teal-hi); box-shadow: 6px 6px 0 #000; padding: 14px 8px; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+  .lt-lin .lane .st .nm { font-family: var(--mono); font-size: 17px; font-weight: 600; line-height: 1.25; color: var(--amber); overflow-wrap: anywhere; }
+  .lt-lin .lane .st .nm.sys { font-family: var(--pixel); font-size: 14px; line-height: 1.4; color: var(--text); font-weight: normal; }
+  .lt-lin .lane .st .tx { margin-top: 8px; font-size: 16px; line-height: 1.25; color: var(--dim); }
+  .lt-lin .lane .st.ai { border-color: var(--hot); }
+  .lt-lin .lane .st.ai .nm { color: var(--hot); }
+  .lt-lin .lane .st.end { border-color: var(--amber); }
+  .lt-lin .lane .ar { flex: none; width: 26px; align-self: center; text-align: center; font-family: var(--pixel); font-size: 16px; color: var(--teal-hi); }
+  .lt-lin .key { position: absolute; left: 20px; width: 1240px; text-align: center; font-size: 22px; color: var(--dim); }
+  .lt-lin .key .hot { font-weight: 600; }
+  .lt-lin .foot { position: absolute; left: 20px; width: 1240px; text-align: center; font-size: 28px; line-height: 1.3; color: var(--text); }
+  .lt-lin .foot em { font-style: normal; color: var(--amber); font-weight: 600; }
+
+  /* draft slides carry a hot DRAFT tag at the header's left, and a visible placeholder for a missing fact */
+  .lt .draft { font-family: var(--pixel); font-size: 14px; color: var(--deep); background: var(--hot); padding: 4px 8px; margin-right: 14px; vertical-align: 4px; }
+  .lt .tbd { color: var(--hot); font-weight: 600; border-bottom: 3px dashed var(--hot); }
+
+  /* breadcrumb under the header on the "how it gets made" slides: the five stages of the path
+     from agent to sources (as on 1/8), the current one lit amber, the ones already walked teal */
+  .lt .crumbs { position: absolute; left: 20px; top: 132px; width: 1240px; height: 32px; display: flex; align-items: center; justify-content: space-between; font-family: var(--pixel); font-size: 14px; line-height: 1; }
+  .lt .crumbs span { flex: 1 1 0; text-align: center; padding: 7px 0; border: 3px solid var(--teal); color: var(--dim); background: var(--deep); }
+  .lt .crumbs span.past { border-color: var(--teal-hi); color: var(--teal-hi); }
+  .lt .crumbs span.on { border-color: var(--amber); background: var(--amber); color: var(--deep); }
+  .lt .crumbs i { flex: none; width: 28px; text-align: center; font-style: normal; color: var(--teal); }
+  /* the content under it moves down by the breadcrumb's height; the closing line is gone, so it still fits */
+  .crumbed.lt-code .pane { top: 196px; }
+  .crumbed.lt-steps .rows { top: 180px; }
+
+
+  /* inside dbt models: a second, smaller breadcrumb under the first (parse, chunk, embed, classify, union) */
+  .lt .subcrumbs { position: absolute; left: 20px; top: 174px; width: 1240px; height: 26px; display: flex; align-items: center; font-family: var(--pixel); font-size: 12px; line-height: 1; }
+  .lt .subcrumbs b { flex: none; width: 230px; font-weight: normal; color: var(--amber); }
+  .lt .subcrumbs span { flex: 1 1 0; text-align: center; padding: 5px 0; border: 2px solid var(--teal); color: var(--dim); }
+  .lt .subcrumbs span.past { border-color: var(--teal-hi); color: var(--teal-hi); }
+  .lt .subcrumbs span.on { border-color: var(--amber); color: var(--amber); background: var(--navy-2); }
+  .lt .subcrumbs i { flex: none; width: 22px; text-align: center; font-style: normal; color: var(--teal); }
+  .crumbed2.lt-code .pane { top: 226px; height: 418px; }
+  .lt-code .pane.wide { left: 20px; width: 1240px; }
+
+  /* 3: the four steps, with the shape of the data under each box; embed and classify share a column */
+  .lt-pipe .st { display: flex; flex-direction: column; }
+  .lt-pipe .st .shape, .lt-pipe .pair .shape { margin-top: auto; padding-top: 12px; border-top: 3px dashed var(--teal); font-family: var(--pixel); font-size: 13px; line-height: 1.4; color: var(--teal-hi); }
+  .lt-pipe .pair { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+  .lt-pipe .pair .st { flex: 1 1 0; padding: 12px 10px; }
+  .lt-pipe .pair .st .nm { margin-top: 8px; }
+  .lt-pipe .pair .st .tx { margin-top: 8px; }
+  .lt-pipe .pair .shape { text-align: center; padding-top: 8px; }
+
+  /* 4: parse */
+  .lt-code .cd.sm { font-size: 17px; line-height: 1.35; }
+  .lt-code .cd.out { color: var(--text); white-space: pre-wrap; }
+
+  /* 5: chunk. sentences and passages share a colour per passage */
+  .lt-code .sents { display: flex; flex-direction: column; gap: 4px; font-family: var(--mono); font-size: 16px; line-height: 1.3; }
+  .lt-code .sn { padding-left: 10px; border-left: 6px solid; white-space: nowrap; overflow: hidden; }
+  .lt-code .sn b { display: inline-block; width: 30px; color: var(--dim); font-weight: 600; }
+  .lt-code .p1 { border-color: var(--teal-hi); }
+  .lt-code .p2 { border-color: var(--amber); }
+  .lt-code .p3 { border-color: var(--violet); }
+  .lt-code .psg { border-left: 6px solid; padding: 6px 0 6px 14px; margin-bottom: 16px; }
+  .lt-code .psg .ph, .lt-code .cls .ph { font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--amber); }
+  .lt-code .psg .ph span { font-weight: normal; color: var(--dim); font-size: 16px; margin-left: 8px; }
+  .lt-code .psg .pt, .lt-code .cls .pt { margin-top: 6px; font-size: 18px; line-height: 1.35; color: var(--text); }
+
+  /* 6: embed. one row per passage: its text, its vector as bars, its hash */
+  .lt-code .vrow { display: grid; grid-template-columns: 300px 28px 500px 1fr; align-items: center; column-gap: 14px; padding: 6px 0 6px 12px; border-left: 6px solid; margin-bottom: 10px; }
+  .lt-code .vp { font-size: 17px; line-height: 1.3; color: var(--text); }
+  .lt-code .vp b { display: block; font-family: var(--mono); color: var(--amber); font-size: 17px; }
+  .lt-code .var { font-family: var(--pixel); font-size: 16px; color: var(--teal-hi); }
+  .lt-code .vs svg { display: block; }
+  .lt-code .vn { margin-top: 4px; font-family: var(--mono); font-size: 14px; color: var(--dim); }
+  .lt-code .vh { font-family: var(--mono); font-size: 17px; color: var(--text); }
+  .lt-code .vh span { display: block; font-family: var(--pixel); font-size: 11px; color: var(--teal-hi); margin-bottom: 6px; }
+  .lt-code .vfacts { display: grid; grid-template-columns: 1fr 1fr; column-gap: 32px; font-size: 18px; line-height: 1.35; color: var(--text); }
+  .lt-code .vfacts b { display: block; font-family: var(--pixel); font-size: 12px; font-weight: normal; color: var(--amber); margin-bottom: 8px; }
+
+  /* 7: classify. a passage and its label chip; the six labels as bars */
+  .lt-code .cls { border-left: 6px solid; padding: 6px 0 6px 14px; margin-bottom: 18px; }
+  .lt-code .chip { display: inline-block; margin-top: 8px; padding: 5px 10px; border: 3px solid var(--teal); font-family: var(--mono); font-size: 17px; font-weight: 600; color: var(--dim); }
+  .lt-code .chip.on { border-color: var(--amber); color: var(--amber); }
+  .lt-code .lbls { display: flex; flex-direction: column; gap: 10px; }
+  .lt-code .lb { display: grid; grid-template-columns: 300px 1fr 64px; align-items: center; column-gap: 12px; font-family: var(--mono); font-size: 16px; color: var(--dim); }
+  .lt-code .lb .lbar { height: 14px; background: var(--deep); }
+  .lt-code .lb .lbar i { display: block; height: 100%; background: var(--teal); }
+  .lt-code .lb .lc { text-align: right; }
+  .lt-code .lb.on { color: var(--amber); font-weight: 600; }
+  .lt-code .lb.on .lbar i { background: var(--amber); }
+
+  /* 8: the many flows */
+  .lt-code .dagp svg { display: block; margin: 4px auto 0; }
+  .lt-code .dagp .key { margin-top: 8px; text-align: center; font-size: 18px; color: var(--dim); }
+  .lt-code .dagp .key .x { color: var(--hot); font-weight: 600; }
+  .lt-code .dagp .key .amb { font-weight: 600; }
+  .lt-code .dagp .key .dash { color: var(--dim); letter-spacing: -1px; }
+
+  /* 9: the skills */
+  .lt-code .sk { margin-bottom: 20px; }
+  .lt-code .sk .skn { font-family: var(--mono); font-size: 21px; font-weight: 600; color: var(--amber); }
+  .lt-code .sk .sd { margin-top: 4px; font-size: 18px; line-height: 1.35; color: var(--text); }
+  .lt-code .sk .sd code { color: var(--teal-hi); }
+  .lt-code .pl { font-size: 19px; line-height: 1.35; color: var(--text); }
+  .lt-code .pl.dim { color: var(--dim); font-family: var(--mono); font-size: 17px; }
+  .lt-code .vrow { margin-bottom: 4px; padding-top: 2px; padding-bottom: 2px; }
+  .lt-code .vp, .lt-code .vp b { font-size: 16px; }
+  /* the passage colours come last so the border shorthands above don't reset them */
+  .lt-code .psg.p1, .lt-code .vrow.p1, .lt-code .cls.p1 { border-left-color: var(--teal-hi); }
+  .lt-code .psg.p2, .lt-code .vrow.p2, .lt-code .cls.p2 { border-left-color: var(--amber); }
+  .lt-code .psg.p3, .lt-code .vrow.p3, .lt-code .cls.p3 { border-left-color: var(--violet); }
+
+  /* the DAG's callout: the skills that build all of this */
+  .lt-code .dagp .help { position: absolute; right: 16px; top: 36px; width: 236px; padding: 14px 16px; background: var(--navy-2); border: 4px solid var(--hot); box-shadow: 6px 6px 0 #000; font-family: var(--mono); font-size: 17px; line-height: 1.45; color: var(--text); }
+  .lt-code .dagp .help b { display: block; margin-bottom: 8px; font-family: var(--pixel); font-size: 14px; font-weight: normal; line-height: 1.4; color: var(--hot); }
+
+  /* the right-hand pane on parse/chunk/embed/classify: the dbt model, condensed. 15px fits a
+     58-character line in the 560 inside a pane */
+  .lt-code .cd.xs { font-size: 15px; line-height: 1.45; }
+  .lt-code .cd .j { color: var(--dim); }
+  /* chunk: each passage heads its own sentences */
+  .lt-code .sents .sh { margin-top: 8px; font-family: var(--mono); font-size: 16px; font-weight: 600; color: var(--amber); border-left: 6px solid; padding-left: 10px; }
+  .lt-code .sents .sh:first-child { margin-top: 0; }
+  .lt-code .sents .sh span { font-weight: normal; color: var(--dim); margin-left: 6px; }
+  .lt-code .sents .sh.p1 { border-left-color: var(--teal-hi); }
+  .lt-code .sents .sh.p2 { border-left-color: var(--amber); }
+  .lt-code .sents .sh.p3 { border-left-color: var(--violet); }
+  .lt-code .sents .sn { font-size: 15px; }
+  /* embed, half width: the passage and its hash over its vector */
+  .lt-code .vrow2 { border-left: 6px solid; padding: 2px 0 2px 12px; margin-bottom: 14px; }
+  .lt-code .vrow2.p1 { border-left-color: var(--teal-hi); }
+  .lt-code .vrow2.p2 { border-left-color: var(--amber); }
+  .lt-code .vrow2.p3 { border-left-color: var(--violet); }
+  .lt-code .vh2 { font-size: 16px; line-height: 1.3; color: var(--text); margin-bottom: 6px; }
+  .lt-code .vh2 b { font-family: var(--mono); color: var(--amber); margin-right: 8px; }
+  .lt-code .vh2 span { display: block; font-family: var(--mono); font-size: 14px; color: var(--dim); }
+  .lt-code .vrow2 svg { display: block; }
+  /* fit the half-width data panes */
+  .crumbed2.lt-code .sents { gap: 1px; line-height: 1.22; }
+  .crumbed2.lt-code .sents .sh { margin-top: 6px; }
+  .crumbed2.lt-code .vrow2 { margin-bottom: 8px; }
+  .crumbed2.lt-code .cls { margin-bottom: 10px; padding-top: 2px; padding-bottom: 2px; }
+  .crumbed2.lt-code .cls .chip { margin-top: 4px; padding: 3px 10px; }
+
+  /* Fivetran Context Layer: a PREVIEW tag in the header, like DRAFT but amber */
+  .lt .pre { font-family: var(--pixel); font-size: 14px; color: var(--deep); background: var(--amber); padding: 4px 8px; margin-right: 14px; vertical-align: 4px; }
+  /* two ways: a label column and the five stages, two rows */
+  .lt-fcl .grid { position: absolute; left: 20px; top: 140px; width: 1240px; display: grid; grid-template-columns: 170px repeat(4, minmax(0, 1fr)); grid-template-rows: auto 1fr 1fr; gap: 12px; height: 500px; }
+  .lt-fcl .ch { font-family: var(--pixel); font-size: 14px; line-height: 1; color: var(--teal-hi); text-align: center; padding: 8px 0; border: 3px solid var(--teal); }
+  .lt-fcl .rl { display: flex; flex-direction: column; justify-content: center; font-size: 17px; line-height: 1.3; color: var(--dim); }
+  .lt-fcl .rl b { font-family: var(--pixel); font-size: 16px; font-weight: normal; color: var(--teal-hi); margin-bottom: 10px; }
+  .lt-fcl .rl.amb b { color: var(--amber); }
+  .lt-fcl .cc { background: var(--navy); border: 4px solid var(--teal-hi); box-shadow: 6px 6px 0 #000; padding: 14px 12px; font-size: 18px; line-height: 1.3; color: var(--text); display: flex; align-items: center; }
+  .lt-fcl .cc b { color: var(--amber); font-weight: 600; }
+  .lt-fcl .cc code { color: var(--teal-hi); font-size: 16px; }
+  .lt-fcl .cc span { min-width: 0; overflow-wrap: anywhere; }
+  .lt-fcl .grid > .cc:nth-child(n+12) { border-color: var(--amber); }
+  /* setup: six boxes */
+  .lt-fcls .st .nm { font-size: 17px; }
+  .lt-fcls .st .tx { font-size: 19px; }
+
+  /* chunk: the right pane holds two models, one labelled block each */
+  .lt-code .mdl { border-left: 6px solid var(--amber); padding: 2px 0 2px 14px; }
+  .lt-code .mdl + .mdl { margin-top: 26px; }
+  .lt-code .mdl .mh { font-family: var(--pixel); font-size: 12px; color: var(--amber); }
+  .lt-code .mdl .mn { margin: 6px 0 8px; font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--text); }
+  .lt-code .mdl .mn span { margin-left: 8px; font-size: 15px; font-weight: normal; color: var(--dim); }
+  /* embed: each passage as a record, field name then value; hash and vector called out */
+  .lt-code .rec { border-left: 6px solid; padding: 4px 0 4px 12px; margin-bottom: 18px; }
+  .lt-code .rec.p1 { border-left-color: var(--teal-hi); }
+  .lt-code .rec.p2 { border-left-color: var(--amber); }
+  .lt-code .rec.p3 { border-left-color: var(--violet); }
+  .lt-code .kv { display: grid; grid-template-columns: 150px 1fr; column-gap: 10px; font-family: var(--mono); font-size: 16px; line-height: 1.5; color: var(--text); white-space: nowrap; overflow: hidden; }
+  .lt-code .kv i { font-style: normal; color: var(--dim); }
+  .lt-code .kv b { color: var(--amber); }
+  .lt-code .kv.hsh span, .lt-code .kv.vec span { font-weight: 600; color: var(--teal-hi); }
+  .lt-code .kv.hsh i, .lt-code .kv.vec i { color: var(--teal-hi); }
+  .lt-code .kv.vec em { font-style: normal; font-weight: normal; color: var(--dim); margin-left: 6px; }
+
+  /* classify: the prompt and the output schema, marked in the code and explained beneath it */
+  .lt-code .cd .mk { color: var(--amber); }
+  .lt-code .expl { margin-top: 14px; padding-top: 10px; border-top: 3px dashed var(--amber); font-size: 15px; line-height: 1.35; color: var(--text); }
+  .lt-code .expl p { margin: 0 0 8px; }
+  .lt-code .expl b { font-family: var(--mono); color: var(--amber); margin-right: 6px; }
+  .lt-code .expl i { color: var(--dim); }
+
+  /* the many flows: what the search model does, top right; and the skills sticker on the pane corner */
+  .lt-code .dagp .srch { position: absolute; right: 16px; top: 40px; width: 236px; padding: 12px 14px; background: var(--navy-2); border: 4px solid var(--teal-hi); box-shadow: 6px 6px 0 #000; font-family: var(--mono); font-size: 15px; line-height: 1.4; color: var(--text); }
+  .lt-code .dagp .srch b { display: block; margin-bottom: 6px; font-family: var(--pixel); font-size: 13px; font-weight: normal; color: var(--teal-hi); }
+  .lt-code .hd .pop { position: absolute; right: 104px; top: 14px; transform: rotate(-5deg); padding: 8px 14px; background: var(--hot); color: var(--deep); border: 4px solid var(--deep); box-shadow: 6px 6px 0 #000; font-family: var(--pixel); font-size: 18px; line-height: 1.25; text-align: center; white-space: nowrap; }
+
+  /* builders: the skills the agent loads, as name chips under the ask */
+  .lt-code .skrow { margin-top: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-family: var(--mono); font-size: 15px; }
+  .lt-code .skrow b { font-family: var(--pixel); font-size: 12px; font-weight: normal; color: var(--hot); margin-right: 2px; }
+  .lt-code .skrow span { padding: 3px 8px; border: 3px solid var(--hot); color: var(--text); }
+  .lt-code.bld .pane { height: 484px; }
+  /* builders: the five reasons, one a line, the lead words in amber */
+  .lt-code .res.why { font-family: var(--sans, inherit); font-size: 22px; line-height: 1.35; }
+  .lt-code .res.why td { padding-top: 12px; padding-bottom: 12px; }
+  .lt-code .res.why td.n { padding-right: 16px; }
+  .lt-code .res.why td.n { color: var(--teal-hi); }
+  .lt-code .res.why b { color: var(--amber); font-weight: 600; }
+  /* how do I do it: the review side, a size up */
+  .lt-code .pl.big { font-size: 24px; line-height: 1.35; }
+  /* why build it this way: one wide pane, the five reasons a size up */
+  .lt-code.bld .pane.wide { top: 148px; height: 496px; padding: 40px 56px; }
+  .lt-code.bld .res.why { font-size: 30px; }
+  .lt-code.bld .res.why td { padding-top: 18px; padding-bottom: 18px; }
+  /* how do I do it: the ask, a size up, now it has the pane to itself */
+  .lt-code.ask .pane.l .cd { font-size: 25px; line-height: 1.4; }
+  .lt-code.ask .skrow { margin-top: 24px; font-size: 17px; }
+
+  /* how the agent answers: the question, then two rows (semantic layer, context layer) across
+     asks / calls / gets, and one answer box spanning both rows */
+  .lt-agent .q { position: absolute; left: 20px; top: 176px; width: 1240px; text-align: center; font-size: 28px; font-weight: 600; color: var(--amber); }
+  .lt-agent .ag { position: absolute; left: 20px; top: 224px; width: 1240px; height: 424px; display: grid; grid-template-columns: 150px repeat(3, minmax(0, 1fr)) 270px; grid-template-rows: auto 1fr 1fr; gap: 12px; }
+  .lt-agent .ch { font-family: var(--pixel); font-size: 12px; line-height: 1; color: var(--teal-hi); text-align: center; padding: 8px 0; border: 3px solid var(--teal); }
+  .lt-agent .ch.amb { color: var(--amber); border-color: var(--amber); }
+  .lt-agent .rl { display: flex; flex-direction: column; justify-content: center; font-size: 17px; color: var(--dim); }
+  .lt-agent .rl b { font-family: var(--pixel); font-size: 13px; font-weight: normal; line-height: 1.4; color: var(--teal-hi); margin-bottom: 8px; }
+  .lt-agent .cc { background: var(--navy); border: 4px solid var(--teal-hi); box-shadow: 6px 6px 0 #000; padding: 10px 12px; font-size: 17px; line-height: 1.32; color: var(--text); display: flex; align-items: center; min-width: 0; overflow-wrap: anywhere; }
+  .lt-agent .cc b { color: var(--amber); font-weight: 600; }
+  .lt-agent .cc code { color: var(--teal-hi); font-size: 16px; }
+  .lt-agent .cc.ans { grid-column: 5; grid-row: 2 / span 2; border-color: var(--amber); font-size: 18px; }
+  .lt-agent .cc.ans .cite { margin-top: 16px; padding-top: 10px; border-top: 3px dashed var(--amber); font-family: var(--mono); font-size: 14px; color: var(--dim); }
+  /* how do I do it: the skills sticker, in the empty corner of the review pane */
+  .lt-code.ask .frame > .pop.stk { position: absolute; right: 150px; top: 470px; transform: rotate(-5deg); padding: 14px 22px; background: var(--hot); color: var(--deep); border: 4px solid var(--deep); box-shadow: 6px 6px 0 #000; font-family: var(--pixel); font-size: 26px; line-height: 1.3; text-align: center; white-space: nowrap; }
+  /* how the agent answers: every box on screen from the start, dimmed; each click lights the next,
+     in a snake (semantic layer left to right, then context layer, then the answer) */
+  .reveal .lt-agent .cc.fragment { opacity: .3; visibility: visible; transition: none; }
+  .reveal .lt-agent .cc.fragment.visible { opacity: 1; }
+  .reveal .lt-agent .cc.fragment.current-fragment { box-shadow: 0 0 0 4px var(--amber), 6px 6px 0 4px #000; }
+
+  /* parse, chunk, embed, classify: an arrow in each gap, so the step reads left to right */
+  .lt-code .par { position: absolute; top: 418px; width: 28px; text-align: center; font-family: var(--pixel); font-size: 24px; line-height: 1; color: var(--amber); }
+  .crumbed2.lt-code .pane.l { width: 584px; }
+  .crumbed2.lt-code .pane.r { left: 676px; width: 584px; }
+  .crumbed2.lt-code .par { left: 620px; }
+  /* parse: three columns, the file, the model, the row */
+  .lt-parse3 .pane.a { left: 20px; width: 330px; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+  .lt-parse3 .pane.b { left: 378px; width: 470px; }
+  .lt-parse3 .pane.c { left: 876px; width: 384px; }
+  .lt-parse3 .par[style*="350px"] { left: 350px !important; }
+  .lt-parse3 .par[style*="848px"] { left: 848px !important; }
+  .lt-parse3 .row1 { margin-bottom: 12px; font-size: 16px; line-height: 1.3; color: var(--text); overflow-wrap: anywhere; }
+  .lt-parse3 .row1 i { display: block; font-style: normal; font-family: var(--mono); font-size: 14px; color: var(--teal-hi); margin-bottom: 2px; }
+  .lt-parse3 .row1 b { color: var(--amber); }
+  .lt-parse3 .row1 em { font-style: normal; color: var(--dim); margin-left: 6px; }
+  .crumbed2.lt-code .kv { grid-template-columns: 128px 1fr; }
+  .crumbed2.lt-code .expl { margin-top: 8px; padding-top: 8px; font-size: 14px; line-height: 1.28; }
+  .crumbed2.lt-code .expl p { margin-bottom: 4px; }
 </style>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
 
-<!-- 0. Talk title -->
-<section class="talk" data-status="dbt Vienna · 20 Oct 2026">
+<!-- 0. Talk title, light deck: as deck/slides/001-talk-title.html, without the meetup and date line -->
+<section class="talk">
   <div class="frame">
     <div class="panel title-box">
       <h1>Congratulations!<br>You are a Context Engineer</h1>
-      <div class="sub">dbt Vienna Meetup · 20 October 2026</div>
       <div class="who">Sean McIntyre</div>
       <div class="role">Principal Solutions Architect, dbt Labs and Fivetran</div>
     </div>
   </div>
 <aside class="notes">Welcome. Do not read the title. Introduce yourself, then the road map.</aside>
 </section>
-<!-- About me -->
-<section class="about" data-status="dbt Vienna · 20 Oct 2026">
-  <div class="frame">
-    <div class="panel hd">
-      <h2>ABOUT ME</h2>
-    </div>
-    <div class="panel bd">
-      <div class="txt">
-        <div class="who">Sean McIntyre</div>
-        <div class="role">Principal Solutions Architect, dbt Labs and Fivetran</div>
-        <ul>
-          <li>dbt user for 7+ years; at dbt Labs (and now Fivetran) for 5.5 years</li>
-          <li>Cycling</li>
-          <li>Ask me about my Hermes setup</li>
-          <li>2 small boys :-)</li>
-        </ul>
-      </div>
-      <svg class="bike" width="312" height="160" viewBox="0 32 312 160" role="img" aria-label="A pixel-art bicycle.">
-        <rect class="wh" x="40" y="72" width="40" height="8"/>
-        <rect class="wh" x="232" y="72" width="40" height="8"/>
-        <rect class="wh" x="24" y="80" width="16" height="8"/>
-        <rect class="wh" x="80" y="80" width="16" height="8"/>
-        <rect class="wh" x="216" y="80" width="8" height="8"/>
-        <rect class="wh" x="272" y="80" width="16" height="8"/>
-        <rect class="wh" x="16" y="88" width="8" height="8"/>
-        <rect class="wh" x="96" y="88" width="8" height="8"/>
-        <rect class="wh" x="208" y="88" width="8" height="8"/>
-        <rect class="wh" x="288" y="88" width="8" height="8"/>
-        <rect class="wh" x="8" y="96" width="8" height="16"/>
-        <rect class="wh" x="104" y="96" width="8" height="16"/>
-        <rect class="wh" x="200" y="96" width="8" height="16"/>
-        <rect class="wh" x="296" y="96" width="8" height="16"/>
-        <rect class="wh" x="0" y="112" width="8" height="40"/>
-        <rect class="wh" x="112" y="112" width="8" height="16"/>
-        <rect class="wh" x="112" y="136" width="8" height="16"/>
-        <rect class="wh" x="192" y="112" width="8" height="40"/>
-        <rect class="wh" x="304" y="112" width="8" height="40"/>
-        <rect class="wh" x="8" y="152" width="8" height="16"/>
-        <rect class="wh" x="104" y="152" width="8" height="16"/>
-        <rect class="wh" x="200" y="152" width="8" height="16"/>
-        <rect class="wh" x="296" y="152" width="8" height="16"/>
-        <rect class="wh" x="16" y="168" width="8" height="8"/>
-        <rect class="wh" x="96" y="168" width="8" height="8"/>
-        <rect class="wh" x="208" y="168" width="8" height="8"/>
-        <rect class="wh" x="288" y="168" width="8" height="8"/>
-        <rect class="wh" x="24" y="176" width="16" height="8"/>
-        <rect class="wh" x="80" y="176" width="16" height="8"/>
-        <rect class="wh" x="216" y="176" width="16" height="8"/>
-        <rect class="wh" x="272" y="176" width="16" height="8"/>
-        <rect class="wh" x="40" y="184" width="40" height="8"/>
-        <rect class="wh" x="232" y="184" width="40" height="8"/>
-        <rect class="fr" x="216" y="32" width="32" height="8"/>
-        <rect class="fr" x="96" y="40" width="40" height="8"/>
-        <rect class="fr" x="216" y="40" width="8" height="16"/>
-        <rect class="fr" x="112" y="48" width="8" height="8"/>
-        <rect class="fr" x="112" y="56" width="112" height="8"/>
-        <rect class="fr" x="104" y="64" width="16" height="8"/>
-        <rect class="fr" x="208" y="64" width="16" height="8"/>
-        <rect class="fr" x="96" y="72" width="8" height="16"/>
-        <rect class="fr" x="120" y="72" width="8" height="24"/>
-        <rect class="fr" x="200" y="72" width="8" height="8"/>
-        <rect class="fr" x="224" y="72" width="8" height="16"/>
-        <rect class="fr" x="192" y="80" width="8" height="8"/>
-        <rect class="fr" x="88" y="88" width="8" height="8"/>
-        <rect class="fr" x="184" y="88" width="8" height="8"/>
-        <rect class="fr" x="232" y="88" width="8" height="16"/>
-        <rect class="fr" x="80" y="96" width="8" height="8"/>
-        <rect class="fr" x="128" y="96" width="8" height="24"/>
-        <rect class="fr" x="168" y="96" width="16" height="8"/>
-        <rect class="fr" x="72" y="104" width="8" height="16"/>
-        <rect class="fr" x="160" y="104" width="8" height="8"/>
-        <rect class="fr" x="240" y="104" width="8" height="16"/>
-        <rect class="fr" x="152" y="112" width="8" height="8"/>
-        <rect class="fr" x="64" y="120" width="8" height="8"/>
-        <rect class="fr" x="136" y="120" width="16" height="8"/>
-        <rect class="fr" x="248" y="120" width="8" height="8"/>
-        <rect class="fr" x="64" y="128" width="72" height="8"/>
-        <rect class="hb" x="56" y="128" width="8" height="8"/>
-        <rect class="hb" x="136" y="128" width="8" height="8"/>
-        <rect class="hb" x="248" y="128" width="8" height="8"/>
-        <rect class="hb" x="128" y="136" width="24" height="8"/>
-      </svg>
-    </div>
-  </div>
-<aside class="notes">Thirty seconds, no more. Credibility, then a human detail (the bike), then move on.</aside>
-</section>
-<!-- Agenda -->
-<section class="agenda" data-status="dbt Vienna · 20 Oct 2026">
+<!-- Agenda, light deck: four parts. Overrides deck/slides/002-agenda.html, which the full deck keeps at three -->
+<section class="agenda">
   <div class="frame">
     <div class="panel hd">
       <h2>AGENDA</h2>
@@ -987,11 +1182,12 @@
       <ol>
         <li>The game has changed</li>
         <li>Showcase: Jaffle Logistics</li>
+        <li>How this showcase was made</li>
         <li>From Analytics Engineering to Context Engineering</li>
       </ol>
     </div>
   </div>
-<aside class="notes">Three parts. Say them once and move on.</aside>
+<aside class="notes">Four parts. Say them once and move on.</aside>
 </section>
 <!-- Hook: a question for the room, after the agenda and before part 1 -->
 <section class="lt lt-stmt">
@@ -1731,116 +1927,8 @@
   </div>
 <aside class="notes">Delay is the swing: 61 cases in 2025, 44 graded negative, CSAT from 3.70 down to 2.06. One carrier, Werke (CLI-0042), is 68% of 2025's negatives. And half the cases are plain questions: ticket count is not unhappiness. The labels are graded on the ticket text, not output of any model here.</aside>
 </section>
-<!-- Section title: the showcase turns to how the report itself was built -->
-<section class="sect" data-status="dbt Vienna · 20 Oct 2026">
-  <div class="frame">
-    <div class="panel bd">
-      <div class="kick">SHOWCASE: JAFFLE LOGISTICS · PART 3</div>
-      <h2>HOW THIS SHAREHOLDER REPORT WAS MADE</h2>
-    </div>
-  </div>
-  <aside class="notes">The story is told. Now the machinery behind it: the stack, how one number traces back, and the context layered on top.</aside>
-</section>
-<!-- The whole stack: five stages, left to right -->
-<section class="lt lt-flow">
-  <div class="frame">
-    <div class="panel hd">
-      <h2><span class="no">1/4</span>ONE BUILD TAKES TWELVE SYSTEMS TO AN AGENT</h2>
-      <div class="owns">Operational data in, governed context out</div>
-      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="the build: stacked layers"><rect x="2" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="4" width="1" height="1" fill="#ffb000"/><rect x="2" y="4" width="1" height="1" fill="#ffb000"/><rect x="3" y="4" width="1" height="1" fill="#ffb000"/><rect x="4" y="4" width="1" height="1" fill="#ffb000"/><rect x="5" y="4" width="1" height="1" fill="#ffb000"/><rect x="6" y="4" width="1" height="1" fill="#ffb000"/><rect x="7" y="4" width="1" height="1" fill="#ffb000"/><rect x="8" y="4" width="1" height="1" fill="#ffb000"/><rect x="9" y="4" width="1" height="1" fill="#ffb000"/><rect x="10" y="4" width="1" height="1" fill="#ffb000"/><rect x="1" y="5" width="1" height="1" fill="#ffb000"/><rect x="2" y="5" width="1" height="1" fill="#ffb000"/><rect x="3" y="5" width="1" height="1" fill="#ffb000"/><rect x="4" y="5" width="1" height="1" fill="#ffb000"/><rect x="5" y="5" width="1" height="1" fill="#ffb000"/><rect x="6" y="5" width="1" height="1" fill="#ffb000"/><rect x="7" y="5" width="1" height="1" fill="#ffb000"/><rect x="8" y="5" width="1" height="1" fill="#ffb000"/><rect x="9" y="5" width="1" height="1" fill="#ffb000"/><rect x="10" y="5" width="1" height="1" fill="#ffb000"/><rect x="0" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="10" width="1" height="1" fill="#ffb000"/><rect x="1" y="10" width="1" height="1" fill="#ffb000"/><rect x="2" y="10" width="1" height="1" fill="#ffb000"/><rect x="3" y="10" width="1" height="1" fill="#ffb000"/><rect x="4" y="10" width="1" height="1" fill="#ffb000"/><rect x="5" y="10" width="1" height="1" fill="#ffb000"/><rect x="6" y="10" width="1" height="1" fill="#ffb000"/><rect x="7" y="10" width="1" height="1" fill="#ffb000"/><rect x="8" y="10" width="1" height="1" fill="#ffb000"/><rect x="9" y="10" width="1" height="1" fill="#ffb000"/><rect x="10" y="10" width="1" height="1" fill="#ffb000"/><rect x="11" y="10" width="1" height="1" fill="#ffb000"/><rect x="0" y="11" width="1" height="1" fill="#ffb000"/><rect x="1" y="11" width="1" height="1" fill="#ffb000"/><rect x="2" y="11" width="1" height="1" fill="#ffb000"/><rect x="3" y="11" width="1" height="1" fill="#ffb000"/><rect x="4" y="11" width="1" height="1" fill="#ffb000"/><rect x="5" y="11" width="1" height="1" fill="#ffb000"/><rect x="6" y="11" width="1" height="1" fill="#ffb000"/><rect x="7" y="11" width="1" height="1" fill="#ffb000"/><rect x="8" y="11" width="1" height="1" fill="#ffb000"/><rect x="9" y="11" width="1" height="1" fill="#ffb000"/><rect x="10" y="11" width="1" height="1" fill="#ffb000"/><rect x="11" y="11" width="1" height="1" fill="#ffb000"/></svg>
-    </div>
-    <div class="flow" style="top:176px;height:250px">
-      <div class="st"><div class="no">1</div><div class="nm">SOURCES</div><div class="tx">12 operational systems, 26 files</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">2</div><div class="nm">LAND</div><div class="tx"><svg width="86" height="24" viewBox="0 0 86 24" style="display:block;margin:0 auto 8px"><image href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTE1IiBoZWlnaHQ9IjMyIiB2aWV3Qm94PSIwIDAgMTE1IDMyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8ZyBjbGlwLXBhdGg9InVybCgjY2xpcDBfNjcyNl8xMzk1MjQpIj4KPHBhdGggZD0iTTQyLjAyMjIgNy45NTk5NlYxMC45MzMzSDM0LjAxNTJWMTQuMTY4Nkg0MS4zODQ0VjE3LjE2MzFIMzQuMDE1MlYyMy40MDIySDMwLjE2OTlWNy45NTk5Nkg0Mi4wMjIyWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTQ0LjQ2MDkgNy45Mzk0NUg0Ny43ODM2VjEwLjU1OTVINDQuNDYwOVY3LjkzOTQ1Wk00NC40NjA5IDExLjk2NDhINDcuNzgzNlYyMy40MDI5SDQ0LjQ2MDlWMTEuOTY0OFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik00OS40MjE5IDExLjk4NjRINTIuOTY2OEM1NC4zNjgyIDE3LjA1OTcgNTQuNjA5IDE4LjA5ODUgNTQuOTc5NSAyMC4yODE4QzU1LjQzNzQgMTcuNzQ1MSA1NS41MDM1IDE3LjQ2MTkgNTYuMTg1IDE0Ljc3MThMNTYuODgzNiAxMS45NzMxSDYwLjMzOTdMNTYuNjQyOCAyMy4zOTAxSDUzLjEyMDNMNDkuNDIxOSAxMS45ODY0WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTcyLjU5ODQgMjAuNDkwM0M3Mi4yMTA5IDIxLjExMzYgNzEuNzQ3NSAyMS42ODc5IDcxLjIxODQgMjIuMTk3M0M3MC4wMzk1IDIzLjI2MzkgNjguNDk4OSAyMy44NDM0IDY2LjkwOTggMjMuODE2OUM2My41MTcyIDIzLjgxNjkgNjEuMTMzOCAyMS42MzM2IDYxLjEzMzggMTcuOTFDNjEuMTMzOCAxNS4xNTUgNjIuNDkxNSAxMS42MTAxIDY2Ljk5NzIgMTEuNjEwMUM2OC41MzYxIDExLjU2MjQgNzAuMDI1OCAxMi4xNTY1IDcxLjEwOTggMTMuMjUyMkM3Mi41OTg0IDE0Ljg1MDcgNzIuNjg1OCAxNy4wODAzIDcyLjcyOTIgMTguMzY5Mkg2NC41NzQ0QzY0LjU1MzIgMTkuNzkzIDY1LjM2MDEgMjEuMjExNSA2Ny4xOTQ0IDIxLjIxMTVDNjkuMDI4MSAyMS4yMTE1IDY5LjY2NDYgMjAuMDA2IDcwLjA4MDEgMTkuMTk4OEw3Mi41OTg0IDIwLjQ5MDNaTTY5LjI0OTIgMTYuMjY5MkM2OS4yMjE4IDE1LjY3NTEgNjguOTk4OSAxNS4xMDYxIDY4LjYxNjYgMTQuNjQ5NkM2OC4xNzA5IDE0LjIzNTMgNjcuNTgzNSAxNC4wMDkxIDY2Ljk3NDkgMTQuMDE3MUM2Ni4zMjY0IDE0LjAxNDQgNjUuNzA4MSAxNC4yODQzIDY1LjI2NzUgMTQuNzU5NEM2NC45MDM1IDE1LjE4OTQgNjQuNjY5OCAxNS43MTIxIDY0LjU5MTUgMTYuMjcwNUg2OS4yNDkyVjE2LjI2OTJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNzUuNDk1OCA4LjY4MDY2SDc4Ljg0NDlWMTIuMjQ2OEg4MS4wNTM1VjE0LjMwMzFINzguODIyNlYxOS40NDEzQzc4LjgyMjYgMjAuMTM5OSA3OC44MjI2IDIwLjc1MTMgNzkuNjk1OCAyMC43NTEzTDgwLjkwMTUgMjAuNzA3NlYyMy4zMjc2QzgwLjMxNjMgMjMuNDM0OCA3OS43MjM4IDIzLjQ5MyA3OS4xMjk1IDIzLjUwMjNDNzcuOTY3OCAyMy41MDIzIDc2LjcwMjYgMjMuNDM3NSA3NS45ODE1IDIyLjM4NDJDNzUuNTIzOCAyMS43MDggNzUuNTAxNSAyMC44OTU1IDc1LjUwMTUgMTkuODAzOVYxNC4yODA2SDczLjgzNjlWMTIuMjIxNkg3NS40OTk4TDc1LjQ5NTggOC42ODA2NloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04Ni42MjY1IDEzLjE2NUM4Ny4zNjg4IDEyLjUzMjUgODguMTgxNCAxMi4wMjk3IDg5LjkyNjUgMTEuODU1VjE0Ljg0MTZMODguODEzNCAxNS4wMTYyQzg3LjE5NCAxNS4yOTk0IDg2LjcxMzQgMTUuNTQwMiA4Ni43MTM0IDE2Ljk4NTJWMjMuNDAyOUg4My4zNjQzVjExLjk2NDhIODYuNjQzN0w4Ni42MjY1IDEzLjE2NVoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik05MS42OTExIDE1LjIyMTZDOTEuNjc2OCAxNC4yMzQ1IDkyLjEyMjUgMTMuMjk3NyA5Mi44OTY4IDEyLjY4NUM5My45NDQ4IDExLjg1NTMgOTUuMzAyNSAxMS42ODA3IDk2LjYzNzQgMTEuNjgwN0M5OC4wMzg1IDExLjY4MDcgMTAxLjQ0IDEyLjAwNzUgMTAxLjQ0IDE0Ljk1OTZWMjEuNjA4OUMxMDEuNDQgMjIuODM1NiAxMDEuNTA0IDIzLjAxMDMgMTAxLjc2NyAyMy40MDMzSDk4LjQ2NlYyMi4zNTEzQzk3LjU5MjggMjIuOTgzOCA5Ni42NTA1IDIzLjcwODkgOTQuOTc0IDIzLjcwODlDOTIuMzU0IDIzLjcwODkgOTEuMjMzNCAyMS44MjczIDkxLjIzMzQgMjAuMjE2OUM5MS4yMzM0IDE4LjM3ODkgOTIuNzAwOCAxNy4zMzA5IDkzLjYzOTEgMTYuOTM3OUM5NC41Nzc0IDE2LjU0NDkgOTYuNzIwOCAxNi4xNTE5IDk4LjE0NDggMTUuODg5OVYxNS4yNzg1Qzk4LjEwMDggMTQuNzU0NSA5OC4wNTc0IDEzLjg3NzIgOTYuODM0NSAxMy44NzcyQzk1LjM0NiAxMy44NzcyIDk1LjE0ODggMTQuNzk0MyA5NS4wNjI1IDE1LjIxMzdMOTEuNjkxMSAxNS4yMjE2Wk05NS45NTYzIDE4LjY1ODJDOTUuMzg4MyAxOC44NzY0IDk0LjUxMTEgMTkuMjAzMyA5NC41MTExIDIwLjA4MTlDOTQuNTQ2NSAyMC43NTQyIDk1LjExODUgMjEuMjcxNSA5NS43OTA1IDIxLjIzODRDOTYuMjA0OCAyMS4yMjY2IDk2LjYwNzEgMjEuMDk4MiA5Ni45NTIzIDIwLjg2NzlDOTguMDY1NCAyMC4xNjkzIDk4LjEwODggMTkuMTIxMiA5OC4xMzUxIDE3LjkzODNMOTUuOTU2MyAxOC42NTgyWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTEwNy41MjQgMTMuMDEyOEMxMDcuODMyIDEyLjYzMyAxMDguMjIxIDEyLjMyNzQgMTA4LjY2MyAxMi4xMTgzQzEwOS4zMjEgMTEuODQwNCAxMTAuMDI3IDExLjY5MjIgMTEwLjc0IDExLjY4MTZDMTExLjQ0NiAxMS42NjcxIDExMi4xNDQgMTEuODI0NSAxMTIuNzc0IDEyLjEzOTRDMTEzLjk4IDEyLjc3MTkgMTE0LjI4NSAxMy44MDI3IDExNC4yODUgMTUuNTc1OVYyMy40MDQySDExMC45NDFWMTYuOTczMkMxMTAuOTQxIDE1Ljk0NzggMTEwLjkyIDE1LjU3MTkgMTEwLjc4OSAxNS4yNjYzQzExMC41MTcgMTQuNjg5MyAxMDkuOTE1IDE0LjM0MTMgMTA5LjI3OCAxNC4zOTI5QzEwNy41MDcgMTQuMzkyOSAxMDcuNTA3IDE1LjgxNjcgMTA3LjUwNyAxNy4yMzUyVjIzLjQwNDJIMTA0LjE0OVYxMi4wMDg0SDEwNy41NDJMMTA3LjUyNCAxMy4wMTI4WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE1Ljc4NDQgMTUuODgwMkgxOC45NzM1QzE5LjIyNzUgMTUuODg1NSAxOS40MzkyIDE1LjY4MzEgMTkuNDQ0NiAxNS40MjlDMTkuNDQ1OSAxNS4zNjQyIDE5LjQzMzkgMTUuMjk5MyAxOS40MDg4IDE1LjIzOThMMTMuOTIxMyAwLjMwNDM1NkMxMy44NTUyIDAuMTIxNzQ5IDEzLjY4MTggLTAuMDAxMzEyNjcgMTMuNDg3MyAxLjA1Njc2ZS0wNUgxMC4yODY0QzEwLjAzMjMgLTAuMDAxMzEyNjcgOS44MjQ1NiAwLjIwMzc5IDkuODIzMjQgMC40NTkxNzVDOS44MjMyNCAwLjUxNDc1MSA5LjgzMjUgMC41NjkwMDUgOS44NTIzOCAwLjYyMDYxMUwxNS4zMzg1IDE1LjU3NTlDMTUuNDA2IDE1Ljc2MjUgMTUuNTg2IDE1Ljg4NTUgMTUuNzg0NCAxNS44ODAyWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE1LjIwOTEgMzEuNzU3OEgxOC4zOTgxQzE4LjY1MjIgMzEuNzU5MSAxOC44NTk5IDMxLjU1NCAxOC44NjEzIDMxLjI5ODZDMTguODYxMyAzMS4yNDMgMTguODUyIDMxLjE4ODggMTguODMyMSAzMS4xMzcyTDcuNTE3MTIgMC4zMDQzNTJDNy40NTA5NSAwLjEyMTc0NSA3LjI3NzYzIDYuMzY2ODhlLTA2IDcuMDgxNzUgNi4zNjY4OGUtMDZIMy44OTY3M0MzLjY0MjY3IC0wLjAwMTMxNjg3IDMuNDM0OTIgMC4yMDM3ODYgMy40MzM1OSAwLjQ1OTE3MUMzLjQzMzU5IDAuNTE0NzQ3IDMuNDQyODYgMC41NjkgMy40NjI3MSAwLjYyMDYwNkwxNC43NzUxIDMxLjQ1NjFDMTQuODQyNiAzMS42Mzc0IDE1LjAxNTkgMzEuNzU3OCAxNS4yMDkxIDMxLjc1NzhaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNOC45MzAyNyAzMS43NTc3SDEyLjExOTNDMTIuMzczNCAzMS43Njk2IDEyLjU4OSAzMS41NzI0IDEyLjYwMSAzMS4zMTgzQzEyLjYwMzYgMzEuMjU2MSAxMi41OTQzIDMxLjE5NTMgMTIuNTczMSAzMS4xMzdMNy4wNjcxMyAxNi4xODE4QzcuMDAwOTUgMTUuOTk5MiA2LjgyNzY0IDE1Ljg3NjEgNi42MzMxMyAxNS44Nzc1SDMuNDI4MjNDMy4xNzQxNyAxNS44ODQxIDIuOTczMDMgMTYuMDk1OCAyLjk3OTY1IDE2LjM0OTlDMi45ODA5OCAxNi40MDE1IDIuOTkxNTYgMTYuNDUzMSAzLjAxMDA5IDE2LjUwMkw4LjQ5NjI3IDMxLjQ1NzNDOC41NjM3NSAzMS42MzcyIDguNzM3MDcgMzEuNzU3NyA4LjkzMDI3IDMxLjc1NzdaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTYuMTcgMC42MjQ1ODNMMTguNzQyNCA3LjYyMDU3QzE4LjgwODYgNy44MDMxNCAxOC45ODE5IDcuOTI2MjMgMTkuMTc2NSA3LjkyNDkxSDIyLjM2NTVDMjIuNjE5NSA3LjkyNjIzIDIyLjgyNzMgNy43MjExNCAyMi44Mjg2IDcuNDY1NzFDMjIuODI4NiA3LjQxMDE3IDIyLjgxOTQgNy4zNTU4OSAyMi43OTk1IDcuMzA0MjlMMjAuMjI3MSAwLjMwNDM1NkMyMC4xNjEgMC4xMjE3NDkgMTkuOTg3NiAtMC4wMDEzMTI2NyAxOS43OTMxIDEuMDU2NzZlLTA1SDE2LjYwNDFDMTYuMzUgLTAuMDAxMzEyNjcgMTYuMTQxIDAuMjAyNDY2IDE2LjEzOTYgMC40NTc4NTJDMTYuMTM5NiAwLjUxNDc1MSAxNi4xNDg5IDAuNTcxNjUxIDE2LjE3IDAuNjI0NTgzWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTMuMDQ3NDIgMzEuNzU4OEg2LjIzNjQ2QzYuNDkwNTEgMzEuNzYwMSA2LjY5ODIzIDMxLjU1NSA2LjY5OTYgMzEuMjk5NkM2LjY5OTYgMzEuMjQ0IDYuNjkwMjkgMzEuMTg5OCA2LjY3MDQ2IDMxLjEzODJMNC4wODM1MyAyNC4xMjM3QzQuMDE3MzYgMjMuOTQxMSAzLjg0NDAyIDIzLjgxOCAzLjY0OTUgMjMuODE5M0gwLjQ2NDQ1OEMwLjIxMDM5NSAyMy44MTggMC4wMDEzMjMyNCAyNC4wMjE4IDAgMjQuMjc3MkMwIDI0LjMzNDEgMC4wMDkyNjI2OSAyNC4zOTEgMC4wMzA0MzQ2IDI0LjQ0MzlMMi42MDI4MiAzMS40NTg0QzIuNjcwMyAzMS42NDI0IDIuODUwMjYgMzEuNzY0MSAzLjA0NzQyIDMxLjc1ODhaIiBmaWxsPSJ3aGl0ZSIvPgo8L2c+CjxkZWZzPgo8Y2xpcFBhdGggaWQ9ImNsaXAwXzY3MjZfMTM5NTI0Ij4KPHJlY3Qgd2lkdGg9IjExNC4yODYiIGhlaWdodD0iMzIiIGZpbGw9IndoaXRlIi8+CjwvY2xpcFBhdGg+CjwvZGVmcz4KPC9zdmc+Cg==" x="0" y="0" width="86.25" height="24"><title>Fivetran</title></image></svg>raw tables, in the lakehouse</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">3</div><div class="nm">MODEL</div><div class="tx"><svg width="86" height="24" viewBox="0 0 86 24" style="display:block;margin:0 auto 8px"><image href="data:image/png;base64,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" x="20" y="0" width="46" height="24"><title>dbt</title></image></svg>staging, intermediate, marts, <strong class="amb">context</strong></div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st ambb"><div class="no">4</div><div class="nm">CONTEXT +&nbsp;SL</div><div class="tx">10 governed metrics and 25 context models</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">5</div><div class="nm">ASK</div><div class="tx">people and agents, over MCP</div></div>
-    </div>
-    <div class="foot" style="top:480px"><em>Built overnight.</em> A failing test stops the release.</div>
-    <div class="foot dimf" style="top:540px;font-size:24px">dbt Platform &middot; 36 of 36 tests on the metrics' inputs pass</div>
-  </div>
-  <aside class="notes">Walk left to right. Twelve operational systems, seeded as 26 source files in this demo (not connected). Fivetran lands them raw; dbt models 24 staging, 3 intermediate and 8 mart models; the 25 context models (23 of them AI) are built in that same dbt step, and with the 10 governed metrics in the Semantic Layer they are exposed over MCP. One nightly job rebuilds everything from source, and a failing test stops the release. The detailed version of this slide is in the appendix.</aside>
-</section>
-<!-- Every number traces back: one number, followed to its source -->
-<section class="lt lt-flow">
-  <div class="frame">
-    <div class="panel hd">
-      <h2><span class="no">2/4</span>EVERY NUMBER TRACES BACK</h2>
-      <div class="owns">Follow one figure from the system that recorded it to the boardroom</div>
-      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="the trace: a magnifying glass"><rect x="2" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="3" width="1" height="1" fill="#ffb000"/><rect x="4" y="3" width="1" height="1" fill="#ffb000"/><rect x="5" y="3" width="1" height="1" fill="#ffb000"/><rect x="8" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="4" width="1" height="1" fill="#ffb000"/><rect x="4" y="4" width="1" height="1" fill="#ffb000"/><rect x="5" y="4" width="1" height="1" fill="#ffb000"/><rect x="8" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="5" width="1" height="1" fill="#ffb000"/><rect x="4" y="5" width="1" height="1" fill="#ffb000"/><rect x="5" y="5" width="1" height="1" fill="#ffb000"/><rect x="8" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="8" width="1" height="1" fill="#ffb000"/><rect x="8" y="8" width="1" height="1" fill="#ffb000"/><rect x="7" y="9" width="1" height="1" fill="#ffb000"/><rect x="8" y="9" width="1" height="1" fill="#ffb000"/><rect x="9" y="9" width="1" height="1" fill="#ffb000"/><rect x="8" y="10" width="1" height="1" fill="#ffb000"/><rect x="9" y="10" width="1" height="1" fill="#ffb000"/><rect x="10" y="10" width="1" height="1" fill="#ffb000"/><rect x="9" y="11" width="1" height="1" fill="#ffb000"/><rect x="10" y="11" width="1" height="1" fill="#ffb000"/></svg>
-    </div>
-    <div class="flow" style="top:176px;height:230px">
-      <div class="st"><div class="no">RECORDED BY</div><div class="nm">the transport system</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">STAGED AS</div><div class="nm code">stg_shipments</div><div class="tx">.status</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">THE TABLE</div><div class="nm code">fct_shipments</div><div class="tx">.is_ontime</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">THE METRIC</div><div class="nm code">on_time_rate</div><div class="tx">on-time shipments / shipments</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st ambb"><div class="no">THE NUMBER</div><div class="nm" style="font-size:30px">93.28%</div><div class="tx">on time, against a 97% target</div></div>
-    </div>
-    <div class="foot" style="top:470px">Nothing in this deck is a number someone typed.</div>
-    <div class="foot" style="top:530px"><em>Each one is a column with a lineage.</em></div>
-  </div>
-  <aside class="notes">Read left to right: the transport system records a shipment status; it is staged as stg_shipments.status, becomes fct_shipments.is_ontime, rolls up in the on_time_rate metric (on-time shipments over shipments) and arrives as 93.28%. The same trace works for EUR 52,954.86 of credits: the billing revenue ledger, staged with credited_amount cast to numeric, into fct_account_revenue, summed by the credited_amount metric. 340 tests run on every build, and a failing test stops the release.</aside>
-</section>
-<!-- Layering on the context: one Paris incident report, followed into the knowledge base. No reveal: every stage shows at once -->
-<section class="lt lt-flow">
-  <div class="frame">
-    <div class="panel hd">
-      <h2><span class="no">3/4</span>LAYERING ON THE CONTEXT</h2>
-      <div class="owns">Follow one Paris storm report from its source system into the knowledge base</div>
-      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="the context: a document"><rect x="0" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="4" width="1" height="1" fill="#ffb000"/><rect x="3" y="4" width="1" height="1" fill="#ffb000"/><rect x="4" y="4" width="1" height="1" fill="#ffb000"/><rect x="5" y="4" width="1" height="1" fill="#ffb000"/><rect x="6" y="4" width="1" height="1" fill="#ffb000"/><rect x="7" y="4" width="1" height="1" fill="#ffb000"/><rect x="10" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="6" width="1" height="1" fill="#ffb000"/><rect x="3" y="6" width="1" height="1" fill="#ffb000"/><rect x="4" y="6" width="1" height="1" fill="#ffb000"/><rect x="5" y="6" width="1" height="1" fill="#ffb000"/><rect x="6" y="6" width="1" height="1" fill="#ffb000"/><rect x="7" y="6" width="1" height="1" fill="#ffb000"/><rect x="8" y="6" width="1" height="1" fill="#ffb000"/><rect x="10" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="8" width="1" height="1" fill="#ffb000"/><rect x="3" y="8" width="1" height="1" fill="#ffb000"/><rect x="4" y="8" width="1" height="1" fill="#ffb000"/><rect x="5" y="8" width="1" height="1" fill="#ffb000"/><rect x="6" y="8" width="1" height="1" fill="#ffb000"/><rect x="10" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="10" width="1" height="1" fill="#5fd3c8"/></svg>
-    </div>
-    <div class="flow" style="top:176px;height:290px">
-      <div class="st"><div class="no">RECORDED BY</div><div class="nm">the incident system</div><div class="tx">IR-9001, a free-text report</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">PARSED INTO</div><div class="nm code">int_incident_<wbr>reports_<wbr>documents</div><div class="tx">one document, joined to its shipment</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">CHUNKED AS</div><div class="nm code">chunk_incident_<wbr>reports</div><div class="tx">13 sentences packed into 3 passages</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">EMBEDDED AS</div><div class="nm code">incident_<wbr>reports_<wbr>embed</div><div class="tx">3 vectors, hashed so unchanged text isn't paid for twice</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st ambb"><div class="no">LANDS IN</div><div class="nm code">knowledge_<wbr>base</div><div class="tx">3 rows: Incident Report, Jaffle Werke, cited to IR-9001</div></div>
-    </div>
-    <div class="foot" style="top:516px">Every passage an agent retrieves is a row with a lineage.</div>
-    <div class="foot" style="top:576px"><em>It cites the report it came from.</em></div>
-  </div>
-  <aside class="notes">Read left to right. On 16 January 2025 the safety team filed IR-9001 for incident INC-2025-00417: during the 14 to 16 January storm a semi jackknifed on an icy on-ramp leaving the Paris hub, no injuries. It arrives as free text, so parsing here means shaping, not OCR: staging restores its line breaks and int_incident_reports_documents joins it to its shipment, which gives it an account, Jaffle Werke. split_incident_reports cuts it into 13 sentences and chunk_incident_reports packs them into 3 token-bounded passages that never span two reports. incident_reports_embed turns each passage into a vector with embed(), and checks each passage's content hash so one that has not changed is not embedded and paid for again. knowledge_base lands them as 3 rows with source_type Incident Report, the account, the text, the embedding and a citation back to IR-9001. None of the functions are the hard part: Snowflake, Databricks and BigQuery each ship parse, chunk, embed and search as SQL functions. The per-warehouse table is in the appendix. The engineering is the pipeline between the calls.</aside>
-</section>
-<!-- How a question becomes an answer: the loop, shown at once -->
-<section class="lt lt-flow">
-  <div class="frame">
-    <div class="panel hd">
-      <h2><span class="no">4/4</span>HOW A QUESTION BECOMES AN ANSWER</h2>
-      <div class="owns">The same loop, whether a person or an agent is asking</div>
-      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="the answer: a speech bubble with a question mark"><rect x="0" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="2" width="1" height="1" fill="#ffb000"/><rect x="5" y="2" width="1" height="1" fill="#ffb000"/><rect x="6" y="2" width="1" height="1" fill="#ffb000"/><rect x="7" y="2" width="1" height="1" fill="#ffb000"/><rect x="11" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="3" width="1" height="1" fill="#ffb000"/><rect x="8" y="3" width="1" height="1" fill="#ffb000"/><rect x="11" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="4" width="1" height="1" fill="#ffb000"/><rect x="11" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="5" width="1" height="1" fill="#ffb000"/><rect x="7" y="5" width="1" height="1" fill="#ffb000"/><rect x="11" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="6" width="1" height="1" fill="#ffb000"/><rect x="11" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="8" width="1" height="1" fill="#ffb000"/><rect x="11" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="11" width="1" height="1" fill="#5fd3c8"/></svg>
-    </div>
-    <div class="flow" style="top:176px;height:250px">
-      <div class="st"><div class="no">1</div><div class="nm">ASK</div><div class="tx">why did Paris miss so many in January?</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">2</div><div class="nm">LOOK UP</div><div class="tx">tools over MCP. Never a guessed number</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st ambb"><div class="no">3</div><div class="nm">TWO TRUTHS</div><div class="tx">the number, and the cause</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">4</div><div class="nm">ANSWER</div><div class="tx">56.60% on time &middot; the 14-16 Jan storm</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">5</div><div class="nm">PROVE</div><div class="tx">lineage and the tests behind it</div></div>
-      <div class="ar">&#9654;</div>
-      <div class="st hotb"><div class="no">6</div><div class="nm">ACT</div><div class="tx">a person decides, or an agent acts</div></div>
-    </div>
-    <div class="foot" style="top:470px"><em>A design, not a running system.</em></div>
-    <div class="foot dimf" style="top:530px;font-size:24px">The warehouse, the semantic layer and the retrieval are built. The agent on top is what the data now makes possible.</div>
-  </div>
-  <aside class="notes">Six steps. A question arrives; the warehouse's tools answer over MCP, never a guessed number. There are two sources of truth, kept visibly apart: the semantic layer owns the number (10 governed metrics, the definition belongs to the business) and the knowledge base owns the cause (vector search over 7 document sources: transcripts, CRM notes, incidents, dispatch). The answer is the number and the cause: 56.60% on time, and the 14-16 January storm. Then the evidence: lineage back to the source system, and 340 tests per build. Then the action: a person decides, or an agent acts, for example routing a complaint, raising the service-level risk before the customer feels it, or stopping a dispatch when a driver's certification has lapsed. Be clear that this loop is a design, not a running system. Adapted from the context-layer pattern, not copied.</aside>
-</section>
-<!-- Part 3 divider: From Analytics Engineering to Context Engineering -->
-<section class="agenda" data-status="dbt Vienna · 20 Oct 2026">
+<!-- Part 3 divider: How it gets made. The agenda again, parts 1 and 2 dimmed -->
+<section class="agenda">
   <div class="frame">
     <div class="panel hd">
       <h2>PART 3</h2>
@@ -1850,6 +1938,390 @@
       <ol>
         <li class="past">The game has changed</li>
         <li class="past">Showcase: Jaffle Logistics</li>
+        <li class="now">How this showcase was made</li>
+        <li>From Analytics Engineering to Context Engineering</li>
+      </ol>
+    </div>
+  </div>
+  <aside class="notes">That was what the data can do. Now how this showcase was made: one question, built up from the systems that recorded it to the agent that answers it, slowly, one layer per slide. This is the walk-through I did live in dbt Platform, as slides, with real values from last night's build.</aside>
+</section>
+<!-- How it gets made, 1/11: one question, and the layers it passes through on the way down -->
+<section class="lt lt-flow">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">1/11</span>ONE QUESTION, SOURCE TO AGENT</h2>
+      <div class="owns">The data flows right. The agent reaches left, over MCP</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="one question, followed from source to agent: an arrow pointing right"><rect x="4" y="0" width="1" height="1" fill="#ffb000"/><rect x="5" y="0" width="1" height="1" fill="#ffb000"/><rect x="6" y="0" width="1" height="1" fill="#ffb000"/><rect x="7" y="0" width="1" height="1" fill="#ffb000"/><rect x="3" y="1" width="1" height="1" fill="#ffb000"/><rect x="8" y="1" width="1" height="1" fill="#ffb000"/><rect x="7" y="2" width="1" height="1" fill="#ffb000"/><rect x="6" y="3" width="1" height="1" fill="#ffb000"/><rect x="6" y="5" width="1" height="1" fill="#ffb000"/><rect x="9" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="10" width="1" height="1" fill="#5fd3c8"/></svg>
+    </div>
+    <div class="foot" style="top:156px;font-size:32px"><em>&ldquo;What happened in 2025 Q1 that caused on-time to go down?&rdquo;</em></div>
+    <div class="flow" style="top:240px;height:250px">
+      <div class="st"><div class="no">RECORDED IN</div><div class="nm">SOURCES</div><div class="tx">the transport and incident systems</div></div>
+      <div class="ar">&#9654;</div>
+      <div class="st"><div class="no">BUILT BY</div><div class="nm">dbt MODELS</div><div class="tx">parse, chunk, embed, classify, union</div></div>
+      <div class="ar">&#9654;</div>
+      <div class="st ambb"><div class="no">SERVED AS</div><div class="nm">TWO TRUTHS</div><div class="tx">the semantic layer and the knowledge base</div></div>
+      <div class="ar">&#9664;</div>
+      <div class="st"><div class="no">ASKED BY</div><div class="nm">AGENT</div><div class="tx">two calls over MCP: one for the number, one for the cause</div></div>
+    </div>
+    <div class="foot" style="top:530px">One layer per slide, slowly.</div>
+    <div class="foot dimf" style="top:580px;font-size:24px">Every value from here on comes from last night's build.</div>
+  </div>
+  <aside class="notes">In a live demo this is a walk backwards in dbt Platform, from search and knowledge_base to the source. This section is that walk turned around and slowed down. It reads like dbt lineage, sources on the left and the agent on the right, and the arrows say who moves: the data flows right, from the sources through the models into the two truths; the agent reaches left into those two truths, over MCP. We go in that order: sources, models, the two truths, then the agent. One question: what happened in 2025 Q1 that caused on-time to go down? An agent gets it and plans two lookups, one for the number and one for the cause. It reaches the warehouse over MCP. The number comes from the semantic layer and the cause from the knowledge base, and both are dbt models built from the source systems. One layer per slide; the bar at the top of each one shows where we are. Every number and every row on the next slides is real, read from the production tables.</aside>
+</section>
+<!-- How it gets made, 2/11: the four steps from a document to context, with the shape of the data after each -->
+<section class="lt crumbed lt-flow lt-pipe">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">2/11</span>FOUR STEPS FROM DOCUMENT TO CONTEXT</h2>
+      <div class="owns">Parse, chunk, embed, classify. Then union</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="the text prepared: lines of text cut into passages"><rect x="0" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="4" width="1" height="1" fill="#ffb000"/><rect x="1" y="4" width="1" height="1" fill="#ffb000"/><rect x="2" y="4" width="1" height="1" fill="#ffb000"/><rect x="3" y="4" width="1" height="1" fill="#ffb000"/><rect x="4" y="4" width="1" height="1" fill="#ffb000"/><rect x="5" y="4" width="1" height="1" fill="#ffb000"/><rect x="6" y="4" width="1" height="1" fill="#ffb000"/><rect x="7" y="4" width="1" height="1" fill="#ffb000"/><rect x="8" y="4" width="1" height="1" fill="#ffb000"/><rect x="9" y="4" width="1" height="1" fill="#ffb000"/><rect x="10" y="4" width="1" height="1" fill="#ffb000"/><rect x="11" y="4" width="1" height="1" fill="#ffb000"/><rect x="0" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="9" width="1" height="1" fill="#ffb000"/><rect x="1" y="9" width="1" height="1" fill="#ffb000"/><rect x="2" y="9" width="1" height="1" fill="#ffb000"/><rect x="3" y="9" width="1" height="1" fill="#ffb000"/><rect x="4" y="9" width="1" height="1" fill="#ffb000"/><rect x="5" y="9" width="1" height="1" fill="#ffb000"/><rect x="6" y="9" width="1" height="1" fill="#ffb000"/><rect x="7" y="9" width="1" height="1" fill="#ffb000"/><rect x="8" y="9" width="1" height="1" fill="#ffb000"/><rect x="9" y="9" width="1" height="1" fill="#ffb000"/><rect x="10" y="9" width="1" height="1" fill="#ffb000"/><rect x="11" y="9" width="1" height="1" fill="#ffb000"/><rect x="0" y="11" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="11" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="11" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="11" width="1" height="1" fill="#5fd3c8"/></svg>
+    </div>
+    <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
+    <div class="flow" style="top:200px;height:300px">
+      <div class="st"><div class="no">IN</div><div class="nm">RAW DOCUMENT</div><div class="tx">IR-9001.pdf, from the incident system</div><div class="shape">1 file</div></div>
+      <div class="ar">&#9654;</div>
+      <div class="st hotb"><div class="no">STEP 1</div><div class="nm">PARSE</div><div class="tx">the file becomes text</div><div class="shape">1 document</div></div>
+      <div class="ar">&#9654;</div>
+      <div class="st"><div class="no">STEP 2</div><div class="nm">CHUNK</div><div class="tx">the text becomes passages</div><div class="shape">3 passages</div></div>
+      <div class="ar">&#9654;</div>
+      <div class="pair">
+        <div class="st hotb"><div class="no">STEP 3</div><div class="nm">EMBED</div><div class="tx">a vector each</div><div class="shape">3 vectors</div></div>
+        <div class="st hotb"><div class="no">STEP 4</div><div class="nm">CLASSIFY</div><div class="tx">a label each</div><div class="shape">3 labels</div></div>
+      </div>
+      <div class="ar">&#9654;</div>
+      <div class="st ambb"><div class="no">OUT</div><div class="nm">KNOWLEDGE BASE</div><div class="tx">with six other sources</div><div class="shape">3 of 2,708 rows</div></div>
+    </div>
+  </div>
+  <aside class="notes">Four steps, and the shape of the data after each. One incident report comes in as a file. Parse turns the file into text: one document. Chunk cuts the text into passages that fit an embedding model: three. Embed turns each passage into a vector, and classify gives each passage a label, side by side: three vectors and three labels. Then the knowledge base unions those three rows with every other source, 2,708 rows in all. Parse, embed and classify call an AI function and cost money; chunking is plain SQL. The next four slides take one step each, with the real data.</aside>
+</section>
+<!-- How it gets made, 3/11: parse. A PDF becomes text; the model on the right. In this demo the reports are already text; the slide shows the PDF case -->
+<section class="lt crumbed crumbed2 lt-code lt-parse3">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">3/11</span>STEP 1: PARSE</h2>
+      <div class="owns">A file the incident system exported becomes text a model can read</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="parse: a document page with lines of text"><rect x="0" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="4" width="1" height="1" fill="#ffb000"/><rect x="3" y="4" width="1" height="1" fill="#ffb000"/><rect x="4" y="4" width="1" height="1" fill="#ffb000"/><rect x="5" y="4" width="1" height="1" fill="#ffb000"/><rect x="6" y="4" width="1" height="1" fill="#ffb000"/><rect x="10" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="6" width="1" height="1" fill="#ffb000"/><rect x="3" y="6" width="1" height="1" fill="#ffb000"/><rect x="4" y="6" width="1" height="1" fill="#ffb000"/><rect x="5" y="6" width="1" height="1" fill="#ffb000"/><rect x="6" y="6" width="1" height="1" fill="#ffb000"/><rect x="7" y="6" width="1" height="1" fill="#ffb000"/><rect x="8" y="6" width="1" height="1" fill="#ffb000"/><rect x="10" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="8" width="1" height="1" fill="#ffb000"/><rect x="3" y="8" width="1" height="1" fill="#ffb000"/><rect x="4" y="8" width="1" height="1" fill="#ffb000"/><rect x="5" y="8" width="1" height="1" fill="#ffb000"/><rect x="10" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="10" width="1" height="1" fill="#5fd3c8"/></svg>
+    </div>
+    <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
+    <div class="subcrumbs" role="img" aria-label="inside dbt models: PARSE"><b>INSIDE dbt MODELS</b><span class="on">PARSE</span><i>&#9654;</i><span>CHUNK</span><i>&#9654;</i><span>EMBED</span><i>&#9654;</i><span>CLASSIFY</span><i>&#9654;</i><span>UNION</span></div>
+    <div class="panel pane a"><span class="tab">RAW &#183; IR-9001.pdf</span>
+      <svg width="290" height="267" viewBox="0 0 400 368" role="img" aria-label="IR-9001 as a PDF page: a safety team incident report form with a field block and four sections of text" style="display:block;margin:0 auto">
+        <path d="M0 0 H368 L400 32 V368 H0 Z" fill="#e4f3ef"/><path d="M368 0 V32 H400" fill="#8fb5bb"/>
+        <rect x="0" y="0" width="368" height="30" fill="#0f2145"/>
+        <text x="16" y="20" style="fill:#5fd3c8;font-family:var(--pixel);font-size:10px">JAFFLE LOGISTICS &#183; SAFETY</text>
+        <text x="16" y="58" style="fill:#050b18;font-family:var(--pixel);font-size:14px">INCIDENT REPORT</text>
+        <text x="16" y="78" style="fill:#050b18;font-size:13px">INC-2025-00417 &#183; ACCIDENT &#183; severity 3</text>
+        <g style="fill:#050b18;font-size:12px"><rect x="16" y="90" width="368" height="74" fill="none" stroke="#8fb5bb" stroke-width="1.5"/>
+        <text x="24" y="108">Hub</text><text x="104" y="108" font-weight="600">HUB-PAR (Paris)</text>
+        <text x="24" y="124">Vehicle</text><text x="104" y="124" font-weight="600">VEH-0015</text><text x="200" y="124">Driver</text><text x="250" y="124" font-weight="600">DRV-01017</text>
+        <text x="24" y="140">Route</text><text x="104" y="140" font-weight="600">RTE-PAR-20250115-201</text>
+        <text x="24" y="156">Filed</text><text x="104" y="156" font-weight="600">16 Jan 2025 14:00 &#183; L. Okonkwo</text></g>
+        <g style="fill:#050b18;font-family:var(--pixel);font-size:9px"><text x="16" y="186">SUMMARY</text><text x="16" y="236">TIMELINE</text><text x="16" y="290">ROOT CAUSE</text><text x="16" y="332">REMEDIATION</text></g>
+        <g fill="#8fb5bb"><rect x="16" y="194" width="352" height="6"/><rect x="16" y="206" width="330" height="6"/><rect x="16" y="218" width="190" height="6"/>
+        <rect x="16" y="244" width="300" height="6"/><rect x="16" y="256" width="320" height="6"/><rect x="16" y="268" width="290" height="6"/>
+        <rect x="16" y="298" width="352" height="6"/><rect x="16" y="310" width="240" height="6"/>
+        <rect x="16" y="340" width="340" height="6"/><rect x="16" y="352" width="210" height="6"/></g>
+      </svg>
+    </div>
+    <div class="panel pane b ambp"><span class="tab">THE dbt MODEL, CONDENSED</span>
+<pre class="cd xs"><span class="d">-- int_incident_reports_documents.sql</span>
+<span class="k">select</span>
+    r.report_id,
+    s.client_id,
+    <span class="k">ai_parse_document</span>(r.content) <span class="k">as</span> body,
+    r.filed_at <span class="k">as</span> artifact_ts,
+    <span class="s">'jaffle_logistics://incident_report/'</span>
+        || r.report_id <span class="k">as</span> citation_url
+<span class="k">from</span> <span class="j">{{</span> <span class="k">ref</span>(<span class="s">'stg_incident_reports'</span>) <span class="j">}}</span> r
+<span class="k">left join</span> <span class="j">{{</span> <span class="k">ref</span>(<span class="s">'stg_shipments'</span>) <span class="j">}}</span> s
+    <span class="k">on</span> r.shipment_id = s.shipment_id</pre>
+    </div>
+    <div class="panel pane c"><span class="tab">THE ROW IT WRITES</span>
+      <div class="row1"><i>report_id</i><b>IR-9001</b></div>
+      <div class="row1"><i>client_id</i>CLI-0042 <em>Jaffle Werke</em></div>
+      <div class="row1"><i>body</i>INCIDENT REPORT INC-2025-00417 &mdash; ACCIDENT &hellip; During the Jan 14-16 winter storm, a semi jackknifed on an icy on-ramp departing the Paris hub. &hellip;</div>
+      <div class="row1"><i>artifact_ts</i>2025-01-16 14:00</div>
+      <div class="row1"><i>citation_url</i>jaffle_logistics://<wbr>incident_report/IR-9001</div>
+    </div>
+    <div class="par" style="left:350px">&#9654;</div>
+    <div class="par" style="left:848px">&#9654;</div>
+  </div>
+  <aside class="notes">Step one, parse. Read left to right: the file, the model, the row it writes. Picture the incident system exporting each report as a PDF: a form with a field block and four sections. The model in the middle turns the file into text with Databricks' ai_parse_document (Snowflake and BigQuery have their own), and joins the report to its shipment, which gives it an account, CLI-0042 Jaffle Werke, and a citation back to IR-9001. Parse is an AI call, so it costs money, once per file. Be straight with the room if asked: in this demo the reports arrive as text already, so the real int_incident_reports_documents has no parse call; it restores line breaks in staging and does the join, which is otherwise the model you see.</aside>
+</section>
+<!-- How it gets made, 4/11: chunk. IR-9001's 13 sentences, grouped into its 3 passages; the two models on the right, one block each -->
+<section class="lt crumbed crumbed2 lt-code">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">4/11</span>STEP 2: CHUNK</h2>
+      <div class="owns">Cut into sentences, then packed into passages near 100 tokens</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="the text prepared: lines of text cut into passages"><rect x="0" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="4" width="1" height="1" fill="#ffb000"/><rect x="1" y="4" width="1" height="1" fill="#ffb000"/><rect x="2" y="4" width="1" height="1" fill="#ffb000"/><rect x="3" y="4" width="1" height="1" fill="#ffb000"/><rect x="4" y="4" width="1" height="1" fill="#ffb000"/><rect x="5" y="4" width="1" height="1" fill="#ffb000"/><rect x="6" y="4" width="1" height="1" fill="#ffb000"/><rect x="7" y="4" width="1" height="1" fill="#ffb000"/><rect x="8" y="4" width="1" height="1" fill="#ffb000"/><rect x="9" y="4" width="1" height="1" fill="#ffb000"/><rect x="10" y="4" width="1" height="1" fill="#ffb000"/><rect x="11" y="4" width="1" height="1" fill="#ffb000"/><rect x="0" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="9" width="1" height="1" fill="#ffb000"/><rect x="1" y="9" width="1" height="1" fill="#ffb000"/><rect x="2" y="9" width="1" height="1" fill="#ffb000"/><rect x="3" y="9" width="1" height="1" fill="#ffb000"/><rect x="4" y="9" width="1" height="1" fill="#ffb000"/><rect x="5" y="9" width="1" height="1" fill="#ffb000"/><rect x="6" y="9" width="1" height="1" fill="#ffb000"/><rect x="7" y="9" width="1" height="1" fill="#ffb000"/><rect x="8" y="9" width="1" height="1" fill="#ffb000"/><rect x="9" y="9" width="1" height="1" fill="#ffb000"/><rect x="10" y="9" width="1" height="1" fill="#ffb000"/><rect x="11" y="9" width="1" height="1" fill="#ffb000"/><rect x="0" y="11" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="11" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="11" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="11" width="1" height="1" fill="#5fd3c8"/></svg>
+    </div>
+    <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
+    <div class="subcrumbs" role="img" aria-label="inside dbt models: CHUNK"><b>INSIDE dbt MODELS</b><span class="past">PARSE</span><i>&#9654;</i><span class="on">CHUNK</span><i>&#9654;</i><span>EMBED</span><i>&#9654;</i><span>CLASSIFY</span><i>&#9654;</i><span>UNION</span></div>
+    <div class="panel pane r"><span class="tab">IR-9001: 13 SENTENCES, BY PASSAGE</span>
+      <div class="sents">
+        <div class="sh p1">PASSAGE 1 <span>IR-9001::1 &#183; sentences 1-6 &#183; ~107 tokens</span></div>
+        <div class="sn p1"><b>1</b>INCIDENT REPORT INC-2025-00417 &mdash; ACCIDENT &hellip;</div>
+        <div class="sn p1"><b>2</b>Vehicle VEH-0015, driver DRV-01017, route &hellip;</div>
+        <div class="sn p1"><b>3</b>SUMMARY During the Jan 14-16 winter storm, &hellip;</div>
+        <div class="sn p1"><b>4</b>No injuries.</div>
+        <div class="sn p1"><b>5</b>Trailer load secured and recovered; &hellip;</div>
+        <div class="sn p1"><b>6</b>TIMELINE - 2025-01-15 08:40 loss of traction &hellip;</div>
+        <div class="sh p2">PASSAGE 2 <span>IR-9001::2 &#183; sentences 7-12 &#183; ~109 tokens</span></div>
+        <div class="sn p2"><b>7</b>- 08:52 driver reported in; area coned, &hellip;</div>
+        <div class="sn p2"><b>8</b>- 10:20 recovery unit on scene; &hellip;</div>
+        <div class="sn p2"><b>9</b>ROOT CAUSE Unsalted ramp and reduced &hellip;</div>
+        <div class="sn p2"><b>10</b>Contributing factor: aggressive storm-&hellip;</div>
+        <div class="sn p2"><b>11</b>REMEDIATION Unit pulled for inspection &hellip;</div>
+        <div class="sn p2"><b>12</b>Dispatch hold instituted for PAR when &hellip;</div>
+        <div class="sh p3">PASSAGE 3 <span>IR-9001::3 &#183; sentence 13 &#183; ~6 tokens</span></div>
+        <div class="sn p3"><b>13</b>Reviewed with dispatch.</div>
+      </div>
+    </div>
+    <div class="panel pane l ambp"><span class="tab">TWO dbt MODELS</span>
+      <div class="mdl"><div class="mh">MODEL 1 OF 2</div><div class="mn">split_incident_reports <span>report &#9654; 13 sentences</span></div>
+<pre class="cd xs"><span class="j">{{</span> <span class="k">dbt_context_engineering.split_sentences</span>(
+    relation    = <span class="k">ref</span>(<span class="s">'int_incident_reports_documents'</span>),
+    id_column   = <span class="s">'report_id'</span>,
+    text_column = <span class="s">'body'</span>) <span class="j">}}</span></pre></div>
+      <div class="mdl"><div class="mh">MODEL 2 OF 2</div><div class="mn">chunk_incident_reports <span>13 sentences &#9654; 3 passages</span></div>
+<pre class="cd xs"><span class="j">{{</span> <span class="k">dbt_context_engineering.chunk</span>(
+    relation         = <span class="k">ref</span>(<span class="s">'split_incident_reports'</span>),
+    id_column        = <span class="s">'sentence_id'</span>,
+    order_column     = <span class="s">'sentence_index'</span>,
+    text_column      = <span class="s">'sentence_text'</span>,
+    partition_column = <span class="s">'document_id'</span>) <span class="j">}}</span></pre></div>
+    </div>
+    <div class="par" style="left:608px">&#9654;</div>
+  </div>
+  <aside class="notes">Step two, chunk. A whole report is too long and too mixed to embed as one thing, so it is cut down by two small dbt models, the two blocks on the right. The first, split_incident_reports, cuts it at sentence boundaries: 13 sentences. The second, chunk_incident_reports, packs consecutive sentences into passages near a 100-token target, and never across two reports, which is what partition_column does. On the left is that one report: its 13 sentences, grouped by the passage each landed in: 1 to 6 are the first passage, the storm and the jackknife; 7 to 12 the second, the timeline, root cause and remediation; and the last sentence is left on its own. Each passage remembers which sentences went into it, so it can be traced back. Plain SQL, no AI, the same passages every run.</aside>
+</section>
+<!-- How it gets made, 5/11: embed. The three passages as records: text, content hash and vector (first 3 of 1,024 values); the incremental embed model on the right -->
+<section class="lt crumbed crumbed2 lt-code">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">5/11</span>STEP 3: EMBED</h2>
+      <div class="owns">Each passage becomes 1,024 numbers that place it by meaning</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="embed: a vector drawn as bars"><rect x="2" y="1" width="1" height="1" fill="#ffb000"/><rect x="2" y="2" width="1" height="1" fill="#ffb000"/><rect x="8" y="2" width="1" height="1" fill="#ffb000"/><rect x="2" y="3" width="1" height="1" fill="#ffb000"/><rect x="5" y="3" width="1" height="1" fill="#ffb000"/><rect x="8" y="3" width="1" height="1" fill="#ffb000"/><rect x="0" y="4" width="1" height="1" fill="#ffb000"/><rect x="2" y="4" width="1" height="1" fill="#ffb000"/><rect x="5" y="4" width="1" height="1" fill="#ffb000"/><rect x="8" y="4" width="1" height="1" fill="#ffb000"/><rect x="10" y="4" width="1" height="1" fill="#ffb000"/><rect x="0" y="5" width="1" height="1" fill="#ffb000"/><rect x="2" y="5" width="1" height="1" fill="#ffb000"/><rect x="4" y="5" width="1" height="1" fill="#ffb000"/><rect x="5" y="5" width="1" height="1" fill="#ffb000"/><rect x="7" y="5" width="1" height="1" fill="#ffb000"/><rect x="8" y="5" width="1" height="1" fill="#ffb000"/><rect x="10" y="5" width="1" height="1" fill="#ffb000"/><rect x="0" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="10" width="1" height="1" fill="#5fd3c8"/></svg>
+    </div>
+    <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
+    <div class="subcrumbs" role="img" aria-label="inside dbt models: EMBED"><b>INSIDE dbt MODELS</b><span class="past">PARSE</span><i>&#9654;</i><span class="past">CHUNK</span><i>&#9654;</i><span class="on">EMBED</span><i>&#9654;</i><span>CLASSIFY</span><i>&#9654;</i><span>UNION</span></div>
+    <div class="panel pane r"><span class="tab">EACH PASSAGE: HASH + VECTOR</span>
+      <div class="rec p1">
+        <div class="kv"><i>chunk_id</i><b>IR-9001::1</b></div>
+        <div class="kv"><i>chunk_text</i><span>&hellip; a semi jackknifed on an icy on-ramp &hellip;</span></div>
+        <div class="kv hsh"><i>content_hash</i><span>37b30960&hellip;</span></div>
+        <div class="kv vec"><i>embedding</i><span>[-0.085, -0.297, 0.942, &hellip;] <em>&times; 1,024</em></span></div>
+      </div>
+      <div class="rec p2">
+        <div class="kv"><i>chunk_id</i><b>IR-9001::2</b></div>
+        <div class="kv"><i>chunk_text</i><span>&hellip; Unsalted ramp and reduced traction &hellip;</span></div>
+        <div class="kv hsh"><i>content_hash</i><span>62179877&hellip;</span></div>
+        <div class="kv vec"><i>embedding</i><span>[0.425, -0.507, -0.035, &hellip;] <em>&times; 1,024</em></span></div>
+      </div>
+      <div class="rec p3">
+        <div class="kv"><i>chunk_id</i><b>IR-9001::3</b></div>
+        <div class="kv"><i>chunk_text</i><span>Reviewed with dispatch.</span></div>
+        <div class="kv hsh"><i>content_hash</i><span>8bda5cb0&hellip;</span></div>
+        <div class="kv vec"><i>embedding</i><span>[0.034, -0.579, -0.061, &hellip;] <em>&times; 1,024</em></span></div>
+      </div>
+    </div>
+    <div class="panel pane l ambp"><span class="tab">THE dbt MODEL, CONDENSED</span>
+<pre class="cd xs"><span class="d">-- incident_reports_embed.sql</span>
+<span class="j">{{</span> <span class="k">config</span>(materialized = <span class="s">'incremental'</span>,
+          unique_key   = <span class="s">'chunk_id'</span>) <span class="j">}}</span>
+
+<span class="k">select</span>
+    chunk_id,
+    chunk_text,
+    content_hash,
+    <span class="j">{{</span> <span class="k">dbt_context_engineering.embed</span>(<span class="s">'chunk_text'</span>) <span class="j">}}</span>
+        <span class="k">as</span> embedding
+<span class="k">from</span> <span class="j">{{</span> <span class="k">ref</span>(<span class="s">'incident_reports_hashed'</span>) <span class="j">}}</span>
+<span class="d">-- only passages whose hash is new or changed</span>
+<span class="k">where</span> <span class="j">{{</span> <span class="k">dbt_context_engineering.incremental_delta_predicate</span>(
+    <span class="s">'chunk_id'</span>, content_hash_column = <span class="s">'content_hash'</span>) <span class="j">}}</span></pre>
+    </div>
+    <div class="par" style="left:608px">&#9654;</div>
+  </div>
+  <aside class="notes">Step three, embed. Each passage goes to an embedding model, here Databricks' gte-large-en, and comes back as 1,024 numbers. On the left, each passage is now a record with two new things: its content hash, a fingerprint of the text, and its embedding, the vector, first three numbers shown. Nobody reads these numbers; what matters is that passages about the same thing get numbers that sit close together. That is how search works: the question is embedded with the same model and the nearest passages win; for the Paris storm question IR-9001's first passage is nearest, at 0.779. On the right, the model: it is incremental, and the where clause only sends passages whose hash is new or changed, the same hash you see in each record, so unchanged text is never paid for twice. Only a change of embedding model re-embeds everything.</aside>
+</section>
+<!-- How it gets made, 6/11: classify. One label per passage from a versioned prompt; the classify model on the right, with its prompt and output schema explained -->
+<section class="lt crumbed crumbed2 lt-code">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">6/11</span>STEP 4: CLASSIFY</h2>
+      <div class="owns">Each passage gets one label, so search can filter by what it is about</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="classify: a label tag"><rect x="1" y="1" width="1" height="1" fill="#ffb000"/><rect x="2" y="1" width="1" height="1" fill="#ffb000"/><rect x="3" y="1" width="1" height="1" fill="#ffb000"/><rect x="4" y="1" width="1" height="1" fill="#ffb000"/><rect x="5" y="1" width="1" height="1" fill="#ffb000"/><rect x="6" y="1" width="1" height="1" fill="#ffb000"/><rect x="7" y="1" width="1" height="1" fill="#ffb000"/><rect x="1" y="2" width="1" height="1" fill="#ffb000"/><rect x="8" y="2" width="1" height="1" fill="#ffb000"/><rect x="1" y="3" width="1" height="1" fill="#ffb000"/><rect x="3" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="3" width="1" height="1" fill="#ffb000"/><rect x="1" y="4" width="1" height="1" fill="#ffb000"/><rect x="3" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="4" width="1" height="1" fill="#ffb000"/><rect x="1" y="5" width="1" height="1" fill="#ffb000"/><rect x="11" y="5" width="1" height="1" fill="#ffb000"/><rect x="1" y="6" width="1" height="1" fill="#ffb000"/><rect x="10" y="6" width="1" height="1" fill="#ffb000"/><rect x="1" y="7" width="1" height="1" fill="#ffb000"/><rect x="9" y="7" width="1" height="1" fill="#ffb000"/><rect x="1" y="8" width="1" height="1" fill="#ffb000"/><rect x="8" y="8" width="1" height="1" fill="#ffb000"/><rect x="1" y="9" width="1" height="1" fill="#ffb000"/><rect x="2" y="9" width="1" height="1" fill="#ffb000"/><rect x="3" y="9" width="1" height="1" fill="#ffb000"/><rect x="4" y="9" width="1" height="1" fill="#ffb000"/><rect x="5" y="9" width="1" height="1" fill="#ffb000"/><rect x="6" y="9" width="1" height="1" fill="#ffb000"/><rect x="7" y="9" width="1" height="1" fill="#ffb000"/></svg>
+    </div>
+    <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
+    <div class="subcrumbs" role="img" aria-label="inside dbt models: CLASSIFY"><b>INSIDE dbt MODELS</b><span class="past">PARSE</span><i>&#9654;</i><span class="past">CHUNK</span><i>&#9654;</i><span class="past">EMBED</span><i>&#9654;</i><span class="on">CLASSIFY</span><i>&#9654;</i><span>UNION</span></div>
+    <div class="panel pane r"><span class="tab">3 PASSAGES &#9654; 3 LABELS</span>
+      <div class="cls p1"><div class="ph">IR-9001::1</div><div class="pt">&hellip; a semi jackknifed on an icy on-ramp &hellip;</div><div class="chip on">weather_disruption</div></div>
+      <div class="cls p2"><div class="ph">IR-9001::2</div><div class="pt">&hellip; Unsalted ramp and reduced traction &hellip;</div><div class="chip on">weather_disruption</div></div>
+      <div class="cls p3"><div class="ph">IR-9001::3</div><div class="pt">Reviewed with dispatch.</div><div class="chip">routine_status</div></div>
+      <div class="rule"></div>
+      <div class="lbl" style="line-height:1.5">ALL 2,708 ROWS: <span class="amb">548 ARE weather_disruption</span></div>
+    </div>
+    <div class="panel pane l ambp"><span class="tab">THE MODEL: PROMPT + OUTPUT SCHEMA</span>
+<pre class="cd xs"><span class="k">select</span>
+    chunk_id,
+    <span class="j">{{</span> <span class="k">dbt_context_engineering.classify</span>(
+        <span class="s">'chunk_text'</span>,
+<span class="mk">&#9312;</span>      prompt = <span class="k">dbt_context_engineering.prompt</span>(
+            <span class="s">'jaffle_content_type'</span>, <span class="s">'v1'</span>),
+<span class="mk">&#9313;</span>      output_schema = <span class="k">dbt_context_engineering.schema_def</span>(
+            <span class="s">'jaffle_content_type'</span>, <span class="s">'v1'</span>)
+    ) <span class="j">}}</span> <span class="k">as</span> content_type
+<span class="k">from</span> <span class="j">{{</span> <span class="k">ref</span>(<span class="s">'incident_reports_hashed'</span>) <span class="j">}}</span></pre>
+      <div class="expl">
+        <p><b>&#9312; prompt</b> the instruction sent with every passage: &ldquo;Classify the text into exactly one content-type label&rdquo;, then the six labels, each defined in a line. <i>weather_disruption: caused by severe weather, even if filed as an accident.</i></p>
+        <p><b>&#9313; output schema</b> a JSON schema the answer must fit: one field, content_type, and only those six labels are allowed.</p>
+      </div>
+    </div>
+    <div class="par" style="left:608px">&#9654;</div>
+  </div>
+  <aside class="notes">Step four, classify, side by side with embed. A model reads each passage and picks one label from a fixed list of six. The model on the right passes two things to classify. One, the prompt: the instruction that goes with every passage, classify this text into exactly one label, followed by the six labels and a one-line definition of each; weather_disruption, for example, counts an accident caused by icy conditions. Two, the output schema: a small JSON schema that says the answer is one field, content_type, and it must be one of those six labels, so the model cannot invent a seventh or reply in prose. Both live in one dbt macro, jaffle_content_type, version v1, so changing a definition is a pull request you can review, and the version number says which rows were labelled with which prompt. IR-9001's first two passages come back weather_disruption. The third, "Reviewed with dispatch.", comes back routine_status, which is right: it says nothing about the storm. Across the whole knowledge base, 548 of the 2,708 rows are weather_disruption, so a search filtered on that label looks at 548 rows, not 2,708, before the vector math even starts.</aside>
+</section>
+<!-- How it gets made, 7/11: the many flows. Seven sources, each its own chain, into one knowledge base -->
+<section class="lt crumbed crumbed2 lt-code">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">7/11</span>SEVEN FLOWS, ONE KNOWLEDGE BASE</h2>
+      <div class="owns">The same four steps for every source, joined at the end</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="many flows: a network of nodes joining into one"><rect x="0" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="0" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="4" width="1" height="1" fill="#ffb000"/><rect x="9" y="4" width="1" height="1" fill="#ffb000"/><rect x="8" y="5" width="1" height="1" fill="#ffb000"/><rect x="9" y="5" width="1" height="1" fill="#ffb000"/><rect x="0" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="6" width="1" height="1" fill="#ffb000"/><rect x="9" y="6" width="1" height="1" fill="#ffb000"/><rect x="0" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="7" width="1" height="1" fill="#ffb000"/><rect x="11" y="7" width="1" height="1" fill="#ffb000"/><rect x="5" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="8" width="1" height="1" fill="#ffb000"/><rect x="11" y="8" width="1" height="1" fill="#ffb000"/><rect x="0" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="10" width="1" height="1" fill="#5fd3c8"/></svg>
+    </div>
+    <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
+    <div class="subcrumbs" role="img" aria-label="inside dbt models: UNION"><b>INSIDE dbt MODELS</b><span class="past">PARSE</span><i>&#9654;</i><span class="past">CHUNK</span><i>&#9654;</i><span class="past">EMBED</span><i>&#9654;</i><span class="past">CLASSIFY</span><i>&#9654;</i><span class="on">UNION</span></div>
+    <div class="panel pane wide dagp"><span class="tab">THE dbt DAG &#183; ROWS EACH SOURCE ADDS</span>
+      <svg width="860" height="332" viewBox="0 0 860 332" role="img" aria-label="Seven sources, each with its own flow into one knowledge base: legal docs, incident reports, CRM notes and call transcripts are parsed and chunked; support tickets, dispatch notes and Slack threads skip chunking because a record is already one passage. Every source is embedded and classified, then all seven union into knowledge_base, 2,708 rows. The incident reports flow, the one followed so far, is highlighted."><g style="font-family:var(--pixel);font-size:12px;fill:#5fd3c8"><text x="98" y="18" text-anchor="middle">SOURCE</text><text x="310" y="18" text-anchor="middle">PARSE+CHUNK</text><text x="490" y="18" text-anchor="middle">EMBED+CLASS.</text><text x="745" y="18" text-anchor="middle" style="fill:#ffb000">UNION</text></g><rect x="0" y="28" width="196" height="36" fill="#0a1630" stroke="#5fd3c8" stroke-width="3"/><text x="12" y="52" style="fill:#e4f3ef;font-size:17px;font-weight:600">legal_docs</text><line x1="196" y1="46" x2="250" y2="46" stroke="#5fd3c8" stroke-width="2.5"/><rect x="250" y="32" width="120" height="28" fill="#0a1630" stroke="#5fd3c8" stroke-width="3"/><line x1="370" y1="46" x2="430" y2="46" stroke="#5fd3c8" stroke-width="2.5"/><rect x="430" y="30" width="120" height="14" fill="#0a1630" stroke="#5fd3c8" stroke-width="2.5"/><rect x="430" y="48" width="120" height="14" fill="#0a1630" stroke="#5fd3c8" stroke-width="2.5"/><path d="M550 46 C610 46 580 68.0 640 68.0" fill="none" stroke="#5fd3c8" stroke-width="2"/><text x="632" y="63.0" text-anchor="end" style="fill:#8fb5bb;font-size:13px">48</text><rect x="0" y="72" width="196" height="36" fill="#0a1630" stroke="#ffb000" stroke-width="4"/><text x="12" y="96" style="fill:#ffb000;font-size:17px;font-weight:600">incident_reports</text><line x1="196" y1="90" x2="250" y2="90" stroke="#ffb000" stroke-width="2.5"/><rect x="250" y="76" width="120" height="28" fill="#0a1630" stroke="#ffb000" stroke-width="4"/><line x1="370" y1="90" x2="430" y2="90" stroke="#ffb000" stroke-width="2.5"/><rect x="430" y="74" width="120" height="14" fill="#0a1630" stroke="#ffb000" stroke-width="2.5"/><rect x="430" y="92" width="120" height="14" fill="#0a1630" stroke="#ffb000" stroke-width="2.5"/><path d="M550 90 C610 90 580 104.7 640 104.7" fill="none" stroke="#ffb000" stroke-width="3"/><text x="632" y="99.7" text-anchor="end" style="fill:#ffb000;font-size:13px">715</text><rect x="0" y="116" width="196" height="36" fill="#0a1630" stroke="#5fd3c8" stroke-width="3"/><text x="12" y="140" style="fill:#e4f3ef;font-size:17px;font-weight:600">crm_notes</text><line x1="196" y1="134" x2="250" y2="134" stroke="#5fd3c8" stroke-width="2.5"/><rect x="250" y="120" width="120" height="28" fill="#0a1630" stroke="#5fd3c8" stroke-width="3"/><line x1="370" y1="134" x2="430" y2="134" stroke="#5fd3c8" stroke-width="2.5"/><rect x="430" y="118" width="120" height="14" fill="#0a1630" stroke="#5fd3c8" stroke-width="2.5"/><rect x="430" y="136" width="120" height="14" fill="#0a1630" stroke="#5fd3c8" stroke-width="2.5"/><path d="M550 134 C610 134 580 141.3 640 141.3" fill="none" stroke="#5fd3c8" stroke-width="2"/><text x="632" y="136.3" text-anchor="end" style="fill:#8fb5bb;font-size:13px">58</text><rect x="0" y="160" width="196" height="36" fill="#0a1630" stroke="#5fd3c8" stroke-width="3"/><text x="12" y="184" style="fill:#e4f3ef;font-size:17px;font-weight:600">call_transcripts</text><line x1="196" y1="178" x2="250" y2="178" stroke="#5fd3c8" stroke-width="2.5"/><rect x="250" y="164" width="120" height="28" fill="#0a1630" stroke="#5fd3c8" stroke-width="3"/><line x1="370" y1="178" x2="430" y2="178" stroke="#5fd3c8" stroke-width="2.5"/><rect x="430" y="162" width="120" height="14" fill="#0a1630" stroke="#5fd3c8" stroke-width="2.5"/><rect x="430" y="180" width="120" height="14" fill="#0a1630" stroke="#5fd3c8" stroke-width="2.5"/><path d="M550 178 C610 178 580 178.0 640 178.0" fill="none" stroke="#5fd3c8" stroke-width="2"/><text x="632" y="173.0" text-anchor="end" style="fill:#8fb5bb;font-size:13px">69</text><rect x="0" y="204" width="196" height="36" fill="#0a1630" stroke="#5fd3c8" stroke-width="3"/><text x="12" y="228" style="fill:#e4f3ef;font-size:17px;font-weight:600">support_tickets</text><line x1="196" y1="222" x2="430" y2="222" stroke="#8fb5bb" stroke-width="2" stroke-dasharray="8 6"/><rect x="430" y="206" width="120" height="14" fill="#0a1630" stroke="#5fd3c8" stroke-width="2.5"/><rect x="430" y="224" width="120" height="14" fill="#0a1630" stroke="#5fd3c8" stroke-width="2.5"/><path d="M550 222 C610 222 580 214.7 640 214.7" fill="none" stroke="#5fd3c8" stroke-width="2"/><text x="632" y="209.7" text-anchor="end" style="fill:#8fb5bb;font-size:13px">403</text><rect x="0" y="248" width="196" height="36" fill="#0a1630" stroke="#5fd3c8" stroke-width="3"/><text x="12" y="272" style="fill:#e4f3ef;font-size:17px;font-weight:600">dispatch_notes</text><line x1="196" y1="266" x2="430" y2="266" stroke="#8fb5bb" stroke-width="2" stroke-dasharray="8 6"/><rect x="430" y="250" width="120" height="14" fill="#0a1630" stroke="#5fd3c8" stroke-width="2.5"/><rect x="430" y="268" width="120" height="14" fill="#0a1630" stroke="#5fd3c8" stroke-width="2.5"/><path d="M550 266 C610 266 580 251.3 640 251.3" fill="none" stroke="#5fd3c8" stroke-width="2"/><text x="632" y="246.3" text-anchor="end" style="fill:#8fb5bb;font-size:13px">1,299</text><rect x="0" y="292" width="196" height="36" fill="#0a1630" stroke="#5fd3c8" stroke-width="3"/><text x="12" y="316" style="fill:#e4f3ef;font-size:17px;font-weight:600">slack_threads</text><line x1="196" y1="310" x2="430" y2="310" stroke="#8fb5bb" stroke-width="2" stroke-dasharray="8 6"/><rect x="430" y="294" width="120" height="14" fill="#0a1630" stroke="#5fd3c8" stroke-width="2.5"/><rect x="430" y="312" width="120" height="14" fill="#0a1630" stroke="#5fd3c8" stroke-width="2.5"/><path d="M550 310 C610 310 580 288.0 640 288.0" fill="none" stroke="#5fd3c8" stroke-width="2"/><text x="632" y="283.0" text-anchor="end" style="fill:#8fb5bb;font-size:13px">116</text><rect x="640" y="28" width="210" height="300" fill="#0f2145" stroke="#ffb000" stroke-width="4"/><text x="745" y="156.0" text-anchor="middle" style="fill:#ffb000;font-size:19px;font-weight:600">knowledge_base</text><text x="745" y="184.0" text-anchor="middle" style="fill:#e4f3ef;font-size:17px">2,708 rows</text><text x="745" y="208.0" text-anchor="middle" style="fill:#8fb5bb;font-size:16px">7 sources, 1 shape</text></svg>
+    </div>
+  </div>
+  <aside class="notes">That was one flow. Here are all seven. The incident reports flow we just followed is the amber one. Legal documents, CRM notes and call transcripts go through the same parse and chunk steps. Support tickets, dispatch notes and Slack threads skip chunking: a ticket or a dispatch note is already short enough to be one passage. Every source is embedded and classified the same way, with the same embedding model, because a corpus embedded by one model cannot be searched with another. Then all seven union into knowledge_base, one shape for all of them, 2,708 rows; dispatch notes are the biggest at 1,299. Search reads that one table. The search model, top right, is itself a dbt model: it embeds the question with the same embedding model as the corpus, compares it with every row by cosine similarity, and returns the ten nearest passages; it can filter first, on the classify label or the account, so the storm question only looks at weather_disruption rows. Seven sources, each a chain of small, ordinary dbt models. And you do not write them by hand: build this with skills. The package ships skills for a coding agent that set up, build the pipeline and wire the AI functions, which is the next slide.</aside>
+</section>
+<!-- How it gets made, 8/11 (DRAFT): this looks hard, how do I do it? You ask a coding agent, it loads the package's three skills, you review one PR. Needs Sean's real timing -->
+<section class="lt crumbed lt-code ask">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">8/11</span><span class="draft">DRAFT</span>THIS LOOKS HARD. HOW DO I DO IT?</h2>
+      <div class="owns">You don't write it by hand. A coding agent does, with the package's skills</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="who builds the tables: a person and a robot"><rect x="7" y="0" width="1" height="1" fill="#ffb000"/><rect x="1" y="1" width="1" height="1" fill="#ffb000"/><rect x="2" y="1" width="1" height="1" fill="#ffb000"/><rect x="6" y="1" width="1" height="1" fill="#ffb000"/><rect x="7" y="1" width="1" height="1" fill="#ffb000"/><rect x="8" y="1" width="1" height="1" fill="#ffb000"/><rect x="9" y="1" width="1" height="1" fill="#ffb000"/><rect x="10" y="1" width="1" height="1" fill="#ffb000"/><rect x="0" y="2" width="1" height="1" fill="#ffb000"/><rect x="1" y="2" width="1" height="1" fill="#ffb000"/><rect x="2" y="2" width="1" height="1" fill="#ffb000"/><rect x="3" y="2" width="1" height="1" fill="#ffb000"/><rect x="6" y="2" width="1" height="1" fill="#ffb000"/><rect x="8" y="2" width="1" height="1" fill="#ffb000"/><rect x="10" y="2" width="1" height="1" fill="#ffb000"/><rect x="0" y="3" width="1" height="1" fill="#ffb000"/><rect x="1" y="3" width="1" height="1" fill="#ffb000"/><rect x="2" y="3" width="1" height="1" fill="#ffb000"/><rect x="3" y="3" width="1" height="1" fill="#ffb000"/><rect x="6" y="3" width="1" height="1" fill="#ffb000"/><rect x="7" y="3" width="1" height="1" fill="#ffb000"/><rect x="8" y="3" width="1" height="1" fill="#ffb000"/><rect x="9" y="3" width="1" height="1" fill="#ffb000"/><rect x="10" y="3" width="1" height="1" fill="#ffb000"/><rect x="1" y="4" width="1" height="1" fill="#ffb000"/><rect x="2" y="4" width="1" height="1" fill="#ffb000"/><rect x="6" y="4" width="1" height="1" fill="#ffb000"/><rect x="7" y="4" width="1" height="1" fill="#ffb000"/><rect x="8" y="4" width="1" height="1" fill="#ffb000"/><rect x="9" y="4" width="1" height="1" fill="#ffb000"/><rect x="10" y="4" width="1" height="1" fill="#ffb000"/><rect x="0" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="11" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="11" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="11" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="11" width="1" height="1" fill="#5fd3c8"/></svg>
+    </div>
+    <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
+    <div class="panel pane l"><span class="tab">YOU ASK</span>
+<pre class="cd" style="white-space:pre-wrap"><span class="s">&ldquo;Add incident reports to the
+knowledge base: parse, chunk,
+embed incrementally, classify with
+jaffle_content_type v1, union it
+in, and add the tests.&rdquo;</span></pre>
+      <div class="skrow"><b>+ SKILLS</b><span>dbt-ce-setup</span><span>dbt-ce-pipeline</span><span>dbt-ce-ai-functions</span></div>
+    </div>
+    <div class="panel pane r ambp"><span class="tab">YOU REVIEW</span>
+      <div class="pl big">one pull request: the models, their YAML and their tests</div>
+      <div class="rule"></div>
+      <div class="lbl" style="line-height:1.5;color:var(--amber)">PROMPT TO PR</div>
+      <div style="font-size:22px"><span class="tbd">[ __ minutes, from Sean ]</span></div>
+    </div>
+    <div class="pop stk">BUILD THIS<br>WITH SKILLS!</div>
+  </div>
+  <aside class="notes">DRAFT: needs the real timing. This is the moment someone thinks: that is a lot of models, how do I build this? You don't, by hand. You ask a coding agent for the source you want added: parse it, chunk it, embed it incrementally, classify it with the versioned prompt, union it into the knowledge base, add the tests. The agent loads the three skills that ship with dbt_context_engineering, for setup, the pipeline and the AI functions, and writes the models, the YAML and the tests in one pull request. Your job is the review.</aside>
+</section>
+<!-- How it gets made, 9/11: what the two tools read. The metric definition, and one real knowledge_base row -->
+<section class="lt crumbed lt-code">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">9/11</span>WHAT'S IN THE TABLES IT READS</h2>
+      <div class="owns">A governed definition, and a row of text with a vector</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="the tables: a grid with a header row"><rect x="0" y="0" width="1" height="1" fill="#ffb000"/><rect x="1" y="0" width="1" height="1" fill="#ffb000"/><rect x="2" y="0" width="1" height="1" fill="#ffb000"/><rect x="3" y="0" width="1" height="1" fill="#ffb000"/><rect x="4" y="0" width="1" height="1" fill="#ffb000"/><rect x="5" y="0" width="1" height="1" fill="#ffb000"/><rect x="6" y="0" width="1" height="1" fill="#ffb000"/><rect x="7" y="0" width="1" height="1" fill="#ffb000"/><rect x="8" y="0" width="1" height="1" fill="#ffb000"/><rect x="9" y="0" width="1" height="1" fill="#ffb000"/><rect x="10" y="0" width="1" height="1" fill="#ffb000"/><rect x="11" y="0" width="1" height="1" fill="#ffb000"/><rect x="0" y="1" width="1" height="1" fill="#ffb000"/><rect x="1" y="1" width="1" height="1" fill="#ffb000"/><rect x="2" y="1" width="1" height="1" fill="#ffb000"/><rect x="3" y="1" width="1" height="1" fill="#ffb000"/><rect x="4" y="1" width="1" height="1" fill="#ffb000"/><rect x="5" y="1" width="1" height="1" fill="#ffb000"/><rect x="6" y="1" width="1" height="1" fill="#ffb000"/><rect x="7" y="1" width="1" height="1" fill="#ffb000"/><rect x="8" y="1" width="1" height="1" fill="#ffb000"/><rect x="9" y="1" width="1" height="1" fill="#ffb000"/><rect x="10" y="1" width="1" height="1" fill="#ffb000"/><rect x="11" y="1" width="1" height="1" fill="#ffb000"/><rect x="0" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="10" width="1" height="1" fill="#5fd3c8"/></svg>
+    </div>
+    <div class="crumbs" role="img" aria-label="where we are: TWO TRUTHS"><span class="past">SOURCES</span><i>&#9654;</i><span class="past">dbt MODELS</span><i>&#9654;</i><span class="on">TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
+    <div class="panel pane l"><span class="tab">SEMANTIC LAYER</span>
+<pre class="cd"><span class="d"># models/marts/_marts.yml, on fct_shipments</span>
+- name: <span class="s">on_time_shipments</span>
+  type: simple
+  agg:  sum
+  expr: case when <span class="k">is_ontime</span>
+          then 1 else 0 end
+
+- name: <span class="s">on_time_rate</span>
+  type: ratio
+  numerator:   on_time_shipments
+  denominator: shipments</pre>
+      <div class="rule"></div>
+      <div class="lbl" style="line-height:1.4">is_ontime = status is 'delivered'</div>
+    </div>
+    <div class="panel pane r ambp"><span class="tab">KNOWLEDGE_BASE &middot; 1 OF 2,708 ROWS</span>
+      <table class="kv">
+        <tr><td class="c">source_type</td><td class="v">Incident Report</td></tr>
+        <tr><td class="c">source_id</td><td class="v">IR-9001::1 <span class="dim">(passage 1 of 3)</span></td></tr>
+        <tr><td class="c">account_key</td><td class="v">CLI-0042 <span class="dim">(Jaffle Werke)</span></td></tr>
+        <tr><td class="c">text</td><td class="v">&hellip; During the Jan 14-16 winter storm, a semi jackknifed on an icy on-ramp departing the Paris hub. No injuries. &hellip;</td></tr>
+        <tr><td class="c">embedding</td><td class="v"><span class="amb">[-0.085, -0.297, 0.942, &hellip;]</span> <span class="dim">&times; 1,024</span></td></tr>
+        <tr><td class="c">ts</td><td class="v">2025-01-16 14:00</td></tr>
+        <tr><td class="c">citation_url</td><td class="v">&hellip;/incident_report/IR-9001</td></tr>
+        <tr><td class="c">classification</td><td class="v"><span class="amb">weather_disruption</span></td></tr>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">What the two tools actually read. Left, the semantic layer: on_time_rate is a ratio of on_time_shipments over shipments, and on_time_shipments sums fct_shipments.is_ontime, which is true when the status is delivered. Nobody restates that definition in a prompt; the agent asks for the metric by name. Right, one real row of knowledge_base, out of 2,708. It is the first of three passages cut from IR-9001. It carries its source type, the account it belongs to (CLI-0042, Jaffle Werke), the passage text, its embedding (1,024 numbers from databricks-gte-large-en, the first three shown), the time the report was filed, a citation back to the report, and a classification label. The embedding is what the vector search compares against; the label is what the agent's search filters on. The models before this slide are how that row got made.</aside>
+</section>
+<!-- How it gets made, 10/11: how the agent answers. Builds in a snake, one click a box: SL asks, calls, gets; CL asks, calls, gets; the answer. The question, split into a semantic layer call and a context layer call over MCP; what each picks and returns; the answer it assembles -->
+<section class="lt crumbed lt-agent">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">10/11</span>HOW THE AGENT ANSWERS</h2>
+      <div class="owns">It splits the question in two: the number, and the cause</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="two calls: two arrows going out"><rect x="7" y="1" width="1" height="1" fill="#ffb000"/><rect x="7" y="2" width="1" height="1" fill="#ffb000"/><rect x="8" y="2" width="1" height="1" fill="#ffb000"/><rect x="0" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="3" width="1" height="1" fill="#ffb000"/><rect x="2" y="3" width="1" height="1" fill="#ffb000"/><rect x="3" y="3" width="1" height="1" fill="#ffb000"/><rect x="4" y="3" width="1" height="1" fill="#ffb000"/><rect x="5" y="3" width="1" height="1" fill="#ffb000"/><rect x="6" y="3" width="1" height="1" fill="#ffb000"/><rect x="7" y="3" width="1" height="1" fill="#ffb000"/><rect x="8" y="3" width="1" height="1" fill="#ffb000"/><rect x="9" y="3" width="1" height="1" fill="#ffb000"/><rect x="7" y="4" width="1" height="1" fill="#ffb000"/><rect x="8" y="4" width="1" height="1" fill="#ffb000"/><rect x="7" y="5" width="1" height="1" fill="#ffb000"/><rect x="7" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="11" width="1" height="1" fill="#5fd3c8"/></svg>
+    </div>
+    <div class="crumbs" role="img" aria-label="where we are: AGENT"><span class="past">SOURCES</span><i>&#9654;</i><span class="past">dbt MODELS</span><i>&#9654;</i><span class="past">TWO TRUTHS</span><i>&#9664;</i><span class="on">AGENT</span></div>
+    <div class="q">&ldquo;What happened in 2025 Q1 that caused on-time to go down?&rdquo;</div>
+    <div class="ag">
+      <div></div><div class="ch">1 &middot; ASKS</div><div class="ch">2 &middot; CALLS OVER MCP</div><div class="ch">3 &middot; GETS BACK</div><div class="ch amb">4 &middot; ANSWERS</div>
+      <div class="rl"><b>SEMANTIC LAYER</b>the number</div>
+      <div class="cc fragment" data-fragment-index="0"><div>How far did on-time fall, and where?</div></div>
+      <div class="cc fragment" data-fragment-index="1"><div><code>query_metrics</code> picks the metric <b>on_time_rate</b>, by quarter, then Q1 by origin city</div></div>
+      <div class="cc fragment" data-fragment-index="2"><div><b>90.33%</b> in Q1, the low quarter<br><b>Paris, January: 56.60%</b></div></div>
+      <div class="cc ans fragment" data-fragment-index="6"><div>On-time fell to <b>90.33%</b> in Q1. Paris dropped to <b>56.60%</b> in January, when the <b>14-16 January winter storm</b> hit: a semi jackknifed on an icy on-ramp leaving the Paris hub.<div class="cite">cites on_time_rate &middot; IR-9001</div></div></div>
+      <div class="rl"><b>CONTEXT LAYER</b>the cause</div>
+      <div class="cc fragment" data-fragment-index="3"><div>What happened in Paris?</div></div>
+      <div class="cc fragment" data-fragment-index="4"><div><code>search</code> embeds the query and ranks the <b>2,708</b> passages by <b>cosine similarity</b>, only <code>weather_disruption</code></div></div>
+      <div class="cc fragment" data-fragment-index="5"><div><b>IR-9001::1</b>, score <b>0.779</b><br>&ldquo;&hellip; a semi jackknifed on an icy on-ramp &hellip;&rdquo;</div></div>
+    </div>
+  </div>
+  <aside class="notes">Start with the question, out loud: what happened in 2025 Q1 that caused on-time to go down? Click through: the boxes light in a snake. The agent splits it in two. The number goes to the semantic layer over MCP: query_metrics, and the agent picks the governed metric on_time_rate, by quarter, then Q1 by origin city. Back comes 90.33% for Q1, the low quarter, and Paris in January at 56.60%. The cause goes to the context layer: a search over the knowledge base. The search embeds the query with the same model that embedded the passages, then scores every passage by cosine similarity: how closely its 1,024 numbers point the same way as the query's, 1.0 being identical. Filtered to weather_disruption, the top passage is IR-9001 at 0.779: the jackknife in the storm. The agent assembles the two into one answer and cites both: the metric and the report. If asked: the search query on the slide, "truck accident during the Paris winter storm" in the build, is the one stored in the search model, so the scores are real; a live agent would phrase its own. The agent itself is a design, not a running system; the two calls and their results are real.</aside>
+</section>
+<!-- How it gets made, 11/11: why build it this way. Five reasons -->
+<section class="lt lt-code bld">
+  <div class="frame">
+    <div class="panel hd">
+      <h2><span class="no">11/11</span>WHY BUILD IT THIS WAY?</h2>
+      <div class="owns">The context layer, built like the rest of your governed data</div>
+      <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="the skills: an open book"><rect x="1" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="2" width="1" height="1" fill="#ffb000"/><rect x="7" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="3" width="1" height="1" fill="#ffb000"/><rect x="4" y="3" width="1" height="1" fill="#ffb000"/><rect x="5" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="3" width="1" height="1" fill="#ffb000"/><rect x="7" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="3" width="1" height="1" fill="#ffb000"/><rect x="11" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="4" width="1" height="1" fill="#ffb000"/><rect x="7" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="5" width="1" height="1" fill="#ffb000"/><rect x="4" y="5" width="1" height="1" fill="#ffb000"/><rect x="5" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="5" width="1" height="1" fill="#ffb000"/><rect x="7" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="5" width="1" height="1" fill="#ffb000"/><rect x="11" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="6" width="1" height="1" fill="#ffb000"/><rect x="7" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="7" width="1" height="1" fill="#ffb000"/><rect x="4" y="7" width="1" height="1" fill="#ffb000"/><rect x="5" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="7" width="1" height="1" fill="#ffb000"/><rect x="7" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="7" width="1" height="1" fill="#ffb000"/><rect x="11" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="8" width="1" height="1" fill="#ffb000"/><rect x="7" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="10" width="1" height="1" fill="#ffb000"/></svg>
+    </div>
+    <div class="panel pane wide ambp">
+      <table class="res why">
+        <tr><td class="n">&#10003;</td><td><b>Built by the same team</b> who builds the governed data</td></tr>
+        <tr><td class="n">&#10003;</td><td><b>Tested, with lineage,</b> re-usable</td></tr>
+        <tr><td class="n">&#10003;</td><td><b>Efficient:</b> build the right context once</td></tr>
+        <tr><td class="n">&#10003;</td><td><b>Adapts</b> as the business adapts</td></tr>
+        <tr><td class="n">&#10003;</td><td><b>Fast to build</b> with AI development</td></tr>
+      </table>
+    </div>
+  </div>
+  <aside class="notes">Why build it this way? it is built by the same team who already builds the governed data, so the context and the numbers come from one place. Like any dbt model it is tested, has lineage, and is re-usable by every agent and tool. It is efficient: the right context is built once, not re-assembled in every prompt. It adapts as the business adapts, because a change is a pull request like any other. And with AI development, the skills and a coding agent, it is fast to build.</aside>
+</section>
+<!-- Part 4 divider, light deck: From Analytics Engineering to Context Engineering. Overrides deck/slides/165-part-3-from-ae-to-ce.html (the full deck keeps three parts) -->
+<section class="agenda">
+  <div class="frame">
+    <div class="panel hd">
+      <h2>PART 4</h2>
+      <div class="owns">up next</div>
+    </div>
+    <div class="panel bd">
+      <ol>
+        <li class="past">The game has changed</li>
+        <li class="past">Showcase: Jaffle Logistics</li>
+        <li class="past">How this showcase was made</li>
         <li class="now">From Analytics Engineering to Context Engineering</li>
       </ol>
     </div>
@@ -1945,7 +2417,7 @@
   <aside class="notes">Land on the offer, then stop talking. Repeat the three takeaways in one breath each, then the offer: Fivetran and dbt are here to help you get there faster, more efficiently, with built-in trust. Close by returning to the opening question: the hands that went up at the start are the people who now know how to fix it. Invite questions; the appendix has the working behind every number if someone wants to go deeper.</aside>
 </section>
 <!-- Thank you: questions, and a QR code to this repository -->
-<section class="sect" data-status="dbt Vienna · 20 Oct 2026">
+<section class="sect">
   <div class="frame">
     <div class="panel" style="left:20px;top:20px;width:1240px;height:540px;display:flex;align-items:center;justify-content:space-around;padding:0 60px">
       <div style="text-align:center">
