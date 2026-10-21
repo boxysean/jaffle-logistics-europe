@@ -4,7 +4,7 @@
 # opening: who, then the road map, then the hook
 001-talk-title.html | notes=Welcome. Do not read the title. Introduce yourself, then the road map.
 0015-about-me.html | notes=Thirty seconds, no more. Credibility, then a human detail (the bike), then move on.
-002-agenda.html | notes=Three parts. Say them once and move on.
+002-agenda.html | notes=Four parts. Say them once and move on.
 hook.html
 
 # part 1: the game has changed, and why the data team
@@ -32,7 +32,18 @@ trace.html
 layering-context.html
 question-answer.html
 
-# part 3: from analytics engineer to context engineer
+# part 3: how it gets made. one question followed down, from the agent to the source
+hgm-part.html
+hgm-question.html
+hgm-calls.html
+hgm-tables.html
+hgm-prepare.html
+hgm-ai.html
+hgm-source.html
+hgm-builders.html
+hgm-evals.html
+
+# part 4: from analytics engineer to context engineer
 165-part-3-from-ae-to-ce.html
 ae-ce.html
 240-semantic-layer-to-context-layer.html
