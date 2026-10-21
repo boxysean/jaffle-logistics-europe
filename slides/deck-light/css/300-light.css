@@ -294,3 +294,31 @@
   /* the DAG's callout: the skills that build all of this */
   .lt-code .dagp .help { position: absolute; right: 16px; top: 36px; width: 236px; padding: 14px 16px; background: var(--navy-2); border: 4px solid var(--hot); box-shadow: 6px 6px 0 #000; font-family: var(--mono); font-size: 17px; line-height: 1.45; color: var(--text); }
   .lt-code .dagp .help b { display: block; margin-bottom: 8px; font-family: var(--pixel); font-size: 14px; font-weight: normal; line-height: 1.4; color: var(--hot); }
+
+  /* the right-hand pane on parse/chunk/embed/classify: the dbt model, condensed. 15px fits a
+     58-character line in the 560 inside a pane */
+  .lt-code .cd.xs { font-size: 15px; line-height: 1.45; }
+  .lt-code .cd .j { color: var(--dim); }
+  /* chunk: each passage heads its own sentences */
+  .lt-code .sents .sh { margin-top: 8px; font-family: var(--mono); font-size: 16px; font-weight: 600; color: var(--amber); border-left: 6px solid; padding-left: 10px; }
+  .lt-code .sents .sh:first-child { margin-top: 0; }
+  .lt-code .sents .sh span { font-weight: normal; color: var(--dim); margin-left: 6px; }
+  .lt-code .sents .sh.p1 { border-left-color: var(--teal-hi); }
+  .lt-code .sents .sh.p2 { border-left-color: var(--amber); }
+  .lt-code .sents .sh.p3 { border-left-color: var(--violet); }
+  .lt-code .sents .sn { font-size: 15px; }
+  /* embed, half width: the passage and its hash over its vector */
+  .lt-code .vrow2 { border-left: 6px solid; padding: 2px 0 2px 12px; margin-bottom: 14px; }
+  .lt-code .vrow2.p1 { border-left-color: var(--teal-hi); }
+  .lt-code .vrow2.p2 { border-left-color: var(--amber); }
+  .lt-code .vrow2.p3 { border-left-color: var(--violet); }
+  .lt-code .vh2 { font-size: 16px; line-height: 1.3; color: var(--text); margin-bottom: 6px; }
+  .lt-code .vh2 b { font-family: var(--mono); color: var(--amber); margin-right: 8px; }
+  .lt-code .vh2 span { display: block; font-family: var(--mono); font-size: 14px; color: var(--dim); }
+  .lt-code .vrow2 svg { display: block; }
+  /* fit the half-width data panes */
+  .crumbed2.lt-code .sents { gap: 1px; line-height: 1.22; }
+  .crumbed2.lt-code .sents .sh { margin-top: 6px; }
+  .crumbed2.lt-code .vrow2 { margin-bottom: 8px; }
+  .crumbed2.lt-code .cls { margin-bottom: 10px; padding-top: 2px; padding-bottom: 2px; }
+  .crumbed2.lt-code .cls .chip { margin-top: 4px; padding: 3px 10px; }

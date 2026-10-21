@@ -1,4 +1,4 @@
-<!-- How it gets made, 6/11: classify. One label per passage from a versioned prompt, and the label counts across the knowledge base -->
+<!-- How it gets made, 6/11: classify. One label per passage from a versioned prompt; the classify model on the right -->
 <section class="lt crumbed crumbed2 lt-code">
   <div class="frame">
     <div class="panel hd">
@@ -8,25 +8,26 @@
     </div>
     <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>MCP TOOLS</span><i>&#9664;</i><span>AGENT</span></div>
     <div class="subcrumbs" role="img" aria-label="inside dbt models: CLASSIFY"><b>INSIDE dbt MODELS</b><span class="past">PARSE</span><i>&#9654;</i><span class="past">CHUNK</span><i>&#9654;</i><span class="past">EMBED</span><i>&#9654;</i><span class="on">CLASSIFY</span><i>&#9654;</i><span>UNION</span></div>
-    <div class="panel pane l"><span class="tab">incident_reports_classify</span>
-      <div class="lbl">PROMPT: jaffle_content_type v1</div>
+    <div class="panel pane l"><span class="tab">3 PASSAGES &#9654; 3 LABELS</span>
       <div class="cls p1"><div class="ph">IR-9001::1</div><div class="pt">&hellip; a semi jackknifed on an icy on-ramp &hellip;</div><div class="chip on">weather_disruption</div></div>
       <div class="cls p2"><div class="ph">IR-9001::2</div><div class="pt">&hellip; Unsalted ramp and reduced traction &hellip;</div><div class="chip on">weather_disruption</div></div>
       <div class="cls p3"><div class="ph">IR-9001::3</div><div class="pt">Reviewed with dispatch.</div><div class="chip">routine_status</div></div>
-    </div>
-    <div class="panel pane r ambp"><span class="tab">THE SIX LABELS &#183; ALL 2,708 ROWS</span>
-      <div class="lbls">
-        <div class="lb"><span class="ln">routine_status</span><span class="lbar"><i style="width:100.0%"></i></span><span class="lc">1,065</span></div>
-        <div class="lb on"><span class="ln">weather_disruption</span><span class="lbar"><i style="width:51.5%"></i></span><span class="lc">548</span></div>
-        <div class="lb"><span class="ln">vehicle_or_driver_incident</span><span class="lbar"><i style="width:49.1%"></i></span><span class="lc">523</span></div>
-        <div class="lb"><span class="ln">handling_or_warehouse_error</span><span class="lbar"><i style="width:36.7%"></i></span><span class="lc">391</span></div>
-        <div class="lb"><span class="ln">account_assessment</span><span class="lbar"><i style="width:12.2%"></i></span><span class="lc">130</span></div>
-        <div class="lb"><span class="ln">contract_reference</span><span class="lbar"><i style="width:4.8%"></i></span><span class="lc">51</span></div>
-      </div>
       <div class="rule"></div>
-<pre class="cd sm"><span class="k">where</span> classification = <span class="s">'weather_disruption'</span></pre>
-      <div class="lbl" style="margin-top:10px;line-height:1.5">2,708 ROWS TO SEARCH BECOME 548</div>
+      <div class="lbl" style="line-height:1.5">ALL 2,708 ROWS: <span class="amb">548 ARE weather_disruption</span></div>
+    </div>
+    <div class="panel pane r ambp"><span class="tab">THE dbt MODEL, CONDENSED</span>
+<pre class="cd xs"><span class="d">-- incident_reports_classify.sql</span>
+<span class="k">select</span>
+    chunk_id,
+    <span class="j">{{</span> <span class="k">dbt_context_engineering.classify</span>(
+        <span class="s">'chunk_text'</span>,
+        prompt = <span class="k">dbt_context_engineering.prompt</span>(
+            <span class="s">'jaffle_content_type'</span>, <span class="s">'v1'</span>),
+        output_schema = <span class="k">dbt_context_engineering.schema_def</span>(
+            <span class="s">'jaffle_content_type'</span>, <span class="s">'v1'</span>)
+    ) <span class="j">}}</span> <span class="k">as</span> content_type
+<span class="k">from</span> <span class="j">{{</span> <span class="k">ref</span>(<span class="s">'incident_reports_hashed'</span>) <span class="j">}}</span></pre>
     </div>
   </div>
-  <aside class="notes">Step four, classify, side by side with embed. A model reads each passage and picks one label from a fixed list of six, using a versioned prompt, jaffle_content_type v1, so a change to the prompt is a change you can see in git. IR-9001's first two passages come back weather_disruption. The third, "Reviewed with dispatch.", comes back routine_status, which is right: it says nothing about the storm. On the right, the six labels across all 2,708 rows of the knowledge base. This is what makes search precise: filter to weather_disruption and the 2,708 rows to search become 548, before the vector math even starts.</aside>
+  <aside class="notes">Step four, classify, side by side with embed. A model reads each passage and picks one label from a fixed list of six. The model on the right names the prompt and its output schema by version, jaffle_content_type v1, so a change to the prompt is a change you can see in git, and the schema keeps the answer to the six allowed labels. IR-9001's first two passages come back weather_disruption. The third, "Reviewed with dispatch.", comes back routine_status, which is right: it says nothing about the storm. Across the whole knowledge base, 548 of the 2,708 rows are weather_disruption, so a search filtered on that label looks at 548 rows, not 2,708, before the vector math even starts.</aside>
 </section>
