@@ -8,7 +8,7 @@
     </div>
     <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
     <div class="subcrumbs" role="img" aria-label="inside dbt models: EMBED"><b>INSIDE dbt MODELS</b><span class="past">PARSE</span><i>&#9654;</i><span class="past">CHUNK</span><i>&#9654;</i><span class="on">EMBED</span><i>&#9654;</i><span>CLASSIFY</span><i>&#9654;</i><span>UNION</span></div>
-    <div class="panel pane l"><span class="tab">EACH PASSAGE: HASH + VECTOR</span>
+    <div class="panel pane r"><span class="tab">EACH PASSAGE: HASH + VECTOR</span>
       <div class="rec p1">
         <div class="kv"><i>chunk_id</i><b>IR-9001::1</b></div>
         <div class="kv"><i>chunk_text</i><span>&hellip; a semi jackknifed on an icy on-ramp &hellip;</span></div>
@@ -28,7 +28,7 @@
         <div class="kv vec"><i>embedding</i><span>[0.034, -0.579, -0.061, &hellip;] <em>&times; 1,024</em></span></div>
       </div>
     </div>
-    <div class="panel pane r ambp"><span class="tab">THE dbt MODEL, CONDENSED</span>
+    <div class="panel pane l ambp"><span class="tab">THE dbt MODEL, CONDENSED</span>
 <pre class="cd xs"><span class="d">-- incident_reports_embed.sql</span>
 <span class="j">{{</span> <span class="k">config</span>(materialized = <span class="s">'incremental'</span>,
           unique_key   = <span class="s">'chunk_id'</span>) <span class="j">}}</span>

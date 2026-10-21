@@ -8,7 +8,7 @@
     </div>
     <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
     <div class="subcrumbs" role="img" aria-label="inside dbt models: CHUNK"><b>INSIDE dbt MODELS</b><span class="past">PARSE</span><i>&#9654;</i><span class="on">CHUNK</span><i>&#9654;</i><span>EMBED</span><i>&#9654;</i><span>CLASSIFY</span><i>&#9654;</i><span>UNION</span></div>
-    <div class="panel pane l"><span class="tab">IR-9001: 13 SENTENCES, BY PASSAGE</span>
+    <div class="panel pane r"><span class="tab">IR-9001: 13 SENTENCES, BY PASSAGE</span>
       <div class="sents">
         <div class="sh p1">PASSAGE 1 <span>IR-9001::1 &#183; sentences 1-6 &#183; ~107 tokens</span></div>
         <div class="sn p1"><b>1</b>INCIDENT REPORT INC-2025-00417 &mdash; ACCIDENT &hellip;</div>
@@ -28,7 +28,7 @@
         <div class="sn p3"><b>13</b>Reviewed with dispatch.</div>
       </div>
     </div>
-    <div class="panel pane r ambp"><span class="tab">TWO dbt MODELS</span>
+    <div class="panel pane l ambp"><span class="tab">TWO dbt MODELS</span>
       <div class="mdl"><div class="mh">MODEL 1 OF 2</div><div class="mn">split_incident_reports <span>report &#9654; 13 sentences</span></div>
 <pre class="cd xs"><span class="j">{{</span> <span class="k">dbt_context_engineering.split_sentences</span>(
     relation    = <span class="k">ref</span>(<span class="s">'int_incident_reports_documents'</span>),

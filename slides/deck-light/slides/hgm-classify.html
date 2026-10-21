@@ -8,14 +8,14 @@
     </div>
     <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
     <div class="subcrumbs" role="img" aria-label="inside dbt models: CLASSIFY"><b>INSIDE dbt MODELS</b><span class="past">PARSE</span><i>&#9654;</i><span class="past">CHUNK</span><i>&#9654;</i><span class="past">EMBED</span><i>&#9654;</i><span class="on">CLASSIFY</span><i>&#9654;</i><span>UNION</span></div>
-    <div class="panel pane l"><span class="tab">3 PASSAGES &#9654; 3 LABELS</span>
+    <div class="panel pane r"><span class="tab">3 PASSAGES &#9654; 3 LABELS</span>
       <div class="cls p1"><div class="ph">IR-9001::1</div><div class="pt">&hellip; a semi jackknifed on an icy on-ramp &hellip;</div><div class="chip on">weather_disruption</div></div>
       <div class="cls p2"><div class="ph">IR-9001::2</div><div class="pt">&hellip; Unsalted ramp and reduced traction &hellip;</div><div class="chip on">weather_disruption</div></div>
       <div class="cls p3"><div class="ph">IR-9001::3</div><div class="pt">Reviewed with dispatch.</div><div class="chip">routine_status</div></div>
       <div class="rule"></div>
       <div class="lbl" style="line-height:1.5">ALL 2,708 ROWS: <span class="amb">548 ARE weather_disruption</span></div>
     </div>
-    <div class="panel pane r ambp"><span class="tab">THE MODEL: PROMPT + OUTPUT SCHEMA</span>
+    <div class="panel pane l ambp"><span class="tab">THE MODEL: PROMPT + OUTPUT SCHEMA</span>
 <pre class="cd xs"><span class="k">select</span>
     chunk_id,
     <span class="j">{{</span> <span class="k">dbt_context_engineering.classify</span>(
