@@ -375,3 +375,9 @@
   .lt-code .skrow b { font-family: var(--pixel); font-size: 12px; font-weight: normal; color: var(--hot); margin-right: 2px; }
   .lt-code .skrow span { padding: 3px 8px; border: 3px solid var(--hot); color: var(--text); }
   .lt-code.bld .pane { height: 484px; }
+  /* builders: the five reasons, one a line, the lead words in amber */
+  .lt-code .res.why { font-family: var(--sans, inherit); font-size: 22px; line-height: 1.35; }
+  .lt-code .res.why td { padding-top: 12px; padding-bottom: 12px; }
+  .lt-code .res.why td.n { padding-right: 16px; }
+  .lt-code .res.why td.n { color: var(--teal-hi); }
+  .lt-code .res.why b { color: var(--amber); font-weight: 600; }

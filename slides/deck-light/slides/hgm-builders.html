@@ -21,20 +21,14 @@ in, and add the tests.&rdquo;</span></pre>
       <div style="font-size:22px"><span class="tbd">[ __ minutes, from Sean ]</span></div>
     </div>
     <div class="panel pane r ambp"><span class="tab">WHY IT'S BETTER</span>
-      <div class="lbl">TESTED ON EVERY BUILD</div>
-      <table class="res">
-        <tr><td class="n">&#10003;</td><td>unique, not_null and relationships on every AI-layer model</td></tr>
-        <tr><td class="n">&#10003;</td><td>knowledge_base.source_type is one of the 7 sources</td></tr>
-        <tr><td class="n">&#10003;</td><td>every AI run in ai_run_log completed</td></tr>
-      </table>
-      <div class="rule"></div>
-      <div class="lbl">READY, NOT WIRED IN YET</div>
-      <table class="res">
-        <tr><td class="n">403</td><td>labelled tickets, eval_ticket_triage</td></tr>
-        <tr><td class="n">56</td><td>labelled CRM notes, eval_crm_sentiment</td></tr>
-        <tr><td class="n">3</td><td>package checks: grounded, conforms_to_schema, eval</td></tr>
+      <table class="res why">
+        <tr><td class="n">&#10003;</td><td><b>Built by the same team</b> who builds the governed data</td></tr>
+        <tr><td class="n">&#10003;</td><td><b>Tested, with lineage,</b> re-usable</td></tr>
+        <tr><td class="n">&#10003;</td><td><b>Efficient:</b> build the right context once</td></tr>
+        <tr><td class="n">&#10003;</td><td><b>Adapts</b> as the business adapts</td></tr>
+        <tr><td class="n">&#10003;</td><td><b>Fast to build</b> with AI development</td></tr>
       </table>
     </div>
   </div>
-  <aside class="notes">DRAFT: needs the real timing. This is the moment someone thinks: that is a lot of models, how do I build this? You don't, by hand. You ask a coding agent for the source you want added, and it loads the three skills that ship with dbt_context_engineering, for setup, the pipeline and the AI functions. It writes the models, the YAML and the tests in one pull request, and your job is the review. Why it's better than a hand-rolled pipeline: because it is dbt, it is tested on every build. Unique, not null and relationship tests on every AI-layer model, the knowledge base's source type is one of the seven, and every AI run in the run log completed. And the next layer is ready: 403 labelled tickets and 56 labelled CRM notes as golden sets, and the package's grounded, conforms_to_schema and eval checks, not wired into the build yet.</aside>
+  <aside class="notes">DRAFT: needs the real timing. This is the moment someone thinks: that is a lot of models, how do I build this? You don't, by hand. You ask a coding agent for the source you want added, and it loads the three skills that ship with dbt_context_engineering, for setup, the pipeline and the AI functions. It writes the models, the YAML and the tests in one pull request, and your job is the review. Why it's better: it is built by the same team who already builds the governed data, so the context and the numbers come from one place. Like any dbt model it is tested, has lineage, and is re-usable by every agent and tool. It is efficient: the right context is built once, not re-assembled in every prompt. It adapts as the business adapts, because a change is a pull request like any other. And with AI development, the skills and a coding agent, it is fast to build.</aside>
 </section>
