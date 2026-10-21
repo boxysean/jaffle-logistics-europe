@@ -339,3 +339,39 @@
   /* setup: six boxes */
   .lt-fcls .st .nm { font-size: 17px; }
   .lt-fcls .st .tx { font-size: 19px; }
+
+  /* chunk: the right pane holds two models, one labelled block each */
+  .lt-code .mdl { border-left: 6px solid var(--amber); padding: 2px 0 2px 14px; }
+  .lt-code .mdl + .mdl { margin-top: 26px; }
+  .lt-code .mdl .mh { font-family: var(--pixel); font-size: 12px; color: var(--amber); }
+  .lt-code .mdl .mn { margin: 6px 0 8px; font-family: var(--mono); font-size: 18px; font-weight: 600; color: var(--text); }
+  .lt-code .mdl .mn span { margin-left: 8px; font-size: 15px; font-weight: normal; color: var(--dim); }
+  /* embed: each passage as a record, field name then value; hash and vector called out */
+  .lt-code .rec { border-left: 6px solid; padding: 4px 0 4px 12px; margin-bottom: 18px; }
+  .lt-code .rec.p1 { border-left-color: var(--teal-hi); }
+  .lt-code .rec.p2 { border-left-color: var(--amber); }
+  .lt-code .rec.p3 { border-left-color: var(--violet); }
+  .lt-code .kv { display: grid; grid-template-columns: 150px 1fr; column-gap: 10px; font-family: var(--mono); font-size: 16px; line-height: 1.5; color: var(--text); white-space: nowrap; overflow: hidden; }
+  .lt-code .kv i { font-style: normal; color: var(--dim); }
+  .lt-code .kv b { color: var(--amber); }
+  .lt-code .kv.hsh span, .lt-code .kv.vec span { font-weight: 600; color: var(--teal-hi); }
+  .lt-code .kv.hsh i, .lt-code .kv.vec i { color: var(--teal-hi); }
+  .lt-code .kv.vec em { font-style: normal; font-weight: normal; color: var(--dim); margin-left: 6px; }
+
+  /* classify: the prompt and the output schema, marked in the code and explained beneath it */
+  .lt-code .cd .mk { color: var(--amber); }
+  .lt-code .expl { margin-top: 14px; padding-top: 10px; border-top: 3px dashed var(--amber); font-size: 15px; line-height: 1.35; color: var(--text); }
+  .lt-code .expl p { margin: 0 0 8px; }
+  .lt-code .expl b { font-family: var(--mono); color: var(--amber); margin-right: 6px; }
+  .lt-code .expl i { color: var(--dim); }
+
+  /* the many flows: what the search model does, top right; and the skills sticker on the pane corner */
+  .lt-code .dagp .srch { position: absolute; right: 16px; top: 40px; width: 236px; padding: 12px 14px; background: var(--navy-2); border: 4px solid var(--teal-hi); box-shadow: 6px 6px 0 #000; font-family: var(--mono); font-size: 15px; line-height: 1.4; color: var(--text); }
+  .lt-code .dagp .srch b { display: block; margin-bottom: 6px; font-family: var(--pixel); font-size: 13px; font-weight: normal; color: var(--teal-hi); }
+  .lt-code .hd .pop { position: absolute; right: 104px; top: 14px; transform: rotate(-5deg); padding: 8px 14px; background: var(--hot); color: var(--deep); border: 4px solid var(--deep); box-shadow: 6px 6px 0 #000; font-family: var(--pixel); font-size: 18px; line-height: 1.25; text-align: center; white-space: nowrap; }
+
+  /* builders: the skills the agent loads, as name chips under the ask */
+  .lt-code .skrow { margin-top: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-family: var(--mono); font-size: 15px; }
+  .lt-code .skrow b { font-family: var(--pixel); font-size: 12px; font-weight: normal; color: var(--hot); margin-right: 2px; }
+  .lt-code .skrow span { padding: 3px 8px; border: 3px solid var(--hot); color: var(--text); }
+  .lt-code.bld .pane { height: 484px; }

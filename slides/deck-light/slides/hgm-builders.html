@@ -1,5 +1,5 @@
-<!-- How it gets made, 11/11 (DRAFT): this looks hard, how do I do it? A coding agent with the package's three skills. Needs Sean's real timing -->
-<section class="lt lt-code">
+<!-- How it gets made, 11/11 (DRAFT): this looks hard, how do I do it? You ask, a coding agent with the package's three skills builds it; why it's better: what is tested on every build. Needs Sean's real timing -->
+<section class="lt lt-code bld">
   <div class="frame">
     <div class="panel hd">
       <h2><span class="no">11/11</span><span class="draft">DRAFT</span>THIS LOOKS HARD. HOW DO I DO IT?</h2>
@@ -12,6 +12,7 @@ knowledge base: parse, chunk,
 embed incrementally, classify with
 jaffle_content_type v1, union it
 in, and add the tests.&rdquo;</span></pre>
+      <div class="skrow"><b>+ SKILLS</b><span>dbt-ce-setup</span><span>dbt-ce-pipeline</span><span>dbt-ce-ai-functions</span></div>
       <div class="rule"></div>
       <div class="lbl" style="line-height:1.5">YOU REVIEW</div>
       <div class="pl">one pull request: the models, their YAML and tests</div>
@@ -19,13 +20,21 @@ in, and add the tests.&rdquo;</span></pre>
       <div class="lbl" style="line-height:1.5;color:var(--amber)">PROMPT TO PR</div>
       <div style="font-size:22px"><span class="tbd">[ __ minutes, from Sean ]</span></div>
     </div>
-    <div class="panel pane r ambp"><span class="tab">THE AGENT LOADS THREE SKILLS</span>
-      <div class="sk"><div class="skn">dbt-ce-setup</div><div class="sd">install the package, set the vars, the <code>ai_functions_enabled</code> spend gate</div></div>
-      <div class="sk"><div class="skn">dbt-ce-pipeline</div><div class="sd">split, chunk, incremental embed, <code>knowledge_base</code>, <code>vector_search</code>, cost guards</div></div>
-      <div class="sk"><div class="skn">dbt-ce-ai-functions</div><div class="sd"><code>classify</code> and <code>extract</code> with versioned prompts and schemas</div></div>
+    <div class="panel pane r ambp"><span class="tab">WHY IT'S BETTER</span>
+      <div class="lbl">TESTED ON EVERY BUILD</div>
+      <table class="res">
+        <tr><td class="n">&#10003;</td><td>unique, not_null and relationships on every AI-layer model</td></tr>
+        <tr><td class="n">&#10003;</td><td>knowledge_base.source_type is one of the 7 sources</td></tr>
+        <tr><td class="n">&#10003;</td><td>every AI run in ai_run_log completed</td></tr>
+      </table>
       <div class="rule"></div>
-      <div class="pl dim">github.com/dbt-labs/<br>dbt-context-engineering/skills</div>
+      <div class="lbl">READY, NOT WIRED IN YET</div>
+      <table class="res">
+        <tr><td class="n">403</td><td>labelled tickets, eval_ticket_triage</td></tr>
+        <tr><td class="n">56</td><td>labelled CRM notes, eval_crm_sentiment</td></tr>
+        <tr><td class="n">3</td><td>package checks: grounded, conforms_to_schema, eval</td></tr>
+      </table>
     </div>
   </div>
-  <aside class="notes">DRAFT: needs the real timing. This is the moment someone thinks: that is a lot of models, how do I build this? You don't, by hand. dbt_context_engineering ships three skills for coding agents, in the repo's skills folder. dbt-ce-setup installs the package and sets the vars, including the spend gate that keeps AI functions off until you turn them on. dbt-ce-pipeline knows the pipeline: split, chunk, an incremental embed that only pays for changed text, the knowledge base, vector search, and the cost guards. dbt-ce-ai-functions knows classify and extract, with versioned prompts and schemas. You ask for the source you want added; the agent loads the skills and writes the models, the YAML and the tests in one pull request. Your job is the review. The evals slide is how to make that review less of a judgement call.</aside>
+  <aside class="notes">DRAFT: needs the real timing. This is the moment someone thinks: that is a lot of models, how do I build this? You don't, by hand. You ask a coding agent for the source you want added, and it loads the three skills that ship with dbt_context_engineering, for setup, the pipeline and the AI functions. It writes the models, the YAML and the tests in one pull request, and your job is the review. Why it's better than a hand-rolled pipeline: because it is dbt, it is tested on every build. Unique, not null and relationship tests on every AI-layer model, the knowledge base's source type is one of the seven, and every AI run in the run log completed. And the next layer is ready: 403 labelled tickets and 56 labelled CRM notes as golden sets, and the package's grounded, conforms_to_schema and eval checks, not wired into the build yet.</aside>
 </section>

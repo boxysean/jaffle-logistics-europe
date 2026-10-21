@@ -1,4 +1,4 @@
-<!-- How it gets made, 6/11: classify. One label per passage from a versioned prompt; the classify model on the right -->
+<!-- How it gets made, 6/11: classify. One label per passage from a versioned prompt; the classify model on the right, with its prompt and output schema explained -->
 <section class="lt crumbed crumbed2 lt-code">
   <div class="frame">
     <div class="panel hd">
@@ -15,19 +15,22 @@
       <div class="rule"></div>
       <div class="lbl" style="line-height:1.5">ALL 2,708 ROWS: <span class="amb">548 ARE weather_disruption</span></div>
     </div>
-    <div class="panel pane r ambp"><span class="tab">THE dbt MODEL, CONDENSED</span>
-<pre class="cd xs"><span class="d">-- incident_reports_classify.sql</span>
-<span class="k">select</span>
+    <div class="panel pane r ambp"><span class="tab">THE MODEL: PROMPT + OUTPUT SCHEMA</span>
+<pre class="cd xs"><span class="k">select</span>
     chunk_id,
     <span class="j">{{</span> <span class="k">dbt_context_engineering.classify</span>(
         <span class="s">'chunk_text'</span>,
-        prompt = <span class="k">dbt_context_engineering.prompt</span>(
+<span class="mk">&#9312;</span>      prompt = <span class="k">dbt_context_engineering.prompt</span>(
             <span class="s">'jaffle_content_type'</span>, <span class="s">'v1'</span>),
-        output_schema = <span class="k">dbt_context_engineering.schema_def</span>(
+<span class="mk">&#9313;</span>      output_schema = <span class="k">dbt_context_engineering.schema_def</span>(
             <span class="s">'jaffle_content_type'</span>, <span class="s">'v1'</span>)
     ) <span class="j">}}</span> <span class="k">as</span> content_type
 <span class="k">from</span> <span class="j">{{</span> <span class="k">ref</span>(<span class="s">'incident_reports_hashed'</span>) <span class="j">}}</span></pre>
+      <div class="expl">
+        <p><b>&#9312; prompt</b> the instruction sent with every passage: &ldquo;Classify the text into exactly one content-type label&rdquo;, then the six labels, each defined in a line. <i>weather_disruption: caused by severe weather, even if filed as an accident.</i></p>
+        <p><b>&#9313; output schema</b> a JSON schema the answer must fit: one field, content_type, and only those six labels are allowed.</p>
+      </div>
     </div>
   </div>
-  <aside class="notes">Step four, classify, side by side with embed. A model reads each passage and picks one label from a fixed list of six. The model on the right names the prompt and its output schema by version, jaffle_content_type v1, so a change to the prompt is a change you can see in git, and the schema keeps the answer to the six allowed labels. IR-9001's first two passages come back weather_disruption. The third, "Reviewed with dispatch.", comes back routine_status, which is right: it says nothing about the storm. Across the whole knowledge base, 548 of the 2,708 rows are weather_disruption, so a search filtered on that label looks at 548 rows, not 2,708, before the vector math even starts.</aside>
+  <aside class="notes">Step four, classify, side by side with embed. A model reads each passage and picks one label from a fixed list of six. The model on the right passes two things to classify. One, the prompt: the instruction that goes with every passage, classify this text into exactly one label, followed by the six labels and a one-line definition of each; weather_disruption, for example, counts an accident caused by icy conditions. Two, the output schema: a small JSON schema that says the answer is one field, content_type, and it must be one of those six labels, so the model cannot invent a seventh or reply in prose. Both live in one dbt macro, jaffle_content_type, version v1, so changing a definition is a pull request you can review, and the version number says which rows were labelled with which prompt. IR-9001's first two passages come back weather_disruption. The third, "Reviewed with dispatch.", comes back routine_status, which is right: it says nothing about the storm. Across the whole knowledge base, 548 of the 2,708 rows are weather_disruption, so a search filtered on that label looks at 548 rows, not 2,708, before the vector math even starts.</aside>
 </section>
