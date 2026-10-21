@@ -1,12 +1,12 @@
-<!-- How it gets made, 2/8: the two tool calls, each with the real rows it returns -->
+<!-- How it gets made, 7/8: the two tool calls, each with the real rows it returns -->
 <section class="lt crumbed lt-code">
   <div class="frame">
     <div class="panel hd">
-      <h2><span class="no">2/8</span>THE AGENT MAKES TWO CALLS</h2>
+      <h2><span class="no">7/8</span>THE AGENT MAKES TWO CALLS</h2>
       <div class="owns">One for the number, one for the cause</div>
       <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="two calls: two arrows going out"><rect x="7" y="1" width="1" height="1" fill="#ffb000"/><rect x="7" y="2" width="1" height="1" fill="#ffb000"/><rect x="8" y="2" width="1" height="1" fill="#ffb000"/><rect x="0" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="3" width="1" height="1" fill="#ffb000"/><rect x="2" y="3" width="1" height="1" fill="#ffb000"/><rect x="3" y="3" width="1" height="1" fill="#ffb000"/><rect x="4" y="3" width="1" height="1" fill="#ffb000"/><rect x="5" y="3" width="1" height="1" fill="#ffb000"/><rect x="6" y="3" width="1" height="1" fill="#ffb000"/><rect x="7" y="3" width="1" height="1" fill="#ffb000"/><rect x="8" y="3" width="1" height="1" fill="#ffb000"/><rect x="9" y="3" width="1" height="1" fill="#ffb000"/><rect x="7" y="4" width="1" height="1" fill="#ffb000"/><rect x="8" y="4" width="1" height="1" fill="#ffb000"/><rect x="7" y="5" width="1" height="1" fill="#ffb000"/><rect x="7" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="11" width="1" height="1" fill="#5fd3c8"/></svg>
     </div>
-    <div class="crumbs" role="img" aria-label="where we are: MCP TOOLS"><span>SOURCES</span><i>&#9654;</i><span>dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9654;</i><span class="on">MCP TOOLS</span><i>&#9654;</i><span class="past">AGENT</span></div>
+    <div class="crumbs" role="img" aria-label="where we are: MCP TOOLS"><span class="past">SOURCES</span><i>&#9654;</i><span class="past">dbt MODELS</span><i>&#9654;</i><span class="past">TWO TRUTHS</span><i>&#9654;</i><span class="on">MCP TOOLS</span><i>&#9654;</i><span>AGENT</span></div>
     <div class="panel pane l"><span class="tab">&#9312; THE NUMBER</span>
 <pre class="cd"><span class="k">query_metrics</span>(
   metrics  = [<span class="s">"on_time_rate"</span>],
