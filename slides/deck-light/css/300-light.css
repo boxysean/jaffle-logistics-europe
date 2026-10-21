@@ -406,3 +406,8 @@
   .lt-agent .cc.ans .cite { margin-top: 16px; padding-top: 10px; border-top: 3px dashed var(--amber); font-family: var(--mono); font-size: 14px; color: var(--dim); }
   /* how do I do it: the skills sticker, in the empty corner of the review pane */
   .lt-code.ask .frame > .pop.stk { position: absolute; right: 150px; top: 470px; transform: rotate(-5deg); padding: 14px 22px; background: var(--hot); color: var(--deep); border: 4px solid var(--deep); box-shadow: 6px 6px 0 #000; font-family: var(--pixel); font-size: 26px; line-height: 1.3; text-align: center; white-space: nowrap; }
+  /* how the agent answers: every box on screen from the start, dimmed; each click lights the next,
+     in a snake (semantic layer left to right, then context layer, then the answer) */
+  .reveal .lt-agent .cc.fragment { opacity: .3; visibility: visible; transition: none; }
+  .reveal .lt-agent .cc.fragment.visible { opacity: 1; }
+  .reveal .lt-agent .cc.fragment.current-fragment { box-shadow: 0 0 0 4px var(--amber), 6px 6px 0 4px #000; }

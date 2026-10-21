@@ -1,4 +1,4 @@
-<!-- How it gets made, 10/12: how the agent answers. The question, split into a semantic layer call and a context layer call over MCP; what each picks and returns; the answer it assembles -->
+<!-- How it gets made, 10/12: how the agent answers. Builds in a snake, one click a box: SL asks, calls, gets; CL asks, calls, gets; the answer. The question, split into a semantic layer call and a context layer call over MCP; what each picks and returns; the answer it assembles -->
 <section class="lt crumbed lt-agent">
   <div class="frame">
     <div class="panel hd">
@@ -11,15 +11,15 @@
     <div class="ag">
       <div></div><div class="ch">1 &middot; ASKS</div><div class="ch">2 &middot; CALLS OVER MCP</div><div class="ch">3 &middot; GETS BACK</div><div class="ch amb">4 &middot; ANSWERS</div>
       <div class="rl"><b>SEMANTIC LAYER</b>the number</div>
-      <div class="cc"><div>How far did on-time fall, and where?</div></div>
-      <div class="cc"><div><code>query_metrics</code> picks the metric <b>on_time_rate</b>, by quarter, then Q1 by origin city</div></div>
-      <div class="cc"><div><b>90.33%</b> in Q1, the low quarter<br><b>Paris, January: 56.60%</b></div></div>
-      <div class="cc ans"><div>On-time fell to <b>90.33%</b> in Q1. Paris dropped to <b>56.60%</b> in January, when the <b>14-16 January winter storm</b> hit: a semi jackknifed on an icy on-ramp leaving the Paris hub.<div class="cite">cites on_time_rate &middot; IR-9001</div></div></div>
+      <div class="cc fragment" data-fragment-index="0"><div>How far did on-time fall, and where?</div></div>
+      <div class="cc fragment" data-fragment-index="1"><div><code>query_metrics</code> picks the metric <b>on_time_rate</b>, by quarter, then Q1 by origin city</div></div>
+      <div class="cc fragment" data-fragment-index="2"><div><b>90.33%</b> in Q1, the low quarter<br><b>Paris, January: 56.60%</b></div></div>
+      <div class="cc ans fragment" data-fragment-index="6"><div>On-time fell to <b>90.33%</b> in Q1. Paris dropped to <b>56.60%</b> in January, when the <b>14-16 January winter storm</b> hit: a semi jackknifed on an icy on-ramp leaving the Paris hub.<div class="cite">cites on_time_rate &middot; IR-9001</div></div></div>
       <div class="rl"><b>CONTEXT LAYER</b>the cause</div>
-      <div class="cc"><div>What happened in Paris?</div></div>
-      <div class="cc"><div><code>search</code> embeds the query and ranks the <b>2,708</b> passages by <b>cosine similarity</b>, only <code>weather_disruption</code></div></div>
-      <div class="cc"><div><b>IR-9001::1</b>, score <b>0.779</b><br>&ldquo;&hellip; a semi jackknifed on an icy on-ramp &hellip;&rdquo;</div></div>
+      <div class="cc fragment" data-fragment-index="3"><div>What happened in Paris?</div></div>
+      <div class="cc fragment" data-fragment-index="4"><div><code>search</code> embeds the query and ranks the <b>2,708</b> passages by <b>cosine similarity</b>, only <code>weather_disruption</code></div></div>
+      <div class="cc fragment" data-fragment-index="5"><div><b>IR-9001::1</b>, score <b>0.779</b><br>&ldquo;&hellip; a semi jackknifed on an icy on-ramp &hellip;&rdquo;</div></div>
     </div>
   </div>
-  <aside class="notes">Start with the question, out loud: what happened in 2025 Q1 that caused on-time to go down? The agent splits it in two. The number goes to the semantic layer over MCP: query_metrics, and the agent picks the governed metric on_time_rate, by quarter, then Q1 by origin city. Back comes 90.33% for Q1, the low quarter, and Paris in January at 56.60%. The cause goes to the context layer: a search over the knowledge base. The search embeds the query with the same model that embedded the passages, then scores every passage by cosine similarity: how closely its 1,024 numbers point the same way as the query's, 1.0 being identical. Filtered to weather_disruption, the top passage is IR-9001 at 0.779: the jackknife in the storm. The agent assembles the two into one answer and cites both: the metric and the report. If asked: the search query on the slide, "truck accident during the Paris winter storm" in the build, is the one stored in the search model, so the scores are real; a live agent would phrase its own. The agent itself is a design, not a running system; the two calls and their results are real.</aside>
+  <aside class="notes">Start with the question, out loud: what happened in 2025 Q1 that caused on-time to go down? Click through: the boxes light in a snake. The agent splits it in two. The number goes to the semantic layer over MCP: query_metrics, and the agent picks the governed metric on_time_rate, by quarter, then Q1 by origin city. Back comes 90.33% for Q1, the low quarter, and Paris in January at 56.60%. The cause goes to the context layer: a search over the knowledge base. The search embeds the query with the same model that embedded the passages, then scores every passage by cosine similarity: how closely its 1,024 numbers point the same way as the query's, 1.0 being identical. Filtered to weather_disruption, the top passage is IR-9001 at 0.779: the jackknife in the storm. The agent assembles the two into one answer and cites both: the metric and the report. If asked: the search query on the slide, "truck accident during the Paris winter storm" in the build, is the one stored in the search model, so the scores are real; a live agent would phrase its own. The agent itself is a design, not a running system; the two calls and their results are real.</aside>
 </section>
