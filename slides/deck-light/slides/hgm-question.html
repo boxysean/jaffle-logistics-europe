@@ -3,23 +3,23 @@
   <div class="frame">
     <div class="panel hd">
       <h2><span class="no">1/8</span>ONE QUESTION, ALL THE WAY DOWN</h2>
-      <div class="owns">Follow it from the agent to the system that recorded it</div>
+      <div class="owns">It arrives at the agent, on the right. We follow it left, to the source</div>
       <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="one question, followed down: an arrow pointing down"><rect x="4" y="0" width="1" height="1" fill="#ffb000"/><rect x="5" y="0" width="1" height="1" fill="#ffb000"/><rect x="6" y="0" width="1" height="1" fill="#ffb000"/><rect x="7" y="0" width="1" height="1" fill="#ffb000"/><rect x="3" y="1" width="1" height="1" fill="#ffb000"/><rect x="8" y="1" width="1" height="1" fill="#ffb000"/><rect x="7" y="2" width="1" height="1" fill="#ffb000"/><rect x="6" y="3" width="1" height="1" fill="#ffb000"/><rect x="6" y="5" width="1" height="1" fill="#ffb000"/><rect x="5" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="11" width="1" height="1" fill="#5fd3c8"/></svg>
     </div>
     <div class="foot" style="top:156px;font-size:32px"><em>&ldquo;What happened in 2025 Q1 that caused on-time to go down?&rdquo;</em></div>
     <div class="flow" style="top:240px;height:250px">
-      <div class="st"><div class="no">1</div><div class="nm">AGENT</div><div class="tx">plans two lookups: the number, and the cause</div></div>
+      <div class="st"><div class="no">RECORDED IN</div><div class="nm">SOURCES</div><div class="tx">the transport and incident systems</div></div>
       <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">2</div><div class="nm">MCP TOOLS</div><div class="tx"><code>query_metrics</code> and <code>execute_sql</code></div></div>
+      <div class="st"><div class="no">BUILT BY</div><div class="nm">dbt MODELS</div><div class="tx">split, chunk, hash, embed, classify, union</div></div>
       <div class="ar">&#9654;</div>
-      <div class="st ambb"><div class="no">3</div><div class="nm">TWO TRUTHS</div><div class="tx">the semantic layer and the knowledge base</div></div>
+      <div class="st ambb"><div class="no">SERVED AS</div><div class="nm">TWO TRUTHS</div><div class="tx">the semantic layer and the knowledge base</div></div>
       <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">4</div><div class="nm">dbt MODELS</div><div class="tx">split, chunk, hash, embed, classify, union</div></div>
+      <div class="st"><div class="no">REACHED BY</div><div class="nm">MCP TOOLS</div><div class="tx"><code>query_metrics</code> and <code>execute_sql</code></div></div>
       <div class="ar">&#9654;</div>
-      <div class="st"><div class="no">5</div><div class="nm">SOURCES</div><div class="tx">the transport and incident systems</div></div>
+      <div class="st"><div class="no">ASKED BY</div><div class="nm">AGENT</div><div class="tx">plans two lookups: the number, and the cause</div></div>
     </div>
     <div class="foot" style="top:530px">One layer per slide, slowly.</div>
     <div class="foot dimf" style="top:580px;font-size:24px">Every value from here on comes from last night's build.</div>
   </div>
-  <aside class="notes">In Vienna I finished by walking backwards in dbt Platform, from search and knowledge_base to the source. This section is that walk, slowed down. One question: what happened in 2025 Q1 that caused on-time to go down? An agent gets it and plans two lookups, one for the number and one for the cause. It reaches the warehouse through MCP tools. The number comes from the semantic layer and the cause from the knowledge base, and both are dbt models built from the source systems. One layer per slide. Every number and every row on the next slides is real, read from the production tables.</aside>
+  <aside class="notes">In Vienna I finished by walking backwards in dbt Platform, from search and knowledge_base to the source. This section is that walk, slowed down. The slide reads like dbt lineage, sources on the left and the agent on the right; we start at the right and walk left. One question: what happened in 2025 Q1 that caused on-time to go down? An agent gets it and plans two lookups, one for the number and one for the cause. It reaches the warehouse through MCP tools. The number comes from the semantic layer and the cause from the knowledge base, and both are dbt models built from the source systems. One layer per slide; the bar at the top of each one shows where we are. Every number and every row on the next slides is real, read from the production tables.</aside>
 </section>
