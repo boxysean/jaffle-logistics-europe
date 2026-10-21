@@ -31,6 +31,7 @@
         <p><b>&#9313; output schema</b> a JSON schema the answer must fit: one field, content_type, and only those six labels are allowed.</p>
       </div>
     </div>
+    <div class="par" style="left:608px">&#9654;</div>
   </div>
   <aside class="notes">Step four, classify, side by side with embed. A model reads each passage and picks one label from a fixed list of six. The model on the right passes two things to classify. One, the prompt: the instruction that goes with every passage, classify this text into exactly one label, followed by the six labels and a one-line definition of each; weather_disruption, for example, counts an accident caused by icy conditions. Two, the output schema: a small JSON schema that says the answer is one field, content_type, and it must be one of those six labels, so the model cannot invent a seventh or reply in prose. Both live in one dbt macro, jaffle_content_type, version v1, so changing a definition is a pull request you can review, and the version number says which rows were labelled with which prompt. IR-9001's first two passages come back weather_disruption. The third, "Reviewed with dispatch.", comes back routine_status, which is right: it says nothing about the storm. Across the whole knowledge base, 548 of the 2,708 rows are weather_disruption, so a search filtered on that label looks at 548 rows, not 2,708, before the vector math even starts.</aside>
 </section>

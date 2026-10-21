@@ -1,5 +1,5 @@
 <!-- How it gets made, 3/12: parse. A PDF becomes text; the model on the right. In this demo the reports are already text; the slide shows the PDF case -->
-<section class="lt crumbed crumbed2 lt-code">
+<section class="lt crumbed crumbed2 lt-code lt-parse3">
   <div class="frame">
     <div class="panel hd">
       <h2><span class="no">3/12</span>STEP 1: PARSE</h2>
@@ -8,8 +8,8 @@
     </div>
     <div class="crumbs" role="img" aria-label="where we are: dbt MODELS"><span class="past">SOURCES</span><i>&#9654;</i><span class="on">dbt MODELS</span><i>&#9654;</i><span>TWO TRUTHS</span><i>&#9664;</i><span>AGENT</span></div>
     <div class="subcrumbs" role="img" aria-label="inside dbt models: PARSE"><b>INSIDE dbt MODELS</b><span class="on">PARSE</span><i>&#9654;</i><span>CHUNK</span><i>&#9654;</i><span>EMBED</span><i>&#9654;</i><span>CLASSIFY</span><i>&#9654;</i><span>UNION</span></div>
-    <div class="panel pane l"><span class="tab">RAW &#183; IR-9001.pdf</span>
-      <svg width="400" height="368" viewBox="0 0 400 368" role="img" aria-label="IR-9001 as a PDF page: a safety team incident report form with a field block and four sections of text" style="display:block;margin:0 auto">
+    <div class="panel pane a"><span class="tab">RAW &#183; IR-9001.pdf</span>
+      <svg width="290" height="267" viewBox="0 0 400 368" role="img" aria-label="IR-9001 as a PDF page: a safety team incident report form with a field block and four sections of text" style="display:block;margin:0 auto">
         <path d="M0 0 H368 L400 32 V368 H0 Z" fill="#e4f3ef"/><path d="M368 0 V32 H400" fill="#8fb5bb"/>
         <rect x="0" y="0" width="368" height="30" fill="#0f2145"/>
         <text x="16" y="20" style="fill:#5fd3c8;font-family:var(--pixel);font-size:10px">JAFFLE LOGISTICS &#183; SAFETY</text>
@@ -27,7 +27,7 @@
         <rect x="16" y="340" width="340" height="6"/><rect x="16" y="352" width="210" height="6"/></g>
       </svg>
     </div>
-    <div class="panel pane r ambp"><span class="tab">THE dbt MODEL, CONDENSED</span>
+    <div class="panel pane b ambp"><span class="tab">THE dbt MODEL, CONDENSED</span>
 <pre class="cd xs"><span class="d">-- int_incident_reports_documents.sql</span>
 <span class="k">select</span>
     r.report_id,
@@ -40,6 +40,15 @@
 <span class="k">left join</span> <span class="j">{{</span> <span class="k">ref</span>(<span class="s">'stg_shipments'</span>) <span class="j">}}</span> s
     <span class="k">on</span> r.shipment_id = s.shipment_id</pre>
     </div>
+    <div class="panel pane c"><span class="tab">THE ROW IT WRITES</span>
+      <div class="row1"><i>report_id</i><b>IR-9001</b></div>
+      <div class="row1"><i>client_id</i>CLI-0042 <em>Jaffle Werke</em></div>
+      <div class="row1"><i>body</i>INCIDENT REPORT INC-2025-00417 &mdash; ACCIDENT &hellip; During the Jan 14-16 winter storm, a semi jackknifed on an icy on-ramp departing the Paris hub. &hellip;</div>
+      <div class="row1"><i>artifact_ts</i>2025-01-16 14:00</div>
+      <div class="row1"><i>citation_url</i>jaffle_logistics://<wbr>incident_report/IR-9001</div>
+    </div>
+    <div class="par" style="left:350px">&#9654;</div>
+    <div class="par" style="left:848px">&#9654;</div>
   </div>
-  <aside class="notes">Step one, parse. Picture the incident system exporting each report as a PDF: a form with a field block and four sections. The model on the right turns the file into text with Databricks' ai_parse_document (Snowflake and BigQuery have their own), and joins the report to its shipment, which gives it an account, CLI-0042 Jaffle Werke, and a citation back to IR-9001. Parse is an AI call, so it costs money, once per file. Be straight with the room if asked: in this demo the reports arrive as text already, so the real int_incident_reports_documents has no parse call; it restores line breaks in staging and does the join, which is otherwise the model you see.</aside>
+  <aside class="notes">Step one, parse. Read left to right: the file, the model, the row it writes. Picture the incident system exporting each report as a PDF: a form with a field block and four sections. The model in the middle turns the file into text with Databricks' ai_parse_document (Snowflake and BigQuery have their own), and joins the report to its shipment, which gives it an account, CLI-0042 Jaffle Werke, and a citation back to IR-9001. Parse is an AI call, so it costs money, once per file. Be straight with the room if asked: in this demo the reports arrive as text already, so the real int_incident_reports_documents has no parse call; it restores line breaks in staging and does the join, which is otherwise the model you see.</aside>
 </section>

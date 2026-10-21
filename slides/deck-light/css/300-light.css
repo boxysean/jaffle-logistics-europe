@@ -411,3 +411,22 @@
   .reveal .lt-agent .cc.fragment { opacity: .3; visibility: visible; transition: none; }
   .reveal .lt-agent .cc.fragment.visible { opacity: 1; }
   .reveal .lt-agent .cc.fragment.current-fragment { box-shadow: 0 0 0 4px var(--amber), 6px 6px 0 4px #000; }
+
+  /* parse, chunk, embed, classify: an arrow in each gap, so the step reads left to right */
+  .lt-code .par { position: absolute; top: 418px; width: 28px; text-align: center; font-family: var(--pixel); font-size: 24px; line-height: 1; color: var(--amber); }
+  .crumbed2.lt-code .pane.l { width: 584px; }
+  .crumbed2.lt-code .pane.r { left: 676px; width: 584px; }
+  .crumbed2.lt-code .par { left: 620px; }
+  /* parse: three columns, the file, the model, the row */
+  .lt-parse3 .pane.a { left: 20px; width: 330px; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+  .lt-parse3 .pane.b { left: 378px; width: 470px; }
+  .lt-parse3 .pane.c { left: 876px; width: 384px; }
+  .lt-parse3 .par[style*="350px"] { left: 350px !important; }
+  .lt-parse3 .par[style*="848px"] { left: 848px !important; }
+  .lt-parse3 .row1 { margin-bottom: 12px; font-size: 16px; line-height: 1.3; color: var(--text); overflow-wrap: anywhere; }
+  .lt-parse3 .row1 i { display: block; font-style: normal; font-family: var(--mono); font-size: 14px; color: var(--teal-hi); margin-bottom: 2px; }
+  .lt-parse3 .row1 b { color: var(--amber); }
+  .lt-parse3 .row1 em { font-style: normal; color: var(--dim); margin-left: 6px; }
+  .crumbed2.lt-code .kv { grid-template-columns: 128px 1fr; }
+  .crumbed2.lt-code .expl { margin-top: 8px; padding-top: 8px; font-size: 14px; line-height: 1.28; }
+  .crumbed2.lt-code .expl p { margin-bottom: 4px; }

@@ -44,6 +44,7 @@
 <span class="k">where</span> <span class="j">{{</span> <span class="k">dbt_context_engineering.incremental_delta_predicate</span>(
     <span class="s">'chunk_id'</span>, content_hash_column = <span class="s">'content_hash'</span>) <span class="j">}}</span></pre>
     </div>
+    <div class="par" style="left:608px">&#9654;</div>
   </div>
   <aside class="notes">Step three, embed. Each passage goes to an embedding model, here Databricks' gte-large-en, and comes back as 1,024 numbers. On the left, each passage is now a record with two new things: its content hash, a fingerprint of the text, and its embedding, the vector, first three numbers shown. Nobody reads these numbers; what matters is that passages about the same thing get numbers that sit close together. That is how search works: the question is embedded with the same model and the nearest passages win; for the Paris storm question IR-9001's first passage is nearest, at 0.779. On the right, the model: it is incremental, and the where clause only sends passages whose hash is new or changed, the same hash you see in each record, so unchanged text is never paid for twice. Only a change of embedding model re-embeds everything.</aside>
 </section>

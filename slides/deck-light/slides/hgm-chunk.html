@@ -42,6 +42,7 @@
     text_column      = <span class="s">'sentence_text'</span>,
     partition_column = <span class="s">'document_id'</span>) <span class="j">}}</span></pre></div>
     </div>
+    <div class="par" style="left:608px">&#9654;</div>
   </div>
   <aside class="notes">Step two, chunk. A whole report is too long and too mixed to embed as one thing, so it is cut down by two small dbt models, the two blocks on the right. The first, split_incident_reports, cuts it at sentence boundaries: 13 sentences. The second, chunk_incident_reports, packs consecutive sentences into passages near a 100-token target, and never across two reports, which is what partition_column does. On the left is that one report: its 13 sentences, grouped by the passage each landed in: 1 to 6 are the first passage, the storm and the jackknife; 7 to 12 the second, the timeline, root cause and remediation; and the last sentence is left on its own. Each passage remembers which sentences went into it, so it can be traced back. Plain SQL, no AI, the same passages every run.</aside>
 </section>
