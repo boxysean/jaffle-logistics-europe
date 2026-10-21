@@ -39,6 +39,7 @@ hgm-chunk.html
 hgm-embed.html
 hgm-classify.html
 hgm-dag.html
+hgm-ask.html
 hgm-tables.html
 hgm-evals.html
 hgm-calls.html

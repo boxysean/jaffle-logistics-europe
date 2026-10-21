@@ -1,26 +1,12 @@
-<!-- How it gets made, 11/11 (DRAFT): this looks hard, how do I do it? You ask, a coding agent with the package's three skills builds it; why it's better: what is tested on every build. Needs Sean's real timing -->
+<!-- How it gets made, 12/12: why build it this way. Five reasons -->
 <section class="lt lt-code bld">
   <div class="frame">
     <div class="panel hd">
-      <h2><span class="no">11/11</span><span class="draft">DRAFT</span>THIS LOOKS HARD. HOW DO I DO IT?</h2>
-      <div class="owns">You don't write it by hand. A coding agent does, with the package's skills</div>
+      <h2><span class="no">12/12</span>WHY BUILD IT THIS WAY?</h2>
+      <div class="owns">The context layer, built like the rest of your governed data</div>
       <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="the skills: an open book"><rect x="1" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="1" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="2" width="1" height="1" fill="#ffb000"/><rect x="7" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="2" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="3" width="1" height="1" fill="#ffb000"/><rect x="4" y="3" width="1" height="1" fill="#ffb000"/><rect x="5" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="3" width="1" height="1" fill="#ffb000"/><rect x="7" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="3" width="1" height="1" fill="#ffb000"/><rect x="11" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="4" width="1" height="1" fill="#ffb000"/><rect x="7" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="4" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="5" width="1" height="1" fill="#ffb000"/><rect x="4" y="5" width="1" height="1" fill="#ffb000"/><rect x="5" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="5" width="1" height="1" fill="#ffb000"/><rect x="7" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="5" width="1" height="1" fill="#ffb000"/><rect x="11" y="5" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="6" width="1" height="1" fill="#ffb000"/><rect x="7" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="6" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="7" width="1" height="1" fill="#ffb000"/><rect x="4" y="7" width="1" height="1" fill="#ffb000"/><rect x="5" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="7" width="1" height="1" fill="#ffb000"/><rect x="7" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="7" width="1" height="1" fill="#ffb000"/><rect x="11" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="8" width="1" height="1" fill="#ffb000"/><rect x="7" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="10" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="11" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="10" width="1" height="1" fill="#ffb000"/></svg>
     </div>
-    <div class="panel pane l"><span class="tab">YOU ASK</span>
-<pre class="cd" style="white-space:pre-wrap"><span class="s">&ldquo;Add incident reports to the
-knowledge base: parse, chunk,
-embed incrementally, classify with
-jaffle_content_type v1, union it
-in, and add the tests.&rdquo;</span></pre>
-      <div class="skrow"><b>+ SKILLS</b><span>dbt-ce-setup</span><span>dbt-ce-pipeline</span><span>dbt-ce-ai-functions</span></div>
-      <div class="rule"></div>
-      <div class="lbl" style="line-height:1.5">YOU REVIEW</div>
-      <div class="pl">one pull request: the models, their YAML and tests</div>
-      <div class="rule"></div>
-      <div class="lbl" style="line-height:1.5;color:var(--amber)">PROMPT TO PR</div>
-      <div style="font-size:22px"><span class="tbd">[ __ minutes, from Sean ]</span></div>
-    </div>
-    <div class="panel pane r ambp"><span class="tab">WHY IT'S BETTER</span>
+    <div class="panel pane wide ambp"><span class="tab">WHY IT'S BETTER</span>
       <table class="res why">
         <tr><td class="n">&#10003;</td><td><b>Built by the same team</b> who builds the governed data</td></tr>
         <tr><td class="n">&#10003;</td><td><b>Tested, with lineage,</b> re-usable</td></tr>
@@ -30,5 +16,5 @@ in, and add the tests.&rdquo;</span></pre>
       </table>
     </div>
   </div>
-  <aside class="notes">DRAFT: needs the real timing. This is the moment someone thinks: that is a lot of models, how do I build this? You don't, by hand. You ask a coding agent for the source you want added, and it loads the three skills that ship with dbt_context_engineering, for setup, the pipeline and the AI functions. It writes the models, the YAML and the tests in one pull request, and your job is the review. Why it's better: it is built by the same team who already builds the governed data, so the context and the numbers come from one place. Like any dbt model it is tested, has lineage, and is re-usable by every agent and tool. It is efficient: the right context is built once, not re-assembled in every prompt. It adapts as the business adapts, because a change is a pull request like any other. And with AI development, the skills and a coding agent, it is fast to build.</aside>
+  <aside class="notes">Why build it this way? it is built by the same team who already builds the governed data, so the context and the numbers come from one place. Like any dbt model it is tested, has lineage, and is re-usable by every agent and tool. It is efficient: the right context is built once, not re-assembled in every prompt. It adapts as the business adapts, because a change is a pull request like any other. And with AI development, the skills and a coding agent, it is fast to build.</aside>
 </section>

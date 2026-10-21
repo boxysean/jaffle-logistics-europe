@@ -381,3 +381,12 @@
   .lt-code .res.why td.n { padding-right: 16px; }
   .lt-code .res.why td.n { color: var(--teal-hi); }
   .lt-code .res.why b { color: var(--amber); font-weight: 600; }
+  /* how do I do it: the review side, a size up */
+  .lt-code .pl.big { font-size: 24px; line-height: 1.35; }
+  /* why build it this way: one wide pane, the five reasons a size up */
+  .lt-code.bld .pane.wide { top: 148px; height: 496px; padding: 40px 56px; }
+  .lt-code.bld .res.why { font-size: 30px; }
+  .lt-code.bld .res.why td { padding-top: 18px; padding-bottom: 18px; }
+  /* how do I do it: the ask, a size up, now it has the pane to itself */
+  .lt-code.ask .pane.l .cd { font-size: 25px; line-height: 1.4; }
+  .lt-code.ask .skrow { margin-top: 24px; font-size: 17px; }
