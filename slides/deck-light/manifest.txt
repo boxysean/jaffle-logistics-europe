@@ -26,6 +26,10 @@ storm-learned.html
 bay3.html
 customer-experience.html
 
+# the managed route, before part 3 builds it by hand
+fcl-two-ways.html
+fcl-setup.html
+
 # part 3: how this showcase was made. one question: the data flows right into the two truths, the agent reaches left through the tools
 hgm-part.html
 hgm-question.html
