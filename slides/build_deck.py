@@ -4,6 +4,7 @@
     slides/deck/deck.html     the page: head, Reveal setup, and three marker lines
     slides/deck/css/*.css     the stylesheet, one file per slide family
     slides/deck/slides/*.html slides the deck borrows, named in slides/deck-light/manifest.txt
+    slides/deck/motion.js     the storm truck and the game-has-changed robot, played on entry
     slides/assets/            the status-bar logos, inlined as data URIs so the built file
                               needs nothing beside it (the docs site publishes only the HTML)
 
@@ -38,6 +39,7 @@ NOTES_SCRIPT = '<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/plugin/not
 CSS_MARK = "/* build_deck.py inserts slides/deck/css/*.css here"
 SLIDE_MARK = "<!-- build_deck.py inserts slides/deck/slides/*.html here"
 LOGO_MARK = "<!-- build_deck.py inserts slides/assets/ logos here"
+MOTION_MARK = "/* build_deck.py inserts slides/deck/motion.js here"
 ASSETS_DIR = os.path.join(SLIDES_DIR, "assets")
 # the official white logos, unmodified, in status-bar order
 LOGOS = [("fivetran-logo-white.svg", "image/svg+xml", "Fivetran"), ("dbt-logo-white.png", "image/png", "dbt")]
@@ -117,6 +119,8 @@ def build(cut_dir=None):
             out.append(SVG_LOGO_MARK.sub(svg_logo, light_slides(cut_dir)))
         elif line.strip().startswith(LOGO_MARK):
             out.append(logos())
+        elif line.strip().startswith(MOTION_MARK):
+            out.append(read(os.path.join(DECK_DIR, "motion.js")))
         elif "reveal.js@5/dist/reveal.js" in line:
             # the deck carries speaker notes, opened with S
             out.append(line + NOTES_SCRIPT)

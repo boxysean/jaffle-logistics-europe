@@ -18,6 +18,8 @@ own `<aside class="notes">`).
     script.json       the one file we edit: clips, durations and cues
     anim.css          CSS the seek hook needs (SVG bars scale about their own baseline)
     seek.js           the `?t=` seek hook: holds every animation at an exact time
+                      (the storm truck and the robot come from slides/deck/motion.js,
+                      which the live deck also plays)
     render_video.py   builds the deck, drives Chromium over CDP, encodes with ffmpeg
     probe/            the step-1 proof that headless Chromium can capture deterministic frames
 

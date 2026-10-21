@@ -136,3 +136,15 @@
   .lt-curate .card .line { margin-top: 32px; }
   .lt-curate .card .line em { font-style: normal; color: var(--amber); font-weight: 600; }
   .lt-curate .card .line .q { color: var(--hot); }
+
+  /* the storm truck drives in from above (slides/deck/motion.js): keep it inside its panel */
+  .storm .pic, .storm .pic svg { overflow: hidden; }
+
+  /* the game has changed: a person, then a robot, on one stage; the caption fades in (motion.js) */
+  .robo .bd.stage { left: 20px; top: 20px; width: 1240px; height: 630px; display: block; padding: 0; }
+  .robo .bd.stage svg.scene { position: absolute; left: 20px; top: 20px; }
+  .robo .robo-cap { position: absolute; left: 0; right: 0; bottom: 56px; text-align: center; font-family: var(--pixel); font-size: 30px; line-height: 1.3; color: var(--text); }
+  .robo .robo-cap em { font-style: normal; color: var(--amber); }
+
+  /* the second cause: the broken dock bay, in the picture panel beside the figures */
+  .dockp svg { position: absolute; left: 20px; top: 56px; width: 552px; height: auto; }
