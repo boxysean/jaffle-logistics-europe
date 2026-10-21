@@ -861,6 +861,18 @@
   .lt-curate .card .line { margin-top: 32px; }
   .lt-curate .card .line em { font-style: normal; color: var(--amber); font-weight: 600; }
   .lt-curate .card .line .q { color: var(--hot); }
+
+  /* the storm truck drives in from above (slides/deck/motion.js): keep it inside its panel */
+  .storm .pic, .storm .pic svg { overflow: hidden; }
+
+  /* the game has changed: a person, then a robot, on one stage; the caption fades in (motion.js) */
+  .robo .bd.stage { left: 20px; top: 20px; width: 1240px; height: 630px; display: block; padding: 0; }
+  .robo .bd.stage svg.scene { position: absolute; left: 20px; top: 20px; }
+  .robo .robo-cap { position: absolute; left: 0; right: 0; bottom: 56px; text-align: center; font-family: var(--pixel); font-size: 30px; line-height: 1.3; color: var(--text); }
+  .robo .robo-cap em { font-style: normal; color: var(--amber); }
+
+  /* the second cause: the broken dock bay, in the picture panel beside the figures */
+  .dockp svg { position: absolute; left: 20px; top: 56px; width: 552px; height: auto; }
   /* ===== Fivetran + dbt Labs corporate theme =====================================================
      Appended after the deck's own CSS by build_corporate.py. The deck's colours are CSS variables,
      so the palette swap below does most of the work; the rest of this file swaps the 16-bit chrome
@@ -1150,58 +1162,16 @@
   </div>
   <aside class="notes">Turn to the room before any content. Pause and let hands go up; count them out loud. Then: "That is not a model problem. It is a context problem, and by the end of this talk it is a problem this room already knows how to solve."</aside>
 </section>
-<!-- Part 1: The game has changed -->
-<section class="blank opener" data-status="dbt Vienna · 20 Oct 2026">
+<!-- The game has changed: a person waves, then a robot walks in, bumps them aside and waves instead (slides/deck/motion.js animates it; the drawn pose is the end of the scene, which is what a PDF export shows) -->
+<section class="blank opener robo">
   <div class="frame">
-    <div class="panel hd">
-      <h2>The game has changed</h2>
-    </div>
-    <div class="panel bd">
-      <ul>
-        <li>Preparing data for AI-aided analysis and agents is now the game</li>
-      </ul>
-      <svg class="bot" width="272" height="336" viewBox="0 0 272 336" role="img" aria-label="A pixel-art robot, smiling.">
-        <rect class="bo" x="48" y="40" width="160" height="8"/>
-        <rect class="bo" x="40" y="48" width="176" height="96"/>
-        <rect class="bo" x="48" y="144" width="160" height="8"/>
-        <rect class="bo" x="56" y="168" width="144" height="96"/>
-        <rect class="bo" x="200" y="176" width="56" height="16"/>
-        <rect class="bo" x="40" y="176" width="16" height="16"/>
-        <rect class="bo" x="24" y="176" width="16" height="80"/>
-        <rect class="bo" x="240" y="64" width="16" height="112"/>
-        <rect class="bo" x="64" y="312" width="48" height="16"/>
-        <rect class="bo" x="144" y="312" width="48" height="16"/>
-        <rect class="mt" x="120" y="24" width="16" height="16"/>
-        <rect class="mt" x="24" y="72" width="16" height="40"/>
-        <rect class="mt" x="216" y="72" width="16" height="40"/>
-        <rect class="mt" x="104" y="152" width="48" height="16"/>
-        <rect class="mt" x="80" y="264" width="32" height="48"/>
-        <rect class="mt" x="144" y="264" width="32" height="48"/>
-        <rect class="sc" x="64" y="64" width="128" height="72"/>
-        <rect class="sc" x="80" y="192" width="96" height="48"/>
-        <rect class="ey" x="112" y="0" width="32" height="24"/>
-        <rect class="ey" x="88" y="80" width="24" height="24"/>
-        <rect class="ey" x="144" y="80" width="24" height="24"/>
-        <rect class="ey" x="88" y="200" width="16" height="16"/>
-        <rect class="ey" x="152" y="200" width="16" height="16"/>
-        <rect class="ey" x="8" y="272" width="48" height="8"/>
-        <rect class="ey" x="0" y="280" width="64" height="48"/>
-        <rect class="ey" x="8" y="328" width="48" height="8"/>
-        <rect class="sc" x="8" y="296" width="48" height="8"/>
-        <rect class="sc" x="8" y="312" width="48" height="8"/>
-        <rect class="sm" x="80" y="104" width="8" height="8"/>
-        <rect class="sm" x="168" y="104" width="8" height="8"/>
-        <rect class="sm" x="88" y="112" width="8" height="8"/>
-        <rect class="sm" x="160" y="112" width="8" height="8"/>
-        <rect class="sm" x="96" y="120" width="64" height="8"/>
-        <rect class="sm" x="112" y="200" width="32" height="16"/>
-        <rect class="sm" x="88" y="224" width="80" height="8"/>
-        <rect class="sm" x="16" y="256" width="32" height="16"/>
-        <rect class="sm" x="232" y="32" width="40" height="32"/>
-        <rect class="sm" x="232" y="16" width="8" height="16"/>
-        <rect class="sm" x="248" y="16" width="8" height="16"/>
-        <rect class="sm" x="264" y="16" width="8" height="16"/>
+    <div class="panel bd stage">
+      <svg class="scene" width="1200" height="500" viewBox="0 0 1200 500" shape-rendering="crispEdges" role="img" aria-label="A person waves; a robot walks in, bumps them aside and waves instead">
+        <rect x="0" y="470" width="1200" height="8" fill="#a7c4fe"/>
+        <g class="human" transform="translate(-400 150)"><rect x="40" y="0" width="64" height="16" fill="#5a3a22"/><rect x="32" y="16" width="16" height="24" fill="#5a3a22"/><rect x="40" y="16" width="64" height="56" fill="#f0c08f"/><rect x="56" y="36" width="8" height="8" fill="#ffffff"/><rect x="80" y="36" width="8" height="8" fill="#ffffff"/><rect x="56" y="56" width="32" height="6" fill="#ffffff"/><rect x="64" y="72" width="16" height="8" fill="#f0c08f"/><rect x="32" y="80" width="80" height="104" fill="#632ff5"/><rect x="16" y="88" width="16" height="80" fill="#632ff5"/><rect x="16" y="168" width="16" height="16" fill="#f0c08f"/><rect x="32" y="184" width="80" height="8" fill="#ffffff"/><rect x="40" y="192" width="28" height="112" fill="#3d5a80"/><rect x="76" y="192" width="28" height="112" fill="#3d5a80"/><rect x="32" y="304" width="40" height="16" fill="#ffffff"/><rect x="76" y="304" width="40" height="16" fill="#ffffff"/><g class="harm"><rect x="112" y="32" width="16" height="64" fill="#632ff5"/><rect x="108" y="8" width="24" height="24" fill="#f0c08f"/></g></g>
+        <g class="robot" transform="translate(532 134)"><rect x="48" y="40" width="160" height="8" fill="#4e83f7"/><rect x="40" y="48" width="176" height="96" fill="#4e83f7"/><rect x="48" y="144" width="160" height="8" fill="#4e83f7"/><rect x="56" y="168" width="144" height="96" fill="#4e83f7"/><rect x="40" y="176" width="16" height="16" fill="#4e83f7"/><rect x="24" y="176" width="16" height="80" fill="#4e83f7"/><rect x="120" y="24" width="16" height="16" fill="#5a6b7d"/><rect x="24" y="72" width="16" height="40" fill="#5a6b7d"/><rect x="216" y="72" width="16" height="40" fill="#5a6b7d"/><rect x="104" y="152" width="48" height="16" fill="#5a6b7d"/><rect x="64" y="64" width="128" height="72" fill="#ffffff"/><rect x="80" y="192" width="96" height="48" fill="#ffffff"/><rect x="112" y="0" width="32" height="24" fill="#ff6704"/><rect x="88" y="80" width="24" height="24" fill="#ff6704"/><rect x="144" y="80" width="24" height="24" fill="#ff6704"/><rect x="88" y="200" width="16" height="16" fill="#ff6704"/><rect x="152" y="200" width="16" height="16" fill="#ff6704"/><rect x="8" y="272" width="48" height="8" fill="#ff6704"/><rect x="0" y="280" width="64" height="48" fill="#ff6704"/><rect x="8" y="328" width="48" height="8" fill="#ff6704"/><rect x="8" y="296" width="48" height="8" fill="#ffffff"/><rect x="8" y="312" width="48" height="8" fill="#ffffff"/><rect x="80" y="104" width="8" height="8" fill="#001526"/><rect x="168" y="104" width="8" height="8" fill="#001526"/><rect x="88" y="112" width="8" height="8" fill="#001526"/><rect x="160" y="112" width="8" height="8" fill="#001526"/><rect x="96" y="120" width="64" height="8" fill="#001526"/><rect x="112" y="200" width="32" height="16" fill="#001526"/><rect x="88" y="224" width="80" height="8" fill="#001526"/><rect x="16" y="256" width="32" height="16" fill="#001526"/><g class="legL"><rect x="64" y="312" width="48" height="16" fill="#4e83f7"/><rect x="80" y="264" width="32" height="48" fill="#5a6b7d"/></g><g class="legR"><rect x="144" y="312" width="48" height="16" fill="#4e83f7"/><rect x="144" y="264" width="32" height="48" fill="#5a6b7d"/></g><g class="arm"><rect x="200" y="176" width="56" height="16" fill="#4e83f7"/><rect x="240" y="64" width="16" height="112" fill="#4e83f7"/><rect x="232" y="32" width="40" height="32" fill="#001526"/><rect x="232" y="16" width="8" height="16" fill="#001526"/><rect x="248" y="16" width="8" height="16" fill="#001526"/><rect x="264" y="16" width="8" height="16" fill="#001526"/></g></g>
       </svg>
+      <div class="robo-cap">The main reader is now an <em>AI agent</em></div>
     </div>
   </div>
 <aside class="notes">About 30 seconds. Preparing data for AI-aided analysis and agents is now the game; the model reasons well enough, so what it reads decides whether the answer is right. That is the opportunity the rest of the talk earns.</aside>
@@ -1832,30 +1802,15 @@
   </div>
   <aside class="notes">Two additions came out of the storm. First, warnings of upcoming storms: a weather feed landed beside the 26 seeded source files. Second, an agent that detects an increase in tickets, raises an internal service incident and begins proactive communication with impacted clients. The 14th's third ticket, at 12:26, breaks the expected band and the 13:00 run opens the incident. Detail is in the appendix.</aside>
 </section>
-<!-- The second cause: one dock bay -->
+<!-- The second cause: one dock bay, drawn broken, and the numbers that put it there -->
 <section class="lt lt-big bay3l">
   <div class="frame">
     <div class="panel hd">
       <h2>THE SECOND CAUSE: ONE DOCK BAY</h2>
       <div class="owns">Not weather, not the fleet: handling damage at Amsterdam bay 3</div>
     </div>
-    <div class="panel chartp">
-      <span class="tab">DAMAGE INCIDENTS · HUB-AMS</span>
-      <svg class="chart" width="540" height="400" viewBox="0 0 540 400" role="img" aria-label="Handling-damage incidents at the Amsterdam hub: 2 in 2023, 2 in 2024, 15 in 2025, of which 11 at bay 3 and 4 at other bays">
-        <line class="ax" x1="0" y1="340" x2="540" y2="340"/>
-        <rect class="b vol" x="30" y="300" width="110" height="40"/>
-        <rect class="b vol" x="200" y="300" width="110" height="40"/>
-        <rect class="b vol" x="370" y="40" width="110" height="80"/>
-        <rect class="b" x="370" y="120" width="110" height="220"/>
-        <text class="val" style="font-size:24px;font-weight:600" x="85" y="290" text-anchor="middle">2</text>
-        <text class="val" style="font-size:24px;font-weight:600" x="255" y="290" text-anchor="middle">2</text>
-        <text class="val" style="font-size:24px;font-weight:600" x="425" y="30" text-anchor="middle">15</text>
-        <text style="font-size:20px" x="85" y="372" text-anchor="middle">2023</text>
-        <text style="font-size:20px" x="255" y="372" text-anchor="middle">2024</text>
-        <text style="font-size:20px" x="425" y="372" text-anchor="middle">2025</text>
-        <text class="t-amb" style="font-size:20px;font-weight:600" x="365" y="236" text-anchor="end">11 at bay 3</text>
-        <text style="font-size:18px" x="365" y="86" text-anchor="end">4 elsewhere</text>
-      </svg>
+    <div class="panel dockp" style="left:20px;top:148px;width:592px;height:502px">
+      <svg class="chart dock" width="600" height="430" viewBox="0 0 600 430" shape-rendering="crispEdges" role="img" aria-label="A loading dock with five bays; bay 3 is broken: its door is torn and cracked, crates lie smashed in front of it and a forklift stands beside it"><rect x="0" y="40" width="600" height="290" fill="#f4f7fd"/><rect x="0" y="24" width="600" height="16" fill="#a7c4fe"/><text x="300" y="18" text-anchor="middle" style="font-family:var(--pixel);font-size:14px;fill:#5a6b7d">HUB-AMS · DOCK</text><text x="68" y="78" text-anchor="middle" style="font-family:var(--pixel);font-size:18px;fill:#4e83f7">1</text><rect x="16" y="86" width="104" height="228" fill="none" stroke="#5a6b7d" stroke-width="4"/><rect x="20" y="90" width="96" height="220" fill="#a7c4fe"/><rect x="20" y="110" width="96" height="4" fill="#ffffff"/><rect x="20" y="130" width="96" height="4" fill="#ffffff"/><rect x="20" y="150" width="96" height="4" fill="#ffffff"/><rect x="20" y="170" width="96" height="4" fill="#ffffff"/><rect x="20" y="190" width="96" height="4" fill="#ffffff"/><rect x="20" y="210" width="96" height="4" fill="#ffffff"/><rect x="20" y="230" width="96" height="4" fill="#ffffff"/><rect x="20" y="250" width="96" height="4" fill="#ffffff"/><rect x="20" y="270" width="96" height="4" fill="#ffffff"/><rect x="20" y="290" width="96" height="4" fill="#ffffff"/><rect x="28" y="310" width="20" height="12" fill="#ffffff"/><rect x="88" y="310" width="20" height="12" fill="#ffffff"/><text x="184" y="78" text-anchor="middle" style="font-family:var(--pixel);font-size:18px;fill:#4e83f7">2</text><rect x="132" y="86" width="104" height="228" fill="none" stroke="#5a6b7d" stroke-width="4"/><rect x="136" y="90" width="96" height="220" fill="#a7c4fe"/><rect x="136" y="110" width="96" height="4" fill="#ffffff"/><rect x="136" y="130" width="96" height="4" fill="#ffffff"/><rect x="136" y="150" width="96" height="4" fill="#ffffff"/><rect x="136" y="170" width="96" height="4" fill="#ffffff"/><rect x="136" y="190" width="96" height="4" fill="#ffffff"/><rect x="136" y="210" width="96" height="4" fill="#ffffff"/><rect x="136" y="230" width="96" height="4" fill="#ffffff"/><rect x="136" y="250" width="96" height="4" fill="#ffffff"/><rect x="136" y="270" width="96" height="4" fill="#ffffff"/><rect x="136" y="290" width="96" height="4" fill="#ffffff"/><rect x="144" y="310" width="20" height="12" fill="#ffffff"/><rect x="204" y="310" width="20" height="12" fill="#ffffff"/><text x="416" y="78" text-anchor="middle" style="font-family:var(--pixel);font-size:18px;fill:#4e83f7">4</text><rect x="364" y="86" width="104" height="228" fill="none" stroke="#5a6b7d" stroke-width="4"/><rect x="368" y="90" width="96" height="220" fill="#a7c4fe"/><rect x="368" y="110" width="96" height="4" fill="#ffffff"/><rect x="368" y="130" width="96" height="4" fill="#ffffff"/><rect x="368" y="150" width="96" height="4" fill="#ffffff"/><rect x="368" y="170" width="96" height="4" fill="#ffffff"/><rect x="368" y="190" width="96" height="4" fill="#ffffff"/><rect x="368" y="210" width="96" height="4" fill="#ffffff"/><rect x="368" y="230" width="96" height="4" fill="#ffffff"/><rect x="368" y="250" width="96" height="4" fill="#ffffff"/><rect x="368" y="270" width="96" height="4" fill="#ffffff"/><rect x="368" y="290" width="96" height="4" fill="#ffffff"/><rect x="376" y="310" width="20" height="12" fill="#ffffff"/><rect x="436" y="310" width="20" height="12" fill="#ffffff"/><text x="532" y="78" text-anchor="middle" style="font-family:var(--pixel);font-size:18px;fill:#4e83f7">5</text><rect x="480" y="86" width="104" height="228" fill="none" stroke="#5a6b7d" stroke-width="4"/><rect x="484" y="90" width="96" height="220" fill="#a7c4fe"/><rect x="484" y="110" width="96" height="4" fill="#ffffff"/><rect x="484" y="130" width="96" height="4" fill="#ffffff"/><rect x="484" y="150" width="96" height="4" fill="#ffffff"/><rect x="484" y="170" width="96" height="4" fill="#ffffff"/><rect x="484" y="190" width="96" height="4" fill="#ffffff"/><rect x="484" y="210" width="96" height="4" fill="#ffffff"/><rect x="484" y="230" width="96" height="4" fill="#ffffff"/><rect x="484" y="250" width="96" height="4" fill="#ffffff"/><rect x="484" y="270" width="96" height="4" fill="#ffffff"/><rect x="484" y="290" width="96" height="4" fill="#ffffff"/><rect x="492" y="310" width="20" height="12" fill="#ffffff"/><rect x="552" y="310" width="20" height="12" fill="#ffffff"/><rect x="0" y="322" width="600" height="26" fill="#3d5a80"/><g class="bay3"><text x="300" y="78" text-anchor="middle" style="font-family:var(--pixel);font-size:18px;fill:#e3346f">3</text><rect x="248" y="86" width="104" height="228" fill="none" stroke="#e3346f" stroke-width="4"/><rect x="252" y="90" width="96" height="220" fill="#ffffff"/><polygon points="252,90 348,90 348,106 252,106" fill="#a7c4fe"/><polygon points="252,110 348,113 348,129 252,126" fill="#a7c4fe"/><polygon points="252,130 348,136 348,152 252,146" fill="#a7c4fe"/><polygon points="252,150 348,159 348,175 252,166" fill="#a7c4fe"/><polygon points="252,170 348,182 348,198 252,186" fill="#a7c4fe"/><polygon points="252,190 292,206 322,236 282,214 260,226" fill="#a7c4fe"/><path d="M296 120 l14 18 l-10 14 l18 20 M332 150 l-12 16 l8 12" stroke="#e3346f" stroke-width="4" fill="none"/><polygon points="246,262 254,262 246,278 238,278" fill="#ff6704"/><polygon points="262,262 270,262 262,278 254,278" fill="#ffffff"/><polygon points="278,262 286,262 278,278 270,278" fill="#ff6704"/><polygon points="294,262 302,262 294,278 286,278" fill="#ffffff"/><polygon points="310,262 318,262 310,278 302,278" fill="#ff6704"/><polygon points="326,262 334,262 326,278 318,278" fill="#ffffff"/><polygon points="342,262 350,262 342,278 334,278" fill="#ff6704"/><polygon points="358,262 366,262 358,278 350,278" fill="#ffffff"/><rect x="232" y="338" width="34" height="26" fill="#ff6704"/><rect x="236" y="342" width="26" height="4" fill="#b97800"/><rect x="236" y="352" width="26" height="4" fill="#b97800"/><polygon points="282,350 318,336 324,346 288,360" fill="#ff6704"/><polygon points="300,368 334,364 332,374 298,378" fill="#ff6704"/><rect x="326" y="346" width="14" height="8" fill="#b97800"/><rect x="262" y="370" width="10" height="6" fill="#b97800"/><text x="300" y="414" text-anchor="middle" style="font-family:var(--pixel);font-size:22px;fill:#e3346f">BAY 3</text></g><rect x="400" y="300" width="56" height="40" fill="#ff6704"/><rect x="408" y="286" width="32" height="16" fill="#ff6704"/><rect x="412" y="290" width="24" height="10" fill="#ffffff"/><rect x="388" y="250" width="8" height="94" fill="#5a6b7d"/><rect x="372" y="330" width="24" height="6" fill="#5a6b7d"/><rect x="372" y="318" width="24" height="6" fill="#5a6b7d"/><rect x="404" y="338" width="18" height="18" fill="#ffffff"/><rect x="438" y="338" width="18" height="18" fill="#ffffff"/><rect x="408" y="342" width="10" height="10" fill="#5a6b7d"/><rect x="442" y="342" width="10" height="10" fill="#5a6b7d"/></svg>
     </div>
     <div class="panel figs" style="left:628px;top:148px;width:632px;height:502px">
       <div><div class="v">11 OF 15</div><div class="l">damage incidents were at <em>bay 3</em>, which had none in 2023-24</div></div>
@@ -2995,6 +2950,96 @@
   };
   Reveal.on('ready', function (e) { setChrome(e.currentSlide); });
   Reveal.on('slidechanged', function (e) { setChrome(e.currentSlide); });
+})();
+</script>
+<script>
+/* The deck's two animated scenes: the storm slide's truck and the game-has-changed robot.
+ *
+ * Both are pure functions of time: scene(slide, T, at) poses the slide's SVG for T seconds
+ * after the slide came up, with the action starting at `at`. The video renderer calls them
+ * from slides/video/seek.js with an exact frame time; in the live deck the loop at the bottom
+ * calls them from the wall clock while the slide is on screen, and replays them on every visit.
+ *
+ * The SVGs as drawn are the end pose (the truck jackknifed, the robot standing in the middle),
+ * so a PDF export, or a browser without JS, shows the finished scene.
+ */
+(function () {
+  var clamp = function (x, a, b) { return x < a ? a : (x > b ? b : x); };
+  var quant = function (p, n) { return Math.round(p * n) / n; };
+  var ease = function (p) { return 1 - Math.pow(1 - p, 3); };
+  var easeIn = function (p) { return p * p; };
+
+  /* the game-has-changed scene: a person stands waving; the robot walks in from the right,
+     bumps them off to the left, takes their spot and waves; the caption fades in as it does.
+     `at` is when the robot starts walking. */
+  function robot(slide, T, A) {
+    var human = slide.querySelector('svg.scene g.human'), bot = slide.querySelector('svg.scene g.robot');
+    if (!human || !bot) return false;
+    var PI2 = Math.PI * 2;
+    // the robot: walk in (A to A+1.4), shove and keep going to the middle (to A+2.2)
+    var walk = ease(clamp((T - A) / 1.4, 0, 1)), settle = ease(clamp((T - A - 1.4) / 0.8, 0, 1));
+    var bx = 1260 + (664 - 1260) * walk + (532 - 664) * settle;
+    var walking = T > A && T < A + 2.2;
+    bot.setAttribute('transform', 'translate(' + bx.toFixed(1) + ' ' + (134 - (walking ? Math.abs(Math.sin(PI2 * 3 * T)) * 4 : 0)).toFixed(1) + ')');
+    var step = walking ? Math.sin(PI2 * 3 * T) : 0;
+    slide.querySelector('svg.scene g.legL').setAttribute('transform', 'translate(0 ' + (-8 * Math.max(0, step)).toFixed(1) + ')');
+    slide.querySelector('svg.scene g.legR').setAttribute('transform', 'translate(0 ' + (-8 * Math.max(0, -step)).toFixed(1) + ')');
+    var wave = T > A + 2.4 ? 16 * Math.sin(PI2 * 1.6 * (T - A - 2.4)) : 0;
+    slide.querySelector('svg.scene g.arm').setAttribute('transform', 'rotate(' + wave.toFixed(2) + ' 204 184)');
+    // the person: waves until the shove, then is knocked over and off to the left
+    var shove = easeIn(clamp((T - A - 1.4) / 0.7, 0, 1));
+    human.setAttribute('transform', 'translate(' + (532 - 760 * shove).toFixed(1) + ' 150) rotate(' + (-70 * shove).toFixed(1) + ' 68 320)');
+    var hwave = shove > 0 ? 0 : 18 * Math.sin(PI2 * 1.6 * T);
+    slide.querySelector('svg.scene g.harm').setAttribute('transform', 'rotate(' + hwave.toFixed(2) + ' 120 92)');
+    var cap = slide.querySelector('.robo-cap');
+    if (cap) cap.style.opacity = String(quant(clamp((T - A - 2.4) / 0.4, 0, 1), 4));
+    return true;
+  }
+
+  /* the storm slide's truck: it drives down the icy on-ramp with the cab straight ahead, then
+     jackknifes, the cab swinging 90 degrees about the hitch into the drawn pose; the skid marks
+     appear as it slides and the warning triangle flashes once it has stopped.
+     `at` is when the truck appears. */
+  var HITCH = '194 276';
+  function truck(slide, T, A) {
+    var cab = slide.querySelector('svg g.cab'), trailer = slide.querySelector('svg g.trailer');
+    if (!cab || !trailer) return false;
+    var drive = ease(clamp((T - A) / 1.3, 0, 1));            // A to A+1.3s: rolls in from above
+    var fold = ease(clamp((T - A - 1.2) / 0.5, 0, 1));       // A+1.2 to A+1.7s: jackknifes
+    var dy = (-520 * (1 - drive)).toFixed(1);
+    var wobble = (Math.sin(clamp((T - A - 1.2) / 0.9, 0, 1) * Math.PI * 2) * 4 * (1 - fold * 0.6)).toFixed(2);
+    trailer.setAttribute('transform', 'translate(0 ' + dy + ') rotate(' + (fold > 0 ? wobble : 0) + ' ' + HITCH + ')');
+    cab.setAttribute('transform', 'translate(0 ' + dy + ') rotate(' + (-90 * (1 - fold)).toFixed(2) + ' ' + HITCH + ')');
+    var skid = slide.querySelector('svg g.skid');
+    if (skid) skid.style.opacity = String(quant(clamp((T - A - 1.2) / 0.4, 0, 1), 4));
+    var warn = slide.querySelector('svg g.warn');
+    var W = T - A - 1.8;
+    if (warn) warn.style.opacity = W < 0 ? '0' : (W < 1.2 ? (Math.floor(W * 5) % 2 ? '0.25' : '1') : '1');
+    return true;
+  }
+
+  window.__motion = { truck: truck, robot: robot };
+
+  /* the live deck: play the current slide's scene from the moment it comes up. The video page
+     (?t=...) and a PDF export (?print-pdf) leave the clock alone. */
+  var q = new URLSearchParams(window.location.search);
+  if (q.has('t') || q.has('print-pdf') || !window.Reveal) return;
+  var LIVE = { truck: 0.3, robot: 1.5 };                     // seconds after the slide comes up
+  var raf = 0;
+  function play(slide) {
+    cancelAnimationFrame(raf);
+    if (!slide || !slide.querySelector('svg g.cab, svg.scene g.robot')) return;
+    var t0 = performance.now();
+    (function frame(now) {
+      var T = (now - t0) / 1000;
+      truck(slide, T, LIVE.truck);
+      robot(slide, T, LIVE.robot);
+      raf = requestAnimationFrame(frame);                    // the wave loops until the slide changes
+    })(t0);
+  }
+  if (Reveal.isReady()) play(Reveal.getCurrentSlide());
+  Reveal.on('ready', function (e) { play(e.currentSlide); });
+  Reveal.on('slidechanged', function (e) { play(e.currentSlide); });
 })();
 </script>
 </body>
