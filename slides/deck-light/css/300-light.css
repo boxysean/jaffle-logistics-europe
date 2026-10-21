@@ -326,7 +326,7 @@
   /* Fivetran Context Layer: a PREVIEW tag in the header, like DRAFT but amber */
   .lt .pre { font-family: var(--pixel); font-size: 14px; color: var(--deep); background: var(--amber); padding: 4px 8px; margin-right: 14px; vertical-align: 4px; }
   /* two ways: a label column and the five stages, two rows */
-  .lt-fcl .grid { position: absolute; left: 20px; top: 140px; width: 1240px; display: grid; grid-template-columns: 170px repeat(5, minmax(0, 1fr)); grid-template-rows: auto 1fr 1fr; gap: 12px; height: 500px; }
+  .lt-fcl .grid { position: absolute; left: 20px; top: 140px; width: 1240px; display: grid; grid-template-columns: 170px repeat(4, minmax(0, 1fr)); grid-template-rows: auto 1fr 1fr; gap: 12px; height: 500px; }
   .lt-fcl .ch { font-family: var(--pixel); font-size: 14px; line-height: 1; color: var(--teal-hi); text-align: center; padding: 8px 0; border: 3px solid var(--teal); }
   .lt-fcl .rl { display: flex; flex-direction: column; justify-content: center; font-size: 17px; line-height: 1.3; color: var(--dim); }
   .lt-fcl .rl b { font-family: var(--pixel); font-size: 16px; font-weight: normal; color: var(--teal-hi); margin-bottom: 10px; }
@@ -335,7 +335,7 @@
   .lt-fcl .cc b { color: var(--amber); font-weight: 600; }
   .lt-fcl .cc code { color: var(--teal-hi); font-size: 16px; }
   .lt-fcl .cc span { min-width: 0; overflow-wrap: anywhere; }
-  .lt-fcl .grid > .cc:nth-child(n+14) { border-color: var(--amber); }
+  .lt-fcl .grid > .cc:nth-child(n+12) { border-color: var(--amber); }
   /* setup: six boxes */
   .lt-fcls .st .nm { font-size: 17px; }
   .lt-fcls .st .tx { font-size: 19px; }
@@ -390,3 +390,17 @@
   /* how do I do it: the ask, a size up, now it has the pane to itself */
   .lt-code.ask .pane.l .cd { font-size: 25px; line-height: 1.4; }
   .lt-code.ask .skrow { margin-top: 24px; font-size: 17px; }
+
+  /* how the agent answers: the question, then two rows (semantic layer, context layer) across
+     asks / calls / gets, and one answer box spanning both rows */
+  .lt-agent .q { position: absolute; left: 20px; top: 176px; width: 1240px; text-align: center; font-size: 28px; font-weight: 600; color: var(--amber); }
+  .lt-agent .ag { position: absolute; left: 20px; top: 224px; width: 1240px; height: 424px; display: grid; grid-template-columns: 150px repeat(3, minmax(0, 1fr)) 270px; grid-template-rows: auto 1fr 1fr; gap: 12px; }
+  .lt-agent .ch { font-family: var(--pixel); font-size: 12px; line-height: 1; color: var(--teal-hi); text-align: center; padding: 8px 0; border: 3px solid var(--teal); }
+  .lt-agent .ch.amb { color: var(--amber); border-color: var(--amber); }
+  .lt-agent .rl { display: flex; flex-direction: column; justify-content: center; font-size: 17px; color: var(--dim); }
+  .lt-agent .rl b { font-family: var(--pixel); font-size: 13px; font-weight: normal; line-height: 1.4; color: var(--teal-hi); margin-bottom: 8px; }
+  .lt-agent .cc { background: var(--navy); border: 4px solid var(--teal-hi); box-shadow: 6px 6px 0 #000; padding: 10px 12px; font-size: 17px; line-height: 1.32; color: var(--text); display: flex; align-items: center; min-width: 0; overflow-wrap: anywhere; }
+  .lt-agent .cc b { color: var(--amber); font-weight: 600; }
+  .lt-agent .cc code { color: var(--teal-hi); font-size: 16px; }
+  .lt-agent .cc.ans { grid-column: 5; grid-row: 2 / span 2; border-color: var(--amber); font-size: 18px; }
+  .lt-agent .cc.ans .cite { margin-top: 16px; padding-top: 10px; border-top: 3px dashed var(--amber); font-family: var(--mono); font-size: 14px; color: var(--dim); }

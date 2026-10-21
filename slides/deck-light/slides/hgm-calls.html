@@ -1,45 +1,25 @@
-<!-- How it gets made, 11/12: the two tool calls, each with the real rows it returns -->
-<section class="lt crumbed lt-code">
+<!-- How it gets made, 10/12: how the agent answers. The question, split into a semantic layer call and a context layer call over MCP; what each picks and returns; the answer it assembles -->
+<section class="lt crumbed lt-agent">
   <div class="frame">
     <div class="panel hd">
-      <h2><span class="no">11/12</span>THE AGENT MAKES TWO CALLS</h2>
-      <div class="owns">One for the number, one for the cause</div>
+      <h2><span class="no">10/12</span>HOW THE AGENT ANSWERS</h2>
+      <div class="owns">It splits the question in two: the number, and the cause</div>
       <svg class="ico" viewBox="0 0 12 12" shape-rendering="crispEdges" role="img" aria-label="two calls: two arrows going out"><rect x="7" y="1" width="1" height="1" fill="#ffb000"/><rect x="7" y="2" width="1" height="1" fill="#ffb000"/><rect x="8" y="2" width="1" height="1" fill="#ffb000"/><rect x="0" y="3" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="3" width="1" height="1" fill="#ffb000"/><rect x="2" y="3" width="1" height="1" fill="#ffb000"/><rect x="3" y="3" width="1" height="1" fill="#ffb000"/><rect x="4" y="3" width="1" height="1" fill="#ffb000"/><rect x="5" y="3" width="1" height="1" fill="#ffb000"/><rect x="6" y="3" width="1" height="1" fill="#ffb000"/><rect x="7" y="3" width="1" height="1" fill="#ffb000"/><rect x="8" y="3" width="1" height="1" fill="#ffb000"/><rect x="9" y="3" width="1" height="1" fill="#ffb000"/><rect x="7" y="4" width="1" height="1" fill="#ffb000"/><rect x="8" y="4" width="1" height="1" fill="#ffb000"/><rect x="7" y="5" width="1" height="1" fill="#ffb000"/><rect x="7" y="7" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="8" width="1" height="1" fill="#5fd3c8"/><rect x="0" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="1" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="2" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="3" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="4" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="5" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="6" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="9" y="9" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="8" y="10" width="1" height="1" fill="#5fd3c8"/><rect x="7" y="11" width="1" height="1" fill="#5fd3c8"/></svg>
     </div>
-    <div class="crumbs" role="img" aria-label="where we are: MCP TOOLS"><span class="past">SOURCES</span><i>&#9654;</i><span class="past">dbt MODELS</span><i>&#9654;</i><span class="past">TWO TRUTHS</span><i>&#9664;</i><span class="on">MCP TOOLS</span><i>&#9664;</i><span class="past">AGENT</span></div>
-    <div class="panel pane l"><span class="tab">&#9312; THE NUMBER</span>
-<pre class="cd"><span class="k">query_metrics</span>(
-  metrics  = [<span class="s">"on_time_rate"</span>],
-  group_by = [<span class="s">"metric_time__quarter"</span>])</pre>
-      <div class="rule"></div>
-      <table class="res">
-        <tr class="hotr"><td class="n">90.33%</td><td>2025 Q1</td></tr>
-        <tr><td class="n">95.40%</td><td>2025 Q2</td></tr>
-        <tr><td class="n">95.12%</td><td>2025 Q3</td></tr>
-        <tr><td class="n">92.62%</td><td>2025 Q4</td></tr>
-      </table>
-      <div class="rule"></div>
-      <div class="lbl">THEN Q1 BY shipment__origin_city</div>
-      <table class="res">
-        <tr class="hotr"><td class="n">56.60%</td><td>Paris, January <span class="dim">&middot; 53 shipments</span></td></tr>
-        <tr><td class="n">80.65%</td><td>Berlin <span class="dim">&middot; the rest 91.67% and up</span></td></tr>
-      </table>
-    </div>
-    <div class="panel pane r ambp"><span class="tab">&#9313; THE CAUSE</span>
-<pre class="cd"><span class="k">execute_sql</span>(<span class="d">-- a vector search</span>
-  over   knowledge_base,
-  near   <span class="s">'truck accident during</span>
-<span class="s">          the Paris winter storm'</span>,
-  where  classification
-           = <span class="s">'weather_disruption'</span>,
-  top_k  10)</pre>
-      <div class="rule"></div>
-      <table class="res">
-        <tr class="on"><td class="n">0.779</td><td>IR-9001::1 &middot; Incident Report<br><span class="dim">16 Jan 2025 &middot; the Paris jackknife</span></td></tr>
-        <tr><td class="n">0.724</td><td>IR-7009::1 &middot; Incident Report <span class="dim">&middot; Mar 2025</span></td></tr>
-        <tr><td class="n">0.717</td><td>IR-7005::1 &middot; Incident Report <span class="dim">&middot; Jul 2025</span></td></tr>
-      </table>
+    <div class="crumbs" role="img" aria-label="where we are: AGENT"><span class="past">SOURCES</span><i>&#9654;</i><span class="past">dbt MODELS</span><i>&#9654;</i><span class="past">TWO TRUTHS</span><i>&#9664;</i><span class="on">AGENT</span></div>
+    <div class="q">&ldquo;What happened in 2025 Q1 that caused on-time to go down?&rdquo;</div>
+    <div class="ag">
+      <div></div><div class="ch">1 &middot; ASKS</div><div class="ch">2 &middot; CALLS OVER MCP</div><div class="ch">3 &middot; GETS BACK</div><div class="ch amb">4 &middot; ANSWERS</div>
+      <div class="rl"><b>SEMANTIC LAYER</b>the number</div>
+      <div class="cc"><div>How far did on-time fall, and where?</div></div>
+      <div class="cc"><div><code>query_metrics</code> picks the metric <b>on_time_rate</b>, by quarter, then Q1 by origin city</div></div>
+      <div class="cc"><div><b>90.33%</b> in Q1, the low quarter<br><b>Paris, January: 56.60%</b></div></div>
+      <div class="cc ans"><div>On-time fell to <b>90.33%</b> in Q1. Paris dropped to <b>56.60%</b> in January, when the <b>14-16 January winter storm</b> hit: a semi jackknifed on an icy on-ramp leaving the Paris hub.<div class="cite">cites on_time_rate &middot; IR-9001</div></div></div>
+      <div class="rl"><b>CONTEXT LAYER</b>the cause</div>
+      <div class="cc"><div>What happened in Paris?</div></div>
+      <div class="cc"><div><code>search</code> embeds the query and ranks the <b>2,708</b> passages by <b>cosine similarity</b>, only <code>weather_disruption</code></div></div>
+      <div class="cc"><div><b>IR-9001::1</b>, score <b>0.779</b><br>&ldquo;&hellip; a semi jackknifed on an icy on-ramp &hellip;&rdquo;</div></div>
     </div>
   </div>
-  <aside class="notes">Two calls, one per source of truth. Left, the number: query_metrics on the governed on_time_rate metric by quarter. Q1 is the low one at 90.33%, against 95.40, 95.12 and 92.62. The agent asks again for Q1 by origin city and Paris stands out: 56.60% in January, on 53 shipments; Berlin is next at 80.65 and the other three hubs are at 91.67 or better. Right, the cause: a vector search over knowledge_base, the query "truck accident during the Paris winter storm", filtered to the weather_disruption label. The top passage, at a similarity of 0.779, is IR-9001: the incident report for the semi that jackknifed leaving the Paris hub on 15 January. These are the real rows, from the search model in last night's build. The agent that strings the two calls together is a design, not a running system; the tools and the tables under it are real.</aside>
+  <aside class="notes">Start with the question, out loud: what happened in 2025 Q1 that caused on-time to go down? The agent splits it in two. The number goes to the semantic layer over MCP: query_metrics, and the agent picks the governed metric on_time_rate, by quarter, then Q1 by origin city. Back comes 90.33% for Q1, the low quarter, and Paris in January at 56.60%. The cause goes to the context layer: a search over the knowledge base. The search embeds the query with the same model that embedded the passages, then scores every passage by cosine similarity: how closely its 1,024 numbers point the same way as the query's, 1.0 being identical. Filtered to weather_disruption, the top passage is IR-9001 at 0.779: the jackknife in the storm. The agent assembles the two into one answer and cites both: the metric and the report. If asked: the search query on the slide, "truck accident during the Paris winter storm" in the build, is the one stored in the search model, so the scores are real; a live agent would phrase its own. The agent itself is a design, not a running system; the two calls and their results are real.</aside>
 </section>

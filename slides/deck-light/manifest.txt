@@ -30,7 +30,7 @@ customer-experience.html
 fcl-two-ways.html
 fcl-setup.html
 
-# part 3: how this showcase was made. one question: the data flows right into the two truths, the agent reaches left through the tools
+# part 3: how this showcase was made. one question: the data flows right into the two truths, the agent reaches left over MCP
 hgm-part.html
 hgm-question.html
 hgm-pipeline.html
@@ -41,8 +41,8 @@ hgm-classify.html
 hgm-dag.html
 hgm-ask.html
 hgm-tables.html
-hgm-evals.html
 hgm-calls.html
+hgm-evals.html
 hgm-builders.html
 
 # part 4: from analytics engineer to context engineer
