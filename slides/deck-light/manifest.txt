@@ -25,11 +25,6 @@ storm.html
 storm-learned.html
 bay3.html
 customer-experience.html
-how-made.html
-stack.html
-trace.html
-layering-context.html
-question-answer.html
 
 # part 3: how this showcase was made. one question: the data flows right into the two truths, the agent reaches left through the tools
 hgm-part.html
