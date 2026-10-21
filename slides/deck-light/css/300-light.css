@@ -216,3 +216,14 @@
   /* draft slides carry a hot DRAFT tag at the header's left, and a visible placeholder for a missing fact */
   .lt .draft { font-family: var(--pixel); font-size: 14px; color: var(--deep); background: var(--hot); padding: 4px 8px; margin-right: 14px; vertical-align: 4px; }
   .lt .tbd { color: var(--hot); font-weight: 600; border-bottom: 3px dashed var(--hot); }
+
+  /* breadcrumb under the header on the "how it gets made" slides: the five stages of the path
+     from agent to sources (as on 1/8), the current one lit amber, the ones already walked teal */
+  .lt .crumbs { position: absolute; left: 20px; top: 132px; width: 1240px; height: 32px; display: flex; align-items: center; justify-content: space-between; font-family: var(--pixel); font-size: 14px; line-height: 1; }
+  .lt .crumbs span { flex: 1 1 0; text-align: center; padding: 7px 0; border: 3px solid var(--teal); color: var(--dim); background: var(--deep); }
+  .lt .crumbs span.past { border-color: var(--teal-hi); color: var(--teal-hi); }
+  .lt .crumbs span.on { border-color: var(--amber); background: var(--amber); color: var(--deep); }
+  .lt .crumbs i { flex: none; width: 28px; text-align: center; font-style: normal; color: var(--teal); }
+  /* the content under it moves down by the breadcrumb's height; the closing line is gone, so it still fits */
+  .crumbed.lt-code .pane { top: 196px; }
+  .crumbed.lt-steps .rows { top: 180px; }
