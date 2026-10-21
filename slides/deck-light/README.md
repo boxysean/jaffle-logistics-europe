@@ -10,6 +10,10 @@ big numbers instead of paragraphs, and the dense working moved to an appendix. S
   `../deck/slides/` second, so an unchanged slide is reused, not copied. A line may add
   ` | title=...`, ` | sub=...` (swap the heading and its subtitle) or ` | notes=...` (speaker notes).
 - `slides/*.html`: slides written or adapted for this cut (plain names, no number prefixes).
+- `../deck/motion.js`: the two animated scenes, the storm truck jackknifing and the robot on
+  `003-the-game-has-changed.html`. Each plays when its slide comes up and again on every visit;
+  the SVG as drawn is the end of the scene, so a PDF export shows that. The video renderer
+  drives the same functions frame by frame (`slides/video/seek.js`).
 - `css/*.css`: the kit these slides use, added after `slides/deck/css/`. `.lt-flow` slides light up
   one step per click; `.lt-cards` and `.lt-big` are the picture-and-number layouts.
 
