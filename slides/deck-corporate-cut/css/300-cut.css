@@ -1,0 +1,4 @@
+/* Leave room for the three problems under the existing source-to-AI diagram. */
+.lt-mess .wire.wide svg { left: 164px; top: 35px; width: 900px; height: auto; }
+.lt-mess .cut-problems { position: absolute; left: 28px; right: 28px; bottom: 22px; display: flex; gap: 22px; }
+.lt-mess .cut-problems div { flex: 1; border-top: 4px solid var(--hot); padding: 12px 8px 0; color: var(--text); font-size: 22px; line-height: 1.25; text-align: center; }
