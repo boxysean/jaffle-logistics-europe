@@ -38,4 +38,6 @@ jobs:
       - run: python3 slides/build_deck.py --out docs/shareholder-deck/presentation.html
       # the same deck in the Fivetran + dbt Labs corporate theme, published beside it
       - run: python3 slides/build_deck.py --theme corporate --out docs/shareholder-deck/presentation-corporate.html
+      # the shorter corporate context engineering cut
+      - run: python3 slides/build_deck.py --cut slides/deck-corporate-cut --theme corporate --out docs/shareholder-deck/context-engineering.html
       - run: mkdocs gh-deploy --force
