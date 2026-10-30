@@ -8,6 +8,7 @@ analytics engineer to context engineer. The dense working sits in an appendix fo
 
 [**Open the deck &rarr;**](shareholder-deck/presentation.html){ .md-button .md-button--primary }
 [**Open it in the Fivetran + dbt Labs theme &rarr;**](shareholder-deck/presentation-corporate.html){ .md-button }
+[**Open the context engineering cut &rarr;**](shareholder-deck/context-engineering.html){ .md-button }
 
 Use the arrow keys to move, `f` for full screen, `s` for speaker notes, and print to PDF for a
 handout. The slide order is `slides/deck-light/manifest.txt`, and `python3 slides/build_deck.py`
